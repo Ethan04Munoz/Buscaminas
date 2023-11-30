@@ -1,0 +1,21 @@
+.tablero {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* 10 columnas */
+  grid-gap: 1px;
+}
+
+.casilla {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  background: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.casillaRevelada{
+  background: white;
+  color: black
+}
