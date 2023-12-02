@@ -137,17 +137,35 @@ function App() {
     }
 
     // Paso 2: Ordenar ambos arreglos
-    arr1.sort();
-    arr2.sort();
+    arr1.sort((a, b) => {
+      // Primero, comparamos las coordenadas X
+      if (a.x < b.x) return -1;
+      if (a.x > b.x) return 1;
 
-    // Paso 3: Comparar los elementos de los arreglos
-    for (let i = 0; i < arr1.length; i++) {
-        if (arr1[i] !== arr2[i]) {
-            return false;
-        }
-    }
+      // Si las coordenadas X son iguales, comparamos las coordenadas Y
+      if (a.y < b.y) return -1;
+      if (a.y > b.y) return 1;
 
-    return true;
+      // Si ambas coordenadas son iguales, no cambia el orden
+      return 0;
+    });
+    arr2.sort((a, b) => {
+      // Primero, comparamos las coordenadas X
+      if (a.x < b.x) return -1;
+      if (a.x > b.x) return 1;
+
+      // Si las coordenadas X son iguales, comparamos las coordenadas Y
+      if (a.y < b.y) return -1;
+      if (a.y > b.y) return 1;
+
+      // Si ambas coordenadas son iguales, no cambia el orden
+      return 0;
+    });
+    console.log("Arreglos: ", arr1, arr2)
+    return arr1.every((objeto, index) => 
+        Object.keys(objeto).length === Object.keys(arr2[index]).length &&
+        Object.keys(objeto).every(key => objeto[key] === arr2[index][key])
+    );
 }
 
   const manejarClicCasilla = (x, y) => {
@@ -156,17 +174,18 @@ function App() {
       setPrimerClic(false);
       revelarCasillas(x, y);
     }
-    if(bombaRevelada == false){
-      if(volado()==1){
-        revelarCasillas(x, y);
-      }else{
-        setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`));
+    if(ubicacionesMinas.some(mina => mina.x === x && mina.y === y)){
+      setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`));
+    } else {
+      if(bombaRevelada == false){
+        if(volado()==1){
+          revelarCasillas(x, y);
+        }else{
+          setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`));
+        }
       }
     }
-    if(Array.from(casillasMarcadas).length == 10){
-
-    }
-  };
+  }
 
   const [bombaRevelada, setBombaRevelada] = useState(false);
 
@@ -181,12 +200,46 @@ function App() {
       }
     });
   }, [casillasReveladas, ubicacionesMinas]);
+
+  useEffect(() => {
+    let casillasMarcadasArray = Array.from(casillasMarcadas);
+    console.log("CasillasMarcadasArray: ", casillasMarcadasArray);
+    if(casillasMarcadasArray.length == 10){
+      const arrayObjetos = casillasMarcadasArray.map(cadena => {
+        const partes = cadena.split('-'); // Dividimos la cadena por el guion
+        return {
+            x: parseInt(partes[0], 10), // Convertimos la primera parte a número y asignamos a x
+            y: parseInt(partes[1], 10) // Convertimos la segunda parte a número y asignamos a y
+        };
+      });
+      let arreglos = arreglosIguales(arrayObjetos, ubicacionesMinas);
+      console.log("Arreglos iguales: ", arreglos)
+      if(arreglos==true){
+        //Ganaste
+        setTimeout(() => {
+          alert("GANESTE!!!!!!")
+        }, 0);
+      }
+    }
+  }, [ubicacionesMinas, casillasMarcadas])
   
 
   const manejarClicDerecho = (e, x, y) => {
     e.preventDefault();
     if(bombaRevelada == false){
-      setCasillasMarcadas(new Set(casillasMarcadas).add(`${x}-${y}`));
+      if(casillasMarcadas.has(`${x}-${y}`)){
+        const nuevaMarcacion = new Set(casillasMarcadas);
+        const clave = `${x}-${y}`;
+    
+        if (nuevaMarcacion.has(clave)) {
+          nuevaMarcacion.delete(clave);
+        } else {
+          nuevaMarcacion.add(clave);
+        }
+        setCasillasMarcadas(nuevaMarcacion);
+      }else{
+        setCasillasMarcadas(new Set(casillasMarcadas).add(`${x}-${y}`));
+      }
     }
   }
 
@@ -214,17 +267,30 @@ function App() {
     );
   }
 
+  function reiniciarJuego() {
+    setUbicacionesMinas([]);
+    setPrimerClic(true);
+    setCasillasReveladas(new Set());
+    setCasillasMarcadas(new Set());
+    setBombaRevelada(false);
+    console.log("Ubicaciones minas: ", ubicacionesMinas)
+  }
+  
+
   const contadorMinas = contarMinasAlrededor(tableroSize, ubicacionesMinas);
 
   return (
-    <div className="tablero">
-      {contadorMinas.map((fila, x) =>
-        fila.map((minaCount, y) => {
-          const esMina = ubicacionesMinas.some(mina => mina.x === x && mina.y === y);
-          return <Casilla key={`${x}-${y}`} x={x} y={y} esMina={esMina} numeroMinas={minaCount} />;
-        })
-      )}
-    </div>
+    <>
+      <button onClick={reiniciarJuego}>Reiniciar Juego</button>
+      <div className="tablero">
+        {contadorMinas.map((fila, x) =>
+          fila.map((minaCount, y) => {
+            const esMina = ubicacionesMinas.some(mina => mina.x === x && mina.y === y);
+            return <Casilla key={`${x}-${y}`} x={x} y={y} esMina={esMina} numeroMinas={minaCount} />;
+          })
+        )}
+      </div>
+    </>
   );
 }
 
