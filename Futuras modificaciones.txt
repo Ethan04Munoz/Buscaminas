@@ -1,0 +1,4 @@
+8/01/2024:
+- Separar el tablero y las casillas del archivo de App.jsx a un archivo independiente cada uno
+- Corregir función para ganar: Se debe ganar cuando se liberan todas las casillas sin minas, no cuando se marcan correctamente la ubicaciones de las minas
+- Mejorar revelarCasillas para que no se limite a revelar solo 8 casillas (Posiblemente usar BFS o DFS)
