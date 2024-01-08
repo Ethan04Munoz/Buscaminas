@@ -9,7 +9,7 @@ function App() {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  const tableroSize = 10;
+  const tableroSize = 8;
 
   const [ubicacionesMinas, setUbicacionesMinas] = useState([]);
 
@@ -20,8 +20,8 @@ function App() {
   function generarMinasAleatorias(eX, eY) {
     let nuevasUbicacionesMinas = [];
     while (nuevasUbicacionesMinas.length < 10) {
-        let x = obtenerNumeroAleatorioEntre(0, 9);
-        let y = obtenerNumeroAleatorioEntre(0, 9);
+        let x = obtenerNumeroAleatorioEntre(0, tableroSize-1);
+        let y = obtenerNumeroAleatorioEntre(0, tableroSize-1);
         if (!estaEnAreaProhibida(x, y, eX, eY) && !nuevasUbicacionesMinas.some(mina => mina.x === x && mina.y === y)) {
           nuevasUbicacionesMinas.push({ x, y });
       }
@@ -88,6 +88,7 @@ function App() {
   };
 
   const revelarCasillas = (x, y) => {
+    //Pendiente mejorar esta función
     let contador = 0;
   
     // Función para revelar una casilla individual
@@ -131,6 +132,7 @@ function App() {
   }
 
   function arreglosIguales(arr1, arr2) {
+    //Modificar esta función: Se debe ganar cuando se liberan todas las casillas sin minas, no cuando se marcan correctamente todas las bombas;
     // Paso 1: Verificar si los arreglos tienen la misma longitud
     if (arr1.length !== arr2.length) {
         return false;
@@ -208,8 +210,8 @@ function App() {
       const arrayObjetos = casillasMarcadasArray.map(cadena => {
         const partes = cadena.split('-'); // Dividimos la cadena por el guion
         return {
-            x: parseInt(partes[0], 10), // Convertimos la primera parte a número y asignamos a x
-            y: parseInt(partes[1], 10) // Convertimos la segunda parte a número y asignamos a y
+            x: parseInt(partes[0], tableroSize), // Convertimos la primera parte a número y asignamos a x
+            y: parseInt(partes[1], tableroSize) // Convertimos la segunda parte a número y asignamos a y
         };
       });
       let arreglos = arreglosIguales(arrayObjetos, ubicacionesMinas);
@@ -217,7 +219,7 @@ function App() {
       if(arreglos==true){
         //Ganaste
         setTimeout(() => {
-          alert("GANESTE!!!!!!")
+          alert("GANASTE!!!!!!")
         }, 0);
       }
     }

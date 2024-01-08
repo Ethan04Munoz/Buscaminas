@@ -1,6 +1,6 @@
 .tablero {
   display: grid;
-  grid-template-columns: repeat(10, 1fr); /* 10 columnas */
+  grid-template-columns: repeat(8, 1fr); /* 10 columnas */
   grid-gap: 1px;
 }
 
