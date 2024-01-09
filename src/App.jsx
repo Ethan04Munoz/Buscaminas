@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import Tablero from './Tablero'
 import './App.css'
 
 function App() {
@@ -284,14 +285,15 @@ function App() {
   return (
     <>
       <button onClick={reiniciarJuego}>Reiniciar Juego</button>
-      <div className="tablero">
-        {contadorMinas.map((fila, x) =>
-          fila.map((minaCount, y) => {
-            const esMina = ubicacionesMinas.some(mina => mina.x === x && mina.y === y);
-            return <Casilla key={`${x}-${y}`} x={x} y={y} esMina={esMina} numeroMinas={minaCount} />;
-          })
-        )}
-      </div>
+      <Tablero
+        tableroSize={tableroSize}
+        ubicacionesMinas={ubicacionesMinas}
+        casillasReveladas={casillasReveladas}
+        casillasMarcadas={casillasMarcadas}
+        manejarClicCasilla={manejarClicCasilla}
+        manejarClicDerecho={manejarClicDerecho}
+        contadorMinas={contadorMinas}
+      />
     </>
   );
 }
