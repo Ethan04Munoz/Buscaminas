@@ -246,30 +246,6 @@ function App() {
     }
   }
 
-  function Casilla({ x, y, esMina, numeroMinas }) {
-    const revelada = casillasReveladas.has(`${x}-${y}`);
-    const marcada = casillasMarcadas.has(`${x}-${y}`);
-    let clases = "casilla"
-    let contenido = "";
-    if (marcada) {
-      contenido = "🚩"; // Bandera roja
-    } else if (revelada) {
-        if (esMina) {
-            contenido = "💣"; // Bomba
-        } else {
-            contenido = numeroMinas > 0 ? numeroMinas : "";
-        }
-        clases = clases + " casillaRevelada";
-    }
-    return (
-      <div className={clases}
-           onClick={() => manejarClicCasilla(x, y)}
-           onContextMenu={(e) => {manejarClicDerecho(e, x, y)}}> {/* Agregar manejo del clic derecho */}
-        {contenido}
-      </div>
-    );
-  }
-
   function reiniciarJuego() {
     setUbicacionesMinas([]);
     setPrimerClic(true);
