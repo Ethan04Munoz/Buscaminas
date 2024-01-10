@@ -13,6 +13,8 @@ function App() {
   const tableroSize = 8;
 
   const [ubicacionesMinas, setUbicacionesMinas] = useState([]);
+  const [minasGeneradas, setMinasGeneradas] = useState(false);
+  const [estadoXY, setEstadoXY] = useState(null);
 
   function estaEnAreaProhibida(x, y, eX, eY) {
     return x >= eX - 1 && x <= eX + 1 && y >= eY - 1 && y <= eY + 1;
@@ -27,8 +29,19 @@ function App() {
           nuevasUbicacionesMinas.push({ x, y });
       }
     }
+    setMinasGeneradas(true);
     setUbicacionesMinas(nuevasUbicacionesMinas);
   }
+
+  useEffect(() => {
+    if(estadoXY!= null){
+      let x = estadoXY.x;
+      let y = estadoXY.y;
+      if(minasGeneradas==true){
+        revelarCasillas(x, y);
+      }
+    }
+  }, [minasGeneradas])
 
   function contarMinasAlrededor(tableroSize, ubicacionesMinas) {
     let contadorMinas = Array.from({ length: tableroSize }, () => 
@@ -68,14 +81,13 @@ function App() {
 
   const calcularMinasVecinas = (x, y) => {
     let contadorMinas = 0;
-  
+    console.log("Ubicaciones minas: ", ubicacionesMinas)
     // Recorrer todas las casillas vecinas
     for (let dx = -1; dx <= 1; dx++) {
       for (let dy = -1; dy <= 1; dy++) {
         if (dx === 0 && dy === 0) continue; // Saltar la casilla actual
         const newX = x + dx;
         const newY = y + dy;
-  
         // Verificar si las nuevas coordenadas están dentro del tablero
         if (newX >= 0 && newX < tableroSize && newY >= 0 && newY < tableroSize) {
           if (ubicacionesMinas.some(mina => mina.x === newX && mina.y === newY)) {
@@ -84,48 +96,45 @@ function App() {
         }
       }
     }
-  
+    console.log("Contador minas", contadorMinas)
     return contadorMinas;
   };
 
-  const revelarCasillas = (x, y) => {
-    //Pendiente mejorar esta función
-    let contador = 0;
-  
-    // Función para revelar una casilla individual
-    const revelarCasilla = (x, y) => {
-      const clave = `${x}-${y}`;
-      if (casillasReveladas.has(clave) || ubicacionesMinas.some(mina => mina.x === x && mina.y === y)) {
-        return; // Si la casilla ya está revelada o es una bomba, no hacer nada
-      }
-  
-      casillasReveladas.add(clave);
-      contador++;
-    };
-  
-    // Revelar la casilla clickeada
-    revelarCasilla(x, y);
-  
-    // Si no hay minas alrededor de la casilla clickeada, revelar las casillas adyacentes
-    if (calcularMinasVecinas(x, y) === 0) {
+const revelarCasillas = (x, y) => {
+  if (ubicacionesMinas.some(mina => mina.x === x && mina.y === y)) {
+    return; // No hacer nada si es una mina
+  }
+
+  let casillasARevisar = [[x, y]];
+  let casillasRevisadas = new Set();
+  const claveInicial = `${x}-${y}`;
+  casillasReveladas.add(claveInicial);
+  casillasRevisadas.add(claveInicial);
+
+  while (casillasARevisar.length > 0) {
+    let [currentX, currentY] = casillasARevisar.pop();
+
+    if (calcularMinasVecinas(currentX, currentY) === 0) {
       for (let dx = -1; dx <= 1; dx++) {
         for (let dy = -1; dy <= 1; dy++) {
-          if (dx === 0 && dy === 0) continue; // Saltar la casilla actual
-          const newX = x + dx;
-          const newY = y + dy;
-  
-          if (newX >= 0 && newX < tableroSize && newY >= 0 && newY < tableroSize) {
-            revelarCasilla(newX, newY);
+          let newX = currentX + dx;
+          let newY = currentY + dy;
+          const nuevaClave = `${newX}-${newY}`;
+
+          if (newX >= 0 && newX < tableroSize && newY >= 0 && newY < tableroSize && !casillasRevisadas.has(nuevaClave) && !ubicacionesMinas.some(mina => mina.x === newX && mina.y === newY)) {
+            casillasARevisar.push([newX, newY]);
+            casillasReveladas.add(nuevaClave);
+            casillasRevisadas.add(nuevaClave);
           }
-  
-          if (contador >= 10) break; // Detener si se han revelado 10 casillas
         }
-        if (contador >= 10) break;
       }
     }
-  
-    setCasillasReveladas(new Set(casillasReveladas));
-  };
+  }
+
+  console.log("Casillas reveladas: ", casillasReveladas);
+  setCasillasReveladas(new Set(casillasReveladas));
+};
+
   
   function volado(){
     let numero = Math.round(Math.random(0,2));
@@ -171,21 +180,17 @@ function App() {
     );
 }
 
-  const manejarClicCasilla = (x, y) => {
+  const manejarClicCasilla = async (x, y) => {
     if (primerClic) {
-      generarMinasAleatorias(x, y);
+      setEstadoXY({x:x, y:y});
+      generarMinasAleatorias(x,y);
       setPrimerClic(false);
-      revelarCasillas(x, y);
     }
     if(ubicacionesMinas.some(mina => mina.x === x && mina.y === y)){
       setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`));
     } else {
       if(bombaRevelada == false){
-        if(volado()==1){
-          revelarCasillas(x, y);
-        }else{
-          setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`));
-        }
+        setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`));
       }
     }
   }
