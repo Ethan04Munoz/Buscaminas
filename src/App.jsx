@@ -134,12 +134,6 @@ function App() {
     setCasillasReveladas(new Set(casillasReveladas));
   };
 
-  
-  function volado(){
-    let numero = Math.round(Math.random(0,2));
-    return numero;
-  }
-
   function arreglosIguales(arr1, arr2) {
     //Modificar esta función: Se debe ganar cuando se liberan todas las casillas sin minas, no cuando se marcan correctamente todas las bombas;
     // Paso 1: Verificar si los arreglos tienen la misma longitud
