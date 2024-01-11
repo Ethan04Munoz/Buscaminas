@@ -100,40 +100,39 @@ function App() {
     return contadorMinas;
   };
 
-const revelarCasillas = (x, y) => {
-  if (ubicacionesMinas.some(mina => mina.x === x && mina.y === y)) {
-    return; // No hacer nada si es una mina
-  }
+  const revelarCasillas = (x, y) => {
+    if (ubicacionesMinas.some(mina => mina.x === x && mina.y === y)) {
+      return; // No hacer nada si es una mina
+    }
 
-  let casillasARevisar = [[x, y]];
-  let casillasRevisadas = new Set();
-  const claveInicial = `${x}-${y}`;
-  casillasReveladas.add(claveInicial);
-  casillasRevisadas.add(claveInicial);
+    let casillasARevisar = [[x, y]];
+    let casillasRevisadas = new Set();
+    const claveInicial = `${x}-${y}`;
+    casillasReveladas.add(claveInicial);
+    casillasRevisadas.add(claveInicial);
 
-  while (casillasARevisar.length > 0) {
-    let [currentX, currentY] = casillasARevisar.pop();
+    while (casillasARevisar.length > 0) {
+      let [currentX, currentY] = casillasARevisar.pop();
 
-    if (calcularMinasVecinas(currentX, currentY) === 0) {
-      for (let dx = -1; dx <= 1; dx++) {
-        for (let dy = -1; dy <= 1; dy++) {
-          let newX = currentX + dx;
-          let newY = currentY + dy;
-          const nuevaClave = `${newX}-${newY}`;
+      if (calcularMinasVecinas(currentX, currentY) === 0) {
+        for (let dx = -1; dx <= 1; dx++) {
+          for (let dy = -1; dy <= 1; dy++) {
+            let newX = currentX + dx;
+            let newY = currentY + dy;
+            const nuevaClave = `${newX}-${newY}`;
 
-          if (newX >= 0 && newX < tableroSize && newY >= 0 && newY < tableroSize && !casillasRevisadas.has(nuevaClave) && !ubicacionesMinas.some(mina => mina.x === newX && mina.y === newY)) {
-            casillasARevisar.push([newX, newY]);
-            casillasReveladas.add(nuevaClave);
-            casillasRevisadas.add(nuevaClave);
+            if (newX >= 0 && newX < tableroSize && newY >= 0 && newY < tableroSize && !casillasRevisadas.has(nuevaClave) && !ubicacionesMinas.some(mina => mina.x === newX && mina.y === newY)) {
+              casillasARevisar.push([newX, newY]);
+              casillasReveladas.add(nuevaClave);
+              casillasRevisadas.add(nuevaClave);
+            }
           }
         }
       }
     }
-  }
-
-  console.log("Casillas reveladas: ", casillasReveladas);
-  setCasillasReveladas(new Set(casillasReveladas));
-};
+    console.log("Casillas reveladas: ", casillasReveladas);
+    setCasillasReveladas(new Set(casillasReveladas));
+  };
 
   
   function volado(){
@@ -185,12 +184,14 @@ const revelarCasillas = (x, y) => {
       setEstadoXY({x:x, y:y});
       generarMinasAleatorias(x,y);
       setPrimerClic(false);
-    }
-    if(ubicacionesMinas.some(mina => mina.x === x && mina.y === y)){
-      setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`));
-    } else {
-      if(bombaRevelada == false){
+    }else {
+      if(ubicacionesMinas.some(mina => mina.x === x && mina.y === y)){
         setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`));
+      } else {
+        if(bombaRevelada == false){
+          //setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`)); Elimina solo la linea actual
+          revelarCasillas(x, y); //Llama a la función que elimina espacios vacíos
+        }
       }
     }
   }
