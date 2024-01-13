@@ -5,4 +5,4 @@
 10/01/2024:
 - Corregir función para ganar: Se debe ganar cuando se liberan todas las casillas sin minas, no cuando se marcan correctamente la ubicaciones de las minas
 - Manejar con ventanas modales la victoria y derrota, en lugar de alerts de javascript
-- Incluir un contador de segundos y un contador de minas restantes
+- Incluir un contador de segundos y un contador de minas restantes (HECHO 12/01/2024)

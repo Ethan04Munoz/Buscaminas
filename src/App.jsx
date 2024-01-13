@@ -254,13 +254,32 @@ function App() {
     setBombaRevelada(false);
     console.log("Ubicaciones minas: ", ubicacionesMinas)
   }
-  
+  const [cronometro, setCronometro] = useState(0);
+
+  useEffect(() => {
+    let intervalo;
+
+    if (!primerClic && bombaRevelada == false) {
+      // Configurar el intervalo solo si primerClic es falso
+      intervalo = setInterval(() => {
+        setCronometro(contadorActual => contadorActual + 1);
+      }, 1000); // 1000 milisegundos = 1 segundo
+    }
+
+    // Limpiar el intervalo cuando el componente se desmonte o cuando primerClic cambie
+    return () => {
+      if (intervalo) {
+        clearInterval(intervalo);
+      }
+    };
+  }, [primerClic]);
 
   const contadorMinas = contarMinasAlrededor(tableroSize, ubicacionesMinas);
 
   return (
     <>
-      <button onClick={reiniciarJuego}>Reiniciar Juego</button>
+      <p>🚩 {10-casillasMarcadas.size}</p>
+      <p>⏰ {cronometro}</p>
       <Tablero
         tableroSize={tableroSize}
         ubicacionesMinas={ubicacionesMinas}
@@ -270,6 +289,7 @@ function App() {
         manejarClicDerecho={manejarClicDerecho}
         contadorMinas={contadorMinas}
       />
+      <button onClick={reiniciarJuego}>Reiniciar Juego</button>
     </>
   );
 }
