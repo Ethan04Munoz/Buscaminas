@@ -8,4 +8,8 @@
 
 13/01/2024:
 - Corregir función para ganar: Se debe ganar cuando se liberan todas las casillas sin minas, no cuando se marcan correctamente la ubicaciones de las minas
-- Manejar el record de los usuarios con localStorage
+- Centrar el buscaminas 
+- Crear un buscaminas facil, uno medio y uno dificil
+- Hacer el buscaminas responsive
+- Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas
+- Manejar el record de los usuarios con localStorage (HECHO 13/01/2024)

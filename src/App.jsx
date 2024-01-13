@@ -292,7 +292,7 @@ function App() {
     if (estadoJuego === "perdido") {
       return <Modal tituloModal="Perdiste!" tiempoActual={"---"} onClick={reiniciarJuego}/>;
     } else if (estadoJuego === "ganado") {
-      return <Modal tituloModal="Ganaste!" tiempoActual={duracionPartidaActual} onClick={reiniciarJuego}/>;
+      return <Modal tituloModal="Ganaste!" tiempoActual={duracionPartidaActual} tiempoRecord={manejarRecord()} onClick={reiniciarJuego}/>;
     } else {
       // Puedes retornar null o un componente diferente para otros estados
       return null;
@@ -308,7 +308,14 @@ function App() {
   }
 
   function manejarRecord(){
-    
+    const recordAnterior = localStorage.getItem(`record${tableroSize}`) || 0;
+    console.log("Record: ", recordAnterior);
+    if(duracionPartidaActual < recordAnterior || recordAnterior == 0){
+      localStorage.setItem(`record${tableroSize}`, duracionPartidaActual);
+      return duracionPartidaActual;
+    }else{
+      return recordAnterior;
+    }
   }
 
   return (
