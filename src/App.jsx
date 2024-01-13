@@ -252,6 +252,9 @@ function App() {
     setCasillasReveladas(new Set());
     setCasillasMarcadas(new Set());
     setBombaRevelada(false);
+    setEstadoXY(null);
+    setMinasGeneradas(false);
+    setCronometro(0);
     console.log("Ubicaciones minas: ", ubicacionesMinas)
   }
   const [cronometro, setCronometro] = useState(0);
