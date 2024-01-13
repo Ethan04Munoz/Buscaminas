@@ -1,0 +1,41 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.modal-content, .modalAdv {
+    background-color: #1e252e;
+    width: 40%;
+    padding: 2rem;
+    border-radius: 1rem;
+    transition: 0.2s all ease;
+}
+  
+.modal-content h2, .modalAdv h2 {
+    margin-top: 0;
+    color: #f3f8fc;
+    text-align: center;
+    font-weight: 650;
+    font-size: 10vh;
+}
+
+.modalAdv button{
+    width: 100%;
+} 
+
+.divirSeccionesRecord{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.divirSeccionesRecord p{
+    font-size: 5vh;
+    text-align: center;
+}

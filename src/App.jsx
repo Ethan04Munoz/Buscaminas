@@ -4,6 +4,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Tablero from './Tablero'
 import './App.css'
+import Modal from './Modal'
 
 function App() {
   function obtenerNumeroAleatorioEntre(min, max) {
@@ -12,6 +13,8 @@ function App() {
 
   const tableroSize = 8;
 
+  const [estadoJuego, setEstadoJuego] = useState("no iniciado");
+  const [duracionPartidaActual, setDuracionPartidaActual] = useState(0);
   const [ubicacionesMinas, setUbicacionesMinas] = useState([]);
   const [minasGeneradas, setMinasGeneradas] = useState(false);
   const [estadoXY, setEstadoXY] = useState(null);
@@ -178,6 +181,7 @@ function App() {
       setEstadoXY({x:x, y:y});
       generarMinasAleatorias(x,y);
       setPrimerClic(false);
+      setEstadoJuego("jugando")
     }else {
       if(ubicacionesMinas.some(mina => mina.x === x && mina.y === y)){
         setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`));
@@ -197,7 +201,8 @@ function App() {
       const [x, y] = casilla.split('-').map(Number);
       if (ubicacionesMinas.some(mina => mina.x === x && mina.y === y)) {
         setTimeout(() => {
-          alert("Perdiste!");
+          setEstadoJuego("perdido");
+          //alert("Perdiste!");
           setBombaRevelada(true);
         }, 0);
       }
@@ -220,7 +225,9 @@ function App() {
       if(arreglos==true){
         //Ganaste
         setTimeout(() => {
-          alert("GANASTE!!!!!!")
+          setDuracionPartidaActual(cronometro);
+          setEstadoJuego("ganado");
+          //alert("GANASTE!!!!!!")
         }, 0);
       }
     }
@@ -255,6 +262,8 @@ function App() {
     setEstadoXY(null);
     setMinasGeneradas(false);
     setCronometro(0);
+    setEstadoJuego("no iniciado");
+    setDuracionPartidaActual(0);
     console.log("Ubicaciones minas: ", ubicacionesMinas)
   }
   const [cronometro, setCronometro] = useState(0);
@@ -262,10 +271,10 @@ function App() {
   useEffect(() => {
     let intervalo;
 
-    if (!primerClic && bombaRevelada == false) {
+    if (!primerClic && estadoJuego=="jugando") {
       // Configurar el intervalo solo si primerClic es falso
       intervalo = setInterval(() => {
-        setCronometro(contadorActual => contadorActual + 1);
+          setCronometro(contadorActual => contadorActual + 1);
       }, 1000); // 1000 milisegundos = 1 segundo
     }
 
@@ -279,10 +288,33 @@ function App() {
 
   const contadorMinas = contarMinasAlrededor(tableroSize, ubicacionesMinas);
 
+  function renderModal() {
+    if (estadoJuego === "perdido") {
+      return <Modal tituloModal="Perdiste!" tiempoActual={"---"} onClick={reiniciarJuego}/>;
+    } else if (estadoJuego === "ganado") {
+      return <Modal tituloModal="Ganaste!" tiempoActual={duracionPartidaActual} onClick={reiniciarJuego}/>;
+    } else {
+      // Puedes retornar null o un componente diferente para otros estados
+      return null;
+    }
+  }
+
+  function renderizarCronometro(){
+    if(duracionPartidaActual > 0){
+      return duracionPartidaActual
+    }else{
+      return cronometro;
+    }
+  }
+
+  function manejarRecord(){
+    
+  }
+
   return (
     <>
       <p>🚩 {10-casillasMarcadas.size}</p>
-      <p>⏰ {cronometro}</p>
+      <p>⏰ {renderizarCronometro()}</p>
       <Tablero
         tableroSize={tableroSize}
         ubicacionesMinas={ubicacionesMinas}
@@ -292,7 +324,7 @@ function App() {
         manejarClicDerecho={manejarClicDerecho}
         contadorMinas={contadorMinas}
       />
-      <button onClick={reiniciarJuego}>Reiniciar Juego</button>
+      {renderModal()}
     </>
   );
 }
