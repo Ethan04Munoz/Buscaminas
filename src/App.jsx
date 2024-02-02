@@ -320,8 +320,10 @@ function App() {
 
   return (
     <>
-      <p>🚩 {10-casillasMarcadas.size}</p>
-      <p>⏰ {renderizarCronometro()}</p>
+      <div className='divirSeccionesRecord'>
+        <p>🚩 {10-casillasMarcadas.size}</p>
+        <p>⏰ {renderizarCronometro()}</p>
+      </div>
       <Tablero
         tableroSize={tableroSize}
         ubicacionesMinas={ubicacionesMinas}
