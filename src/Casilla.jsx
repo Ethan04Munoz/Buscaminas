@@ -3,7 +3,7 @@ import React from 'react';
 function Casilla({ x, y, esMina, numeroMinas, revelada, marcada, manejarClicCasilla, manejarClicDerecho }) {
   let clases = "casilla";
   let contenido = "";
-
+  let tonoClase = (x + y) % 2 === 0 ? "colorClaro" : "colorOscuro"; // Clase para el tono
   if (marcada) {
     contenido = "🚩";
   } else if (revelada) {
@@ -13,7 +13,10 @@ function Casilla({ x, y, esMina, numeroMinas, revelada, marcada, manejarClicCasi
       contenido = numeroMinas > 0 ? numeroMinas : "";
     }
     clases += " casillaRevelada";
+    tonoClase += "Revelada"; // Modificar el tono para las reveladas
   }
+
+  clases += ` ${tonoClase}`; // Agregar la clase de tono
 
   return (
     <div
