@@ -6,7 +6,7 @@ function Modal(props){
         <div className="modal">
             <div className='modalAdv'>
                 <h2>{props.tituloModal}</h2>
-                <div className='divirSeccionesRecord'>
+                <div className='divirSeccionesRecordModal'>
                     <p>⏰: {props.tiempoActual}</p>
                     <p>🏆: {props.tiempoRecord}</p>
                 </div>

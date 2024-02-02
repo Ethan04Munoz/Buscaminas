@@ -320,19 +320,21 @@ function App() {
 
   return (
     <>
-      <div className='divirSeccionesRecord'>
-        <p>🚩 {10-casillasMarcadas.size}</p>
-        <p>⏰ {renderizarCronometro()}</p>
+      <div className='centrarHijos'>
+        <div className='divirSeccionesRecord'>
+          <p>🚩 {10-casillasMarcadas.size}</p>
+          <p>⏰ {renderizarCronometro()}</p>
+        </div>
+        <Tablero
+          tableroSize={tableroSize}
+          ubicacionesMinas={ubicacionesMinas}
+          casillasReveladas={casillasReveladas}
+          casillasMarcadas={casillasMarcadas}
+          manejarClicCasilla={manejarClicCasilla}
+          manejarClicDerecho={manejarClicDerecho}
+          contadorMinas={contadorMinas}
+        />
       </div>
-      <Tablero
-        tableroSize={tableroSize}
-        ubicacionesMinas={ubicacionesMinas}
-        casillasReveladas={casillasReveladas}
-        casillasMarcadas={casillasMarcadas}
-        manejarClicCasilla={manejarClicCasilla}
-        manejarClicDerecho={manejarClicDerecho}
-        contadorMinas={contadorMinas}
-      />
       {renderModal()}
     </>
   );

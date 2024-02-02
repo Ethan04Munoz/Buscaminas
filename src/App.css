@@ -3,14 +3,24 @@
   grid-template-columns: repeat(8, 1fr); /* 10 columnas */
 }
 
+
+.centrarHijos {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  justify-content: center; /* Center children vertically if there's enough space */
+  width: 100vw; /* Ensure it takes at least the full height of the viewport */
+}
+
+
 /*Nota para mi: 
 
 Con forme se achica el ancho de la pantalla, modificar el width de 4vw en las casillas a algo mayor, 
 para poder evitar que se separen*/
 
 .casilla {
-  width: 4vw;
-  height: 4vw;
+  width: 2rem;
+  height: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
