@@ -3,15 +3,19 @@
   grid-template-columns: repeat(8, 1fr); /* 10 columnas */
 }
 
+/*Nota para mi: 
+
+Con forme se achica el ancho de la pantalla, modificar el width de 4vw en las casillas a algo mayor, 
+para poder evitar que se separen*/
+
 .casilla {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #ddd;
-  background: rgb(90, 240, 80);
+  width: 4vw;
+  height: 4vw;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
+  box-sizing: border-box;
   border: 1px solid rgb(90, 240, 80);
 }
 .casilla:hover{
