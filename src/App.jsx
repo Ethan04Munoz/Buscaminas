@@ -81,6 +81,7 @@ function App() {
   const [primerClic, setPrimerClic] = useState(true);
   const [casillasReveladas, setCasillasReveladas] = useState(new Set());
   const [casillasMarcadas, setCasillasMarcadas] = useState(new Set());
+  const [encenderModalReiniciarJuego, setEncenderModalReiniciarJuego] = useState(false);
 
   const calcularMinasVecinas = (x, y) => {
     let contadorMinas = 0;
@@ -264,6 +265,7 @@ function App() {
     setCronometro(0);
     setEstadoJuego("no iniciado");
     setDuracionPartidaActual(0);
+    setEncenderModalReiniciarJuego(false);
     console.log("Ubicaciones minas: ", ubicacionesMinas)
   }
   const [cronometro, setCronometro] = useState(0);
@@ -290,15 +292,20 @@ function App() {
 
   function renderModal() {
     if (estadoJuego === "perdido") {
-      return <Modal tituloModal="Perdiste!" tiempoActual={"---"} onClick={reiniciarJuego}/>;
+      return <Modal tituloModal="Perdiste!" tiempoActual={"---"} tiempoRecord={manejarRecord()} onClick={reiniciarJuego}/>;
     } else if (estadoJuego === "ganado") {
       return <Modal tituloModal="Ganaste!" tiempoActual={duracionPartidaActual} tiempoRecord={manejarRecord()} onClick={reiniciarJuego}/>;
+    } else if (encenderModalReiniciarJuego === true){
+      return <Modal tituloModal="Te sientes perdido?" onClick={reiniciarJuego}/>;
     } else {
       // Puedes retornar null o un componente diferente para otros estados
       return null;
     }
   }
 
+  function funcionEncenderModalReiniciarJuego(){
+    setEncenderModalReiniciarJuego(true);
+  }
   function renderizarCronometro(){
     if(duracionPartidaActual > 0){
       return duracionPartidaActual
@@ -334,6 +341,7 @@ function App() {
           manejarClicDerecho={manejarClicDerecho}
           contadorMinas={contadorMinas}
         />
+        <div className='btnReiniciarJuegos' onClick={funcionEncenderModalReiniciarJuego}>☹️</div>
       </div>
       {renderModal()}
     </>
