@@ -279,8 +279,14 @@ function App() {
     if (!primerClic && estadoJuego=="jugando") {
       // Configurar el intervalo solo si primerClic es falso
       intervalo = setInterval(() => {
-        if(cronometro <= 999)
-          setCronometro(contadorActual => contadorActual + 1);
+        setCronometro(contadorActual => {
+          if(contadorActual >= 999) {
+            clearInterval(intervalo); 
+            return contadorActual; 
+          } else {
+            return contadorActual + 1; 
+          }
+        });
       }, 1000); // 1000 milisegundos = 1 segundo
     }
 
