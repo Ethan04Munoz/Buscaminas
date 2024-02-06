@@ -13,12 +13,6 @@
   user-select: none;
 }
 
-
-/*Nota para mi: 
-
-Con forme se achica el ancho de la pantalla, modificar el width de 4vw en las casillas a algo mayor, 
-para poder evitar que se separen*/
-
 .casilla {
   width: 5vh;
   height: 5vh;
