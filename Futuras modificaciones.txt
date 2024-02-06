@@ -12,8 +12,14 @@
 - Hacer que al posar el mouse sobre una casilla se indique sobre cuál casilla esta el usuario (HECHO 01/02/2024)
 
 01/02/2024:
+- Centrar el buscaminas (HECHO 05/02/2024)
+- Hacer el buscaminas responsive (HECHO 05/02/2024)
+
+05/02/2024:
 - Corregir función para ganar: Se debe ganar cuando se liberan todas las casillas sin minas, no cuando se marcan correctamente la ubicaciones de las minas
-- Centrar el buscaminas 
 - Crear un buscaminas facil, uno medio y uno dificil
-- Hacer el buscaminas responsive
 - Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas
+- Limitar el tiempo máximo que se puede mostrar en el contador a 999.
+- Corregir la función de manejar record para que funcione el record tambien en la ventana modal de perdiste
+- Impedir que se puedan poner banderas en casillas reveladas
+- Impedir que se vea el azul al seleccionar el texto con el mouse en las casillas
