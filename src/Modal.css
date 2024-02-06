@@ -86,16 +86,30 @@ Color morado cool:
 #646cff;
 */
 
-.btnReiniciarJuego{
+.btnReiniciarJuegoBadEnding{
     width: 100%;
-    background: #1a1a1a;
-    border: 1px solid #da3633;
     transition: all 0.18s ease-in-out; 
     background-size: 100% 200%;
-    background-position: 0 98%;
+    background-position: 0 100%;
     background-image: linear-gradient(to bottom, #da3633 50%, #1a1a1a 50%); 
-}
-.btnReiniciarJuego:hover{
     border: 1px solid #da3633;
+}
+
+.btnReiniciarJuegoBadEnding:hover{
+    border: 1px solid #da3633;
+    background-position: 0 0%; 
+}
+
+.btnReiniciarJuegoGoodEnding{
+    width: 100%;
+    transition: all 0.18s ease-in-out; 
+    background-size: 100% 200%;
+    background-position: 0 100%;
+    background-image: linear-gradient(to bottom, #646cff 50%, #1a1a1a 50%); 
+    border: 1px solid #646cff;
+}
+
+.btnReiniciarJuegoGoodEnding:hover{
+    border: 1px solid #646cff;
     background-position: 0 0%; 
 }
