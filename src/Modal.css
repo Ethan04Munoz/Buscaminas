@@ -54,3 +54,48 @@
     text-align: center;
     user-select: none; /* Impedir el seleccionamiento del texto en los recuadros*/
 }
+
+.modalAdv .btnCerrarModal {
+    margin-top: 1vh;
+    background: transparent;
+    border: transparent solid 1px;
+    color: #f3f8fc;
+    transition: 0.2s all ease;
+    font-size: 4vh;
+    font-weight: 600;
+    padding-bottom: 2vh;
+}
+.modalAdv .btnCerrarModal:hover{
+    color: #ac0000;
+    border: #7a7a7a4b solid 1px;
+    font-family: 650;
+}
+
+.aLaDerechaConGrid{
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    font-size: 2vh;
+}
+
+.aLaDerechaConGrid .btnCerrarModal{
+    grid-column: 20;
+    padding: 0;
+}
+/*
+Color morado cool: 
+#646cff;
+*/
+
+.btnReiniciarJuego{
+    width: 100%;
+    background: #1a1a1a;
+    border: 1px solid #da3633;
+    transition: all 0.18s ease-in-out; 
+    background-size: 100% 200%;
+    background-position: 0 98%;
+    background-image: linear-gradient(to bottom, #da3633 50%, #1a1a1a 50%); 
+}
+.btnReiniciarJuego:hover{
+    border: 1px solid #da3633;
+    background-position: 0 0%; 
+}

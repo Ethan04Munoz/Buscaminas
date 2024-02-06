@@ -23,3 +23,4 @@
 - Crear un buscaminas facil, uno medio y uno dificil
 - Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas
 - Corregir la función de manejar record para que funcione el record tambien en la ventana modal de perdiste
+- Implementar una ventana para reiniciar el juego en caso de no saber que hacer
