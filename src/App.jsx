@@ -302,11 +302,11 @@ function App() {
 
   function renderModal() {
     if (estadoJuego === "perdido") {
-      return <Modal tituloModal="Perdiste!" tiempoActual={"---"} tiempoRecord={manejarRecord()} onClick={reiniciarJuego}/>;
+      return <Modal tituloModal="Perdiste!" tiempoActual={"---"} tiempoRecord={manejarRecord()} onClick={reiniciarJuego} motivoModal="b"/>;
     } else if (estadoJuego === "ganado") {
-      return <Modal tituloModal="Ganaste!" tiempoActual={duracionPartidaActual} tiempoRecord={manejarRecord()} onClick={reiniciarJuego}/>;
+      return <Modal tituloModal="Ganaste!" tiempoActual={duracionPartidaActual} tiempoRecord={manejarRecord()} onClick={reiniciarJuego} motivoModal="g"/>;
     } else if (encenderModalReiniciarJuego === true){
-      return <Modal tituloModal="Sin salida?" onClick={reiniciarJuego}/>;
+      return <Modal tituloModal="Sin salida?" onClick={reiniciarJuego} onClickX={funcionApagarModalReiniciarJuego} motivoModal="b"/>;
     } else {
       // Puedes retornar null o un componente diferente para otros estados
       return null;
@@ -316,6 +316,11 @@ function App() {
   function funcionEncenderModalReiniciarJuego(){
     setEncenderModalReiniciarJuego(true);
   }
+
+  function funcionApagarModalReiniciarJuego(){
+    setEncenderModalReiniciarJuego(false);
+  }
+
   function renderizarCronometro(){
     if(duracionPartidaActual > 0){
       return duracionPartidaActual
