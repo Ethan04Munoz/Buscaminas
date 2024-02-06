@@ -237,6 +237,9 @@ function App() {
 
   const manejarClicDerecho = (e, x, y) => {
     e.preventDefault();
+    if (casillasReveladas.has(`${x}-${y}`)) {
+      return;
+    }
     if(bombaRevelada == false){
       if(casillasMarcadas.has(`${x}-${y}`)){
         const nuevaMarcacion = new Set(casillasMarcadas);
