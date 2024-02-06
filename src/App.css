@@ -58,13 +58,14 @@ para poder evitar que se separen*/
 
 .btnReiniciarJuegos{
   padding: 0;
+  padding-top: 3vh;
   margin: 0;
   background: none;
   border-radius: 50%;
   font-size: 5vh;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .btnReiniciarJuegos:hover{
-  font-size: 8vh;
+  transform: scale(1.5);
 }
