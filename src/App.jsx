@@ -296,7 +296,7 @@ function App() {
     } else if (estadoJuego === "ganado") {
       return <Modal tituloModal="Ganaste!" tiempoActual={duracionPartidaActual} tiempoRecord={manejarRecord()} onClick={reiniciarJuego}/>;
     } else if (encenderModalReiniciarJuego === true){
-      return <Modal tituloModal="Te sientes perdido?" onClick={reiniciarJuego}/>;
+      return <Modal tituloModal="Sin salida?" onClick={reiniciarJuego}/>;
     } else {
       // Puedes retornar null o un componente diferente para otros estados
       return null;
