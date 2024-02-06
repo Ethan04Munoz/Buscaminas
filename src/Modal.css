@@ -24,6 +24,7 @@
     text-align: center;
     font-weight: 650;
     font-size: 10vh;
+    user-select: none; /* Impedir el seleccionamiento del texto en las modales*/
 }
 
 .modalAdv button{
@@ -45,9 +46,11 @@
 .divirSeccionesRecord p{
     font-size: 5vh;
     text-align: center;
+    user-select: none;
 }
 
 .divirSeccionesRecordModal p{
     font-size: 5vh;
     text-align: center;
+    user-select: none; /* Impedir el seleccionamiento del texto en los recuadros*/
 }

@@ -10,6 +10,7 @@
   align-items: center; /* Center children horizontally */
   justify-content: center; /* Center children vertically if there's enough space */
   width: 100vw; /* Ensure it takes at least the full height of the viewport */
+  user-select: none;
 }
 
 
@@ -27,6 +28,7 @@ para poder evitar que se separen*/
   font-size: 3.5vh;
   box-sizing: border-box;
   border: 1px solid rgb(90, 240, 80);
+  user-select: none; /* Impedir el seleccionamiento del texto en las casillas*/
 }
 .casilla:hover{
   border: 1px dashed #fff
