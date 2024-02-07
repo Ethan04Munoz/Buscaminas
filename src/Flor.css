@@ -6,12 +6,19 @@
   }
   
   .petal {
-    width: 0.35rem;
-    height: 0.7rem;
-    border-radius: 50%;
+    width: 1rem;
+    height: 2rem;
     position: absolute;
-    top: 25%;
+    top: -15%;
     left: 25%;
+  }
+
+  .petalo-redondo{
+    border-radius: 50%;
+  }
+
+  .petalo-ovalo10{
+    clip-path: ellipse(30% 50% at 50% 50%);
   }
 
   .petalo-rosa{
@@ -48,12 +55,12 @@
   }
   
   .center {
-    width: 0.35rem;
-    height: 0.35rem;
+    width: 1rem;
+    height: 1rem;
     border-radius: 50%;
     background-color: rgb(255, 255, 146);
     position: absolute;
-    top: 40%;
+    top: 25%;
     left: 25%;
   }
   
