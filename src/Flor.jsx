@@ -19,7 +19,7 @@ function Flor() {
     const tipoPetalo = getTipoPetaloAleatorio();
     return (
         <div className="flower">
-            {/* Aplicar el color aleatorio a cada pétalo */}
+            {/* Generar una cantidad aleatoria de petalos entre 2 y 10 */}
             <div className={`petal ${tipoPetalo} ${colorFlor}`}></div>
             <div className={`petal ${tipoPetalo} ${colorFlor}`}></div>
             <div className={`petal ${tipoPetalo} ${colorFlor}`}></div>

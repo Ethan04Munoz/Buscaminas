@@ -1,8 +1,25 @@
+@keyframes crecerYMostrar {
+  from {
+    /* Iniciamos con un componente pequeño y transparente */
+    transform: scale(0.2) rotate(0deg);
+    opacity: 0;
+  }
+  to {
+    /* Finalizamos con un componente de tamaño normal y opaco */
+    transform: scale(1.3) rotate(360deg);
+    opacity: 1;
+  }
+}
 
 .flower {
     position: relative;
     width: 20px;
     height: 20px;
+    animation-name: crecerYMostrar;
+    /* Duración de la animación: 3 segundos */
+    animation-duration: 3s;
+    /* La animación inicia tan pronto como se carga el componente */
+    animation-fill-mode: forwards;
   }
   
   .petal {
