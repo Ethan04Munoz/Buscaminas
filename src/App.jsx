@@ -292,25 +292,25 @@ function App() {
 
     // Limpiar el intervalo cuando el componente se desmonte o cuando primerClic cambie
     return () => {
-      if (intervalo) {
+      if (intervalo || estadoJuego=="ganado") {
         clearInterval(intervalo);
       }
     };
-  }, [primerClic]);
+  }, [primerClic, estadoJuego]);
 
   const contadorMinas = contarMinasAlrededor(tableroSize, ubicacionesMinas);
 
   function renderModal() {
-    if (estadoJuego === "perdido") {
-      return <Modal tituloModal="Perdiste!" tiempoActual={"---"} tiempoRecord={manejarRecord()} onClick={reiniciarJuego} motivoModal="b"/>;
-    } else if (estadoJuego === "ganado") {
-      return <Modal tituloModal="Ganaste!" tiempoActual={duracionPartidaActual} tiempoRecord={manejarRecord()} onClick={reiniciarJuego} motivoModal="g"/>;
-    } else if (encenderModalReiniciarJuego === true){
-      return <Modal tituloModal="Sin salida?" onClick={reiniciarJuego} onClickX={funcionApagarModalReiniciarJuego} motivoModal="b"/>;
-    } else {
-      // Puedes retornar null o un componente diferente para otros estados
-      return null;
-    }
+      if (estadoJuego === "perdido") {
+        return <Modal tituloModal="Perdiste!" tiempoActual={"---"} tiempoRecord={manejarRecord()} onClick={reiniciarJuego} motivoModal="b"/>;
+      } else if (estadoJuego === "ganado") {
+        //return <Modal tituloModal="Ganaste!" tiempoActual={duracionPartidaActual} tiempoRecord={manejarRecord()} onClick={reiniciarJuego} motivoModal="g"/>;
+      } else if (encenderModalReiniciarJuego === true){
+        return <Modal tituloModal="Sin salida?" onClick={reiniciarJuego} onClickX={funcionApagarModalReiniciarJuego} motivoModal="b"/>;
+      } else {
+        // Puedes retornar null o un componente diferente para otros estados
+        return null;
+      }
   }
 
   function funcionEncenderModalReiniciarJuego(){
@@ -355,6 +355,7 @@ function App() {
           manejarClicCasilla={manejarClicCasilla}
           manejarClicDerecho={manejarClicDerecho}
           contadorMinas={contadorMinas}
+          estadoJuego={estadoJuego}
         />
         <div className='btnReiniciarJuegos' onClick={funcionEncenderModalReiniciarJuego}>☹️</div>
       </div>

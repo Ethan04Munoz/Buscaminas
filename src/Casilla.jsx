@@ -1,10 +1,13 @@
 import React from 'react';
+import Flor from './Flor';
 
-function Casilla({ x, y, esMina, numeroMinas, revelada, marcada, manejarClicCasilla, manejarClicDerecho }) {
+function Casilla({ x, y, esMina, numeroMinas, revelada, marcada, manejarClicCasilla, manejarClicDerecho, estadoJuego }) {
   let clases = "casilla";
   let contenido = "";
   let tonoClase = (x + y) % 2 === 0 ? "colorClaro" : "colorOscuro"; // Clase para el tono
-  if (marcada) {
+  if (estadoJuego === "ganado" && !revelada) {
+    contenido = <Flor/>; // Mostrar el componente Flor
+  } else if (marcada) {
     contenido = "🚩";
   } else if (revelada) {
     if (esMina) {
