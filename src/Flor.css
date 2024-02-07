@@ -6,9 +6,9 @@
   }
   
   .petal {
-    width: 6px;
-    height: 12px;
-    border-radius: 75%;
+    width: 0.35rem;
+    height: 0.7rem;
+    border-radius: 50%;
     position: absolute;
     top: 25%;
     left: 25%;
