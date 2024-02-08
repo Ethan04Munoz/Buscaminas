@@ -22,10 +22,13 @@
 - Implementar una ventana para reiniciar el juego en caso de no saber que hacer (HECHO 05/02/2024)
 
 05/02/2024:
+- Añadir efectos de flores floreciendo cuando ganas. (HECHO 07/02/2024)
+
+07/02/2024:
 - Corregir función para ganar: Se debe ganar cuando se liberan todas las casillas sin minas, no cuando se marcan correctamente la ubicaciones de las minas
 - Crear un buscaminas facil, uno medio y uno dificil
 - Crear un buscaminas principal.
 - Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas
 - Corregir la función de manejar record para que funcione el record tambien en la ventana modal de perdiste
-- Añadir efectos de flores floreciendo cuando ganas.
 - Añadir efectos de bombas cuando pierdes.
+- Crear más colores de flores
