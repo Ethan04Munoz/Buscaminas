@@ -16,8 +16,7 @@
     width: 20px;
     height: 20px;
     animation-name: crecerYMostrar;
-    /* Duración de la animación: 3 segundos */
-    animation-duration: 3s;
+    animation-duration: 2s;
     /* La animación inicia tan pronto como se carga el componente */
     animation-fill-mode: forwards;
   }
@@ -38,6 +37,10 @@
     clip-path: ellipse(30% 50% at 50% 50%);
   }
 
+  .petalo-pentagono{
+    clip-path: ellipse(200% 50% at 10% 30%);
+  }
+
   .petalo-rosa{
     background: pink;
   }
@@ -53,6 +56,23 @@
   }
   .petalo-tinto{
     background: #b90009;
+  }
+
+  .centro-rosa{
+    background: #ffadbb;
+  }
+
+  .centro-azul{
+    background: #0000d1;
+  }
+  .centro-violeta{
+    background: #5f1d9c;
+  }
+  .centro-rojo{
+    background: #bd0000;
+  }
+  .centro-tinto{
+    background: #750006;
   }
   
   .petal:nth-child(1) {
@@ -75,7 +95,6 @@
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    background-color: rgb(255, 255, 146);
     position: absolute;
     top: 25%;
     left: 25%;
