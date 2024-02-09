@@ -16,7 +16,7 @@
     width: 20px;
     height: 20px;
     animation-name: crecerYMostrar;
-    animation-duration: 2s;
+    animation-duration: 3s;
     /* La animación inicia tan pronto como se carga el componente */
     animation-fill-mode: forwards;
   }
@@ -42,28 +42,47 @@
   }
 
   .petalo-rosa{
-    background: pink;
+    background: #ffc0cb;
   }
-
+  .petalo-fuschia{
+    background: #fa3757;
+  }
   .petalo-azul{
-    background: blue;
+    background: #0000ff;
+  }
+  .petalo-azulCielo{
+    background: #76bdff;
+  }
+  .petalo-azul2{
+    background: #3284ff;
   }
   .petalo-violeta{
-    background: blueviolet;
+    background: #8a2be2;
   }
   .petalo-rojo{
-    background: red;
+    background: #ff0000;
   }
   .petalo-tinto{
     background: #b90009;
+  }
+  .petalo-naranja{
+    background: #ff8a00;
   }
 
   .centro-rosa{
     background: #ffadbb;
   }
-
+  .centro-fuschia{
+    background: #be2841;
+  }
   .centro-azul{
     background: #0000d1;
+  }
+  .centro-azulCielo{
+    background: #619cd3;
+  }
+  .centro-azul2{
+    background: #276bd1;
   }
   .centro-violeta{
     background: #5f1d9c;
@@ -73,6 +92,9 @@
   }
   .centro-tinto{
     background: #750006;
+  }
+  .centro-naranja{
+    background: #ff7e00;
   }
   
   .petal:nth-child(1) {

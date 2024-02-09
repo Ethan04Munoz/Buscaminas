@@ -3,7 +3,17 @@ import React from 'react';
 
 function Flor() {
     // Lista de clases para los colores de los pétalos
-    const coloresPetalo = ['petalo-rosa', 'petalo-azul', 'petalo-rojo', 'petalo-violeta', 'petalo-tinto'];
+    const coloresPetalo = [
+        'petalo-rosa', 
+        'petalo-azul', 
+        'petalo-rojo', 
+        'petalo-violeta', 
+        'petalo-tinto', 
+        'petalo-naranja', 
+        'petalo-fuschia', 
+        'petalo-azulCielo', 
+        'petalo-azul2'
+    ];
     const tiposPetalo = ['petalo-redondo', 'petalo-ovalo10', 'petalo-pentagono'];
     // Función para obtener un color aleatorio de la lista
     const getColorAleatorio = () => {
@@ -27,6 +37,10 @@ function Flor() {
             'petalo-rojo': 'centro-rojo',
             'petalo-violeta': 'centro-violeta',
             'petalo-tinto': 'centro-tinto',
+            'petalo-naranja': 'centro-naranja',
+            'petalo-fuschia': 'centro-fuschia',
+            'petalo-azulCielo': 'centro-azulCielo',
+            'petalo-azul2': 'centro-azul2'
         };
 
         return centroColorMap[colorPetalo] || 'centro-default';

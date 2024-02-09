@@ -319,7 +319,7 @@ function App() {
     if (estadoJuego == "ganado") {
       const timer = setTimeout(() => {
         setMostrarModalGanado(true);
-      }, 2000); // Espera 2 segundos
+      }, 4000); // Espera 2 segundos
       return () => clearTimeout(timer);
     } else {
       setMostrarModalGanado(false);
