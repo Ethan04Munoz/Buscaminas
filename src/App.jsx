@@ -306,6 +306,7 @@ function App() {
   useEffect(() => {
     if (estadoJuego == "perdido") {
       const timer = setTimeout(() => {
+        manejarRecord();
         setMostrarModalPerdido(true);
       }, 2000); // Espera 2 segundos
       return () => clearTimeout(timer); // Limpieza al desmontar
@@ -318,6 +319,7 @@ function App() {
   useEffect(() => {
     if (estadoJuego == "ganado") {
       const timer = setTimeout(() => {
+        manejarRecord();
         setMostrarModalGanado(true);
       }, 4000); // Espera 2 segundos
       return () => clearTimeout(timer);
@@ -343,14 +345,15 @@ function App() {
   }
 
   function manejarRecord(){
-    const recordAnterior = localStorage.getItem(`record${tableroSize}`) || 0;
-    console.log("Record: ", recordAnterior);
-    if(duracionPartidaActual < recordAnterior || recordAnterior == 0){
+    const recordAnterior = parseInt(localStorage.getItem(`record${tableroSize}`));
+    console.log("Record: ", recordAnterior, duracionPartidaActual);
+    if((duracionPartidaActual < recordAnterior && estadoJuego=="ganado") ||( recordAnterior == 0 && estadoJuego == "ganado")){
       localStorage.setItem(`record${tableroSize}`, duracionPartidaActual);
-      return duracionPartidaActual;
-    }else{
-      return recordAnterior;
     }
+  }
+
+  function getRecord(){
+    return localStorage.getItem(`record${tableroSize}`);
   }
 
   return (
@@ -373,10 +376,10 @@ function App() {
         <div className='btnReiniciarJuegos' onClick={funcionEncenderModalReiniciarJuego}>☹️</div>
       </div>
       {mostrarModalPerdido && (
-        <Modal tituloModal="Perdiste!" tiempoActual={"---"} tiempoRecord={manejarRecord()} onClick={reiniciarJuego} motivoModal="b"/>
+        <Modal tituloModal="Perdiste!" tiempoActual={"---"} tiempoRecord={getRecord()} onClick={reiniciarJuego} motivoModal="b"/>
       )}
       {mostrarModalGanado&& (
-        <Modal tituloModal="Ganaste!" tiempoActual={duracionPartidaActual} tiempoRecord={manejarRecord()} onClick={reiniciarJuego} motivoModal="g"/>
+        <Modal tituloModal="Ganaste!" tiempoActual={duracionPartidaActual} tiempoRecord={getRecord()} onClick={reiniciarJuego} motivoModal="g"/>
       )}
       {encenderModalReiniciarJuego && (
         <Modal tituloModal="Sin salida?" onClick={reiniciarJuego} onClickX={funcionApagarModalReiniciarJuego} motivoModal="b"/>

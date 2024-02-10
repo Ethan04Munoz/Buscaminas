@@ -29,6 +29,6 @@
 - Crear un buscaminas facil, uno medio y uno dificil
 - Crear un buscaminas principal.
 - Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas
-- Corregir la función de manejar record para que funcione el record tambien en la ventana modal de perdiste
-- Añadir efectos de bombas cuando pierdes.
+- Corregir la función de manejar record para que funcione el record tambien en la ventana modal de perdiste (HECHO 09/02/2024)
+- Añadir efectos de bombas cuando pierdes. (HECHO 09/02/2024)
 - Crear más colores de flores (HECHO 08/02/2024)
