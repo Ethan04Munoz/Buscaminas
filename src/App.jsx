@@ -306,7 +306,7 @@ function App() {
   useEffect(() => {
     if (estadoJuego == "perdido") {
       const timer = setTimeout(() => {
-        setMostrarModalPerdido(true);
+        setMostrarModalPerdido(false);
       }, 2000); // Espera 2 segundos
       return () => clearTimeout(timer); // Limpieza al desmontar
     } else {

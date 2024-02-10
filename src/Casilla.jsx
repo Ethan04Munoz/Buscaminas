@@ -1,5 +1,6 @@
 import React from 'react';
 import Flor from './Flor';
+import Explosion from './Explosion';
 
 function Casilla({ x, y, esMina, numeroMinas, revelada, marcada, manejarClicCasilla, manejarClicDerecho, estadoJuego }) {
   let clases = "casilla";
@@ -12,6 +13,10 @@ function Casilla({ x, y, esMina, numeroMinas, revelada, marcada, manejarClicCasi
   } else if (revelada) {
     if (esMina) {
       contenido = "💣";
+      if (estadoJuego === "perdido" && esMina) {
+        contenido = <>{contenido}<Explosion/></>;
+      }
+      
     } else {
       contenido = numeroMinas > 0 ? numeroMinas : "";
     }
