@@ -90,7 +90,9 @@
   border-radius: 50%;
   position: absolute;
   background-color: rgb(255, 123, 0, 0.5);
-  animation: float 5s ease-in-out infinite, glow 5s linear infinite;
+  animation: moveFromCenter 0.5s forwards, glow 5s linear infinite, float 5s linear infinite;
+  --x-offset: 0px; /* Ejemplo de desplazamiento en X */
+  --y-offset: 20px; /* Ejemplo de desplazamiento en Y */
 }
 
 @keyframes float {
@@ -99,7 +101,7 @@
     opacity: 0.7;
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(30px);
     opacity: 0.5;
   }
   100% {
@@ -108,33 +110,44 @@
   }
 }
 
-@keyframes glow {
+@keyframes moveFromCenter {
   0% {
-    background-color: rgba(255, 123, 0, 0.5);
-  }
-  50% {
-    background-color: rgba(177, 0, 0, 0.5);
-  }
-  75% {
-    background-color: rgba(66, 66, 66, 0.5);
+    transform: scale(0) translateX(0px) translateY(0px);
+    opacity: 0;
   }
   100% {
-    background-color: rgba(165, 95, 33, 0.5);
+    transform: scale(1) translateX(var(--x-offset)) translateY(var(--y-offset));
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0% {
+    background-color: rgba(202, 98, 0, 0.5);
+  }
+  50% {
+    background-color: rgba(133, 0, 0, 0.5);
+  }
+  75% {
+    background-color: rgba(12, 12, 12, 0.8);
+  }
+  100% {
+    background-color: rgba(118, 66, 17, 0.5);
   }
 }
 
 /* Posiciona cada brasa individualmente */
 #ember1 {
   right: 40px;
-  bottom: -30px;
+  bottom: -10px;
 }
 #ember2 {
   right: 50px;
-  bottom: -60px;
+  bottom: -15px;
 }
 #ember3 {
   right: 80px;
-  bottom: -50px;
+  bottom: -30px;
 }
 #ember4 {
   right: 20px;
@@ -146,18 +159,18 @@
 }
 #ember6 {
   left: 20px;
-  bottom: -45px;
+  bottom: -5px;
 }
 #ember7 {
   right: 20px;
-  bottom: -40px;
+  bottom: -4px;
 }
 #ember8 {
   left: 15px;
-  bottom: -30px;
+  bottom: -26px;
 }
 #ember9 {
   left: 0px;
-  bottom: -30px;
+  bottom: -36px;
 }
 /* Añade más estilos de posición según sea necesario */
