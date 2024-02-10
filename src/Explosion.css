@@ -1,0 +1,108 @@
+.explosion {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 60px;
+}
+
+.parte {
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #ffc400d0; 
+  border-radius: 30%;/* Cambia los colores según lo desees */
+  opacity: 0; /* Empieza invisible */
+}
+
+@keyframes explosion {
+  0% {
+    transform: scale(0.5) translateX(-20px);
+    opacity: 1;
+  }
+  50%{
+    opacity: 0.8;
+    background-color: #ff7b00b0;
+  }
+  75% {
+    background-color: #c20000a9;
+    opacity: 0.5;
+  }
+  100%{
+    background-color: #53000081;
+    transform: scale(4) translateY(-50px) translateZ(50px) translateX(0px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.parte {
+  animation: explosion 1s ease-out forwards ;
+}
+
+/* Ejemplo para variar la animación entre las partes */
+.parte:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.parte:nth-child(2) {
+  animation-delay: 0.12s;
+  transform-origin: top left;
+}
+.parte:nth-child(3) {
+  animation-delay: 0.14s;
+}
+.parte:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.parte:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.parte:nth-child(6) {
+  animation-delay: 0.27s;
+}
+.parte:nth-child(7) {
+  animation-delay: 0.28s;
+}
+.parte:nth-child(8) {
+  animation-delay: 0.29s;
+}
+.parte:nth-child(9) {
+  animation-delay: 0.31s;
+}
+.parte:nth-child(10) {
+  animation-delay: 0.32s;
+}
+.parte:nth-child(11) {
+  animation-delay: 0.35s;
+}
+.parte:nth-child(12) {
+  animation-delay: 0.4s;
+}
+.parte:nth-child(13) {
+  animation-delay: 0.5s;
+  
+  transform-origin: top left;
+}
+/* Añade variaciones según lo desees */
+
+@keyframes cenizas {
+  0% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    /* Se omite translateY aquí y se maneja con JS */
+    transform: rotate(-360deg);
+    opacity: 0.5;
+  }
+}
+
+.ceniza {
+  animation: cenizas 5s infinite;
+  position: absolute;
+  bottom: 0;
+  width: 5px;
+  height: 5px;
+  background-color: #474747d0; 
+  border-radius: 30%;/* Cambia los colores según lo desees */
+  opacity: 0; /* Empieza invisible */
+}
