@@ -83,26 +83,3 @@
   transform-origin: top left;
 }
 /* Añade variaciones según lo desees */
-
-@keyframes cenizas {
-  0% {
-    transform: rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    /* Se omite translateY aquí y se maneja con JS */
-    transform: rotate(-360deg);
-    opacity: 0.5;
-  }
-}
-
-.ceniza {
-  animation: cenizas 5s infinite;
-  position: absolute;
-  bottom: 0;
-  width: 5px;
-  height: 5px;
-  background-color: #474747d0; 
-  border-radius: 30%;/* Cambia los colores según lo desees */
-  opacity: 0; /* Empieza invisible */
-}
