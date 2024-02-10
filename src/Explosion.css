@@ -83,3 +83,81 @@
   transform-origin: top left;
 }
 /* Añade variaciones según lo desees */
+
+.ember {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: rgb(255, 123, 0, 0.5);
+  animation: float 5s ease-in-out infinite, glow 5s linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes glow {
+  0% {
+    background-color: rgba(255, 123, 0, 0.5);
+  }
+  50% {
+    background-color: rgba(177, 0, 0, 0.5);
+  }
+  75% {
+    background-color: rgba(66, 66, 66, 0.5);
+  }
+  100% {
+    background-color: rgba(165, 95, 33, 0.5);
+  }
+}
+
+/* Posiciona cada brasa individualmente */
+#ember1 {
+  right: 40px;
+  bottom: -30px;
+}
+#ember2 {
+  right: 50px;
+  bottom: -60px;
+}
+#ember3 {
+  right: 80px;
+  bottom: -50px;
+}
+#ember4 {
+  right: 20px;
+  bottom: -20px;
+}
+#ember5 {
+  right: 50px;
+  bottom: -30px;
+}
+#ember6 {
+  left: 20px;
+  bottom: -45px;
+}
+#ember7 {
+  right: 20px;
+  bottom: -40px;
+}
+#ember8 {
+  left: 15px;
+  bottom: -30px;
+}
+#ember9 {
+  left: 0px;
+  bottom: -30px;
+}
+/* Añade más estilos de posición según sea necesario */
