@@ -211,28 +211,15 @@ function App() {
   }, [casillasReveladas, ubicacionesMinas]);
 
   useEffect(() => {
-    let casillasMarcadasArray = Array.from(casillasMarcadas);
-    console.log("CasillasMarcadasArray: ", casillasMarcadasArray);
-    if(casillasMarcadasArray.length == 10){
-      const arrayObjetos = casillasMarcadasArray.map(cadena => {
-        const partes = cadena.split('-'); // Dividimos la cadena por el guion
-        return {
-            x: parseInt(partes[0], tableroSize), // Convertimos la primera parte a número y asignamos a x
-            y: parseInt(partes[1], tableroSize) // Convertimos la segunda parte a número y asignamos a y
-        };
-      });
-      let arreglos = arreglosIguales(arrayObjetos, ubicacionesMinas);
-      console.log("Arreglos iguales: ", arreglos)
-      if(arreglos==true){
-        //Ganaste
-        setTimeout(() => {
-          setDuracionPartidaActual(cronometro);
-          setEstadoJuego("ganado");
-          //alert("GANASTE!!!!!!")
-        }, 0);
-      }
+    let casillasReveladasArray = Array.from(casillasReveladas);
+    console.log("Array casillas reveladas lol: ", casillasReveladasArray)
+    if(casillasReveladasArray.length == (tableroSize*tableroSize-10)){
+      setTimeout(() => {
+        setDuracionPartidaActual(cronometro);
+        setEstadoJuego("ganado");
+      }, 0);
     }
-  }, [ubicacionesMinas, casillasMarcadas])
+  }, [ubicacionesMinas, casillasReveladas])
   
 
   const manejarClicDerecho = (e, x, y) => {
