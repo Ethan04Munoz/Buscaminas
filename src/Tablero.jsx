@@ -1,14 +1,15 @@
 import React from 'react';
 import Casilla from './Casilla';
 
-function Tablero({ tableroSize, ubicacionesMinas, casillasReveladas, casillasMarcadas, manejarClicCasilla, manejarClicDerecho, contadorMinas, estadoJuego }) {
+function Tablero({ tamañoCasillas, claseTablero, tableroSize, ubicacionesMinas, casillasReveladas, casillasMarcadas, manejarClicCasilla, manejarClicDerecho, contadorMinas, estadoJuego }) {
   return (
-    <div className="tablero">
+    <div className={claseTablero}>
       {contadorMinas.map((fila, x) =>
         fila.map((minaCount, y) => {
           const esMina = ubicacionesMinas.some(mina => mina.x === x && mina.y === y);
           return (
             <Casilla
+              tamaño={tamañoCasillas}
               key={`${x}-${y}`}
               x={x}
               y={y}
