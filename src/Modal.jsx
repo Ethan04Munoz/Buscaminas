@@ -18,14 +18,23 @@ function Modal(props){
                     </div>
                 ) : null}
                 <h2>{props.tituloModal}</h2>
-                <div className='divirSeccionesRecordModal'>
-                    { (props.tiempoActual != null || props.tiempoRecord != null) ? (
-                        <>
-                            <p>⏰: {props.tiempoActual}</p>
-                            <p>🏆: {props.tiempoRecord}</p>
-                        </>
-                    ) : null}
-                </div>
+                { (props.tiempoActual != null || props.tiempoRecord != null) ? (
+                    <div className='divirSeccionesRecordModal'>
+                                <p>⏰: {props.tiempoActual}</p>
+                                <p>🏆: {props.tiempoRecord}</p>
+                    </div>
+                ) : null}
+                {(props.tituloModal=="Configuración" || props.tituloModal == "Settings") && (
+                    <div className='gridConfiguracion'>
+                        <div>Idioma:</div>
+                        <div></div>
+                        <div>Música:</div>
+                        <div></div>
+                        <div>Efectos de sonido:</div>   
+                        <div></div>
+                        <div>Github</div>   
+                    </div>
+                )}
                 <button className={manejarClaseBotonReiniciar()} onClick={props.onClick}>Reiniciar juego</button>
             </div>
         </div>
