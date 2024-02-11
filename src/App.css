@@ -1,8 +1,18 @@
 .tablero {
   display: grid;
-  grid-template-columns: repeat(8, 1fr); /* 10 columnas */
 }
 
+.tablerFacil{
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.tableroMedio{
+  grid-template-columns: repeat(16, 1fr);
+}
+
+.tableroDificil{
+  grid-template-columns: repeat(22, 1fr);
+}
 
 .centrarHijos {
   display: flex;
@@ -13,13 +23,28 @@
   user-select: none;
 }
 
-.casilla {
+.casillaGrande{
+  font-size: 3.5vh;
   width: 5vh;
   height: 5vh;
+}
+
+.casillaMediana{
+  font-size: 3vh;
+  width: 4vh;
+  height: 4vh;
+}
+
+.casillaChica{
+  font-size: 2.5vh;
+  width: 3vh;
+  height: 3vh;
+}
+
+.casilla {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3.5vh;
   box-sizing: border-box;
   border: 1px solid rgb(90, 240, 80);
   user-select: none; /* Impedir el seleccionamiento del texto en las casillas*/
