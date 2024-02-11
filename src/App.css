@@ -2,7 +2,7 @@
   display: grid;
 }
 
-.tablerFacil{
+.tableroFacil{
   grid-template-columns: repeat(8, 1fr);
 }
 
@@ -11,7 +11,7 @@
 }
 
 .tableroDificil{
-  grid-template-columns: repeat(22, 1fr);
+  grid-template-columns: repeat(23, 1fr);
 }
 
 .centrarHijos {
@@ -36,7 +36,7 @@
 }
 
 .casillaChica{
-  font-size: 2.5vh;
+  font-size: 2vh;
   width: 3vh;
   height: 3vh;
 }
