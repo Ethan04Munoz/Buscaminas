@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import Tablero from './Tablero'
 import './App.css'
 import Modal from './Modal'
@@ -137,45 +135,6 @@ function App() {
     console.log("Casillas reveladas: ", casillasReveladas);
     setCasillasReveladas(new Set(casillasReveladas));
   };
-
-  function arreglosIguales(arr1, arr2) {
-    //Modificar esta función: Se debe ganar cuando se liberan todas las casillas sin minas, no cuando se marcan correctamente todas las bombas;
-    // Paso 1: Verificar si los arreglos tienen la misma longitud
-    if (arr1.length !== arr2.length) {
-        return false;
-    }
-
-    // Paso 2: Ordenar ambos arreglos
-    arr1.sort((a, b) => {
-      // Primero, comparamos las coordenadas X
-      if (a.x < b.x) return -1;
-      if (a.x > b.x) return 1;
-
-      // Si las coordenadas X son iguales, comparamos las coordenadas Y
-      if (a.y < b.y) return -1;
-      if (a.y > b.y) return 1;
-
-      // Si ambas coordenadas son iguales, no cambia el orden
-      return 0;
-    });
-    arr2.sort((a, b) => {
-      // Primero, comparamos las coordenadas X
-      if (a.x < b.x) return -1;
-      if (a.x > b.x) return 1;
-
-      // Si las coordenadas X son iguales, comparamos las coordenadas Y
-      if (a.y < b.y) return -1;
-      if (a.y > b.y) return 1;
-
-      // Si ambas coordenadas son iguales, no cambia el orden
-      return 0;
-    });
-    console.log("Arreglos: ", arr1, arr2)
-    return arr1.every((objeto, index) => 
-        Object.keys(objeto).length === Object.keys(arr2[index]).length &&
-        Object.keys(objeto).every(key => objeto[key] === arr2[index][key])
-    );
-}
 
   const manejarClicCasilla = async (x, y) => {
     if (primerClic) {
