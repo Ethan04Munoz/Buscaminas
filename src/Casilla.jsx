@@ -2,8 +2,8 @@ import React from 'react';
 import Flor from './Flor';
 import Explosion from './Explosion';
 
-function Casilla({ x, y, esMina, numeroMinas, revelada, marcada, manejarClicCasilla, manejarClicDerecho, estadoJuego }) {
-  let clases = "casilla";
+function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, manejarClicCasilla, manejarClicDerecho, estadoJuego }) {
+  let clases = tamaño;
   let contenido = "";
   let tonoClase = (x + y) % 2 === 0 ? "colorClaro" : "colorOscuro"; // Clase para el tono
   if (estadoJuego === "ganado" && !revelada) {
