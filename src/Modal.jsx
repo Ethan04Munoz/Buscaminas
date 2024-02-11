@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Modal.css';
+import InputRadio from './componentes/InputRadio';
 
 function Modal(props){
     function manejarClaseBotonReiniciar(){
@@ -27,15 +28,17 @@ function Modal(props){
                 {(props.tituloModal=="Configuración" || props.tituloModal == "Settings") && (
                     <div className='gridConfiguracion'>
                         <div>Idioma:</div>
-                        <div></div>
-                        <div>Música:</div>
-                        <div></div>
-                        <div>Efectos de sonido:</div>   
-                        <div></div>
-                        <div>Github</div>   
+                        <div className='gridInterruptor'>Español <InputRadio tipoSlider="bandera"/> Inglés</div>
+                        <div><img src="musica-Dark.png" alt="" /></div>
+                        <div className='gridInterruptor'>No <InputRadio/> Si </div>
+                        <div><img src="bocina-Dark.png" alt="" /></div>   
+                        <div className='gridInterruptor'>No <InputRadio/> Si </div>
+                        <div className='github'><img src="github-Dark.svg" alt="" /></div>   
                     </div>
                 )}
-                <button className={manejarClaseBotonReiniciar()} onClick={props.onClick}>Reiniciar juego</button>
+                {props.onClick && (
+                    <button className={manejarClaseBotonReiniciar()} onClick={props.onClick}>Reiniciar juego</button>
+                )}
             </div>
         </div>
     )
