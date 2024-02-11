@@ -10,6 +10,7 @@ function GameState(props){
     const [tamañoCasillas, setTamañoCasillas] = useState('casilla');
     useEffect(() => {
         const difficulty = props.difficulty;
+        console.log("Dificultad:", difficulty)
         if(difficulty == "facil" || difficulty == "principal"){
             setTableroSize(8);
             setCantidadMinas(10);
@@ -23,7 +24,7 @@ function GameState(props){
             setTamañoCasillas('casilla casillaMediana');
         }
         if(difficulty == "dificil"){
-            setTableroSize(22);
+            setTableroSize(23);
             setCantidadMinas(99);
             setClaseTablero("tablero tableroDificil");
             setTamañoCasillas('casilla casillaChica');
