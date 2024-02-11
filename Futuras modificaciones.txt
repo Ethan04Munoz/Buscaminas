@@ -32,6 +32,11 @@
 9/02/2024:
 - Corregir función para ganar: 
     Se debe ganar cuando se liberan todas las casillas sin minas, no cuando se marcan correctamente la ubicaciones de las minas (HECHO 10/02/2024)
-- Crear un buscaminas facil, uno medio y uno dificil
+- Crear un buscaminas facil, uno medio y uno dificil (HECHO 10/02/2024)
+
+10/02/2024:
+- Corregir el error que no se almacenan los records de otras dificultades (HECHO 11/02/2024)
 - Crear un buscaminas principal.
 - Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas
+- Incluir una barra que permita cambiar el idioma usando redux
+- Incluir un menu que te permita navegar entre los diferentes buscaminas
