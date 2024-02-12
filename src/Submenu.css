@@ -5,6 +5,15 @@
 
 .submenu .enlaceSubmenu{
     text-align: center;
+    color: #f3f3f2;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.submenu .enlaceSubmenu:hover{
+    transform: scale(1.4);
+    font-weight: 700;
+    text-shadow: 0px 1px 2px #5564e6;
 }
 
 .contenedorEnlace{

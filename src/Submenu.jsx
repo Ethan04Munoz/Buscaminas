@@ -5,13 +5,13 @@ function Submenu(){
     return (
         <div className="submenu">
             <div className='contenedorEnlace'>
-                <Link className="enlaceSubmenu" to="/easy">Facil</Link>
+                <Link className="enlaceSubmenu" to="/easy">Buscaminas facil</Link>
             </div>
             <div className='contenedorEnlace'>
-                <Link className="enlaceSubmenu" to="/medium">Medio</Link>
+                <Link className="enlaceSubmenu" to="/medium">Buscaminas medio</Link>
             </div>
             <div className='contenedorEnlace'>
-                <Link className="enlaceSubmenu" to="/hard">Dificil</Link>
+                <Link className="enlaceSubmenu" to="/hard">Buscaminas dificil</Link>
             </div>
             <div className='contenedorEnlace'>
                 <Link className="enlaceSubmenu" to="/help">Ayuda?</Link>

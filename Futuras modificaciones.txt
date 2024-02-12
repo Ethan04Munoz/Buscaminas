@@ -46,4 +46,4 @@
 - Crear una pagina principal.
 - Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas
 - Incluir una barra que permita cambiar el idioma usando redux
-- Incluir un menu que te permita navegar entre los diferentes buscaminas
+- Incluir un menu que te permita navegar entre los diferentes buscaminas (HECHO 12/02/2024)
