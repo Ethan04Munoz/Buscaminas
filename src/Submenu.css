@@ -1,0 +1,13 @@
+.submenu{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.submenu .enlaceSubmenu{
+    text-align: center;
+}
+
+.contenedorEnlace{
+    display: grid;
+    justify-content: center;
+}
