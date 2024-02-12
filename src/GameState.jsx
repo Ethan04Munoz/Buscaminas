@@ -4,6 +4,7 @@ import Tablero from './Tablero'
 import './App.css'
 import Modal from './Modal'
 import Navbar from './Navbar'
+import Submenu from './Submenu'
 function GameState(props){
     const [tableroSize, setTableroSize] = useState(8);
     const [cantidadMinas, setCantidadMinas] = useState(10);
@@ -333,7 +334,8 @@ function GameState(props){
     
       return (
         <>
-        <Navbar/>
+          <Navbar/>
+          <Submenu/>
           <div className='centrarHijos'>
             <div className='divirSeccionesRecord'>
               <p>🚩 {cantidadMinas-casillasMarcadas.size}</p>
