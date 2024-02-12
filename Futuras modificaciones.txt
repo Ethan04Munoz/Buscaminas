@@ -36,6 +36,13 @@
 
 10/02/2024:
 - Corregir el error que no se almacenan los records de otras dificultades (HECHO 11/02/2024)
+- Implementar un menú que sirva como barra para acceder a la configuración y a la página principal (HECHO 11/02/2024)
+
+11/02/2024: 
+- Crear una pagina de como jugar.
+- Hacer que en el menú principal, el botón para visitar como jugar se destaque si es la primera vez que visitas el sitio.
+- Implementar lazy loading en las imagenes del tutorial.
+- Implementar lazy loading en las imagenes de la modal de configuracion
 - Crear una pagina principal.
 - Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas
 - Incluir una barra que permita cambiar el idioma usando redux
