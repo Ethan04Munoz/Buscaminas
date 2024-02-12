@@ -90,3 +90,17 @@
 .btnReiniciarJuegos:hover{
   transform: scale(1.5);
 }
+
+.centrar50{
+  width: 50%;
+  margin-left: 25%;
+}
+
+.centrar50 h1{
+  text-align: center;
+}
+
+.centrar50 p, .centrar50 li{
+  text-align: justify;
+  font-size: 2vh;
+}
