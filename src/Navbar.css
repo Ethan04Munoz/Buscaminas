@@ -1,0 +1,35 @@
+.gridNavBar{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 15% 80% 5%;
+    justify-content: center;
+    align-items: center;
+}
+
+.gridNavBar img{
+    width: 100%;
+    align-self: center;
+    transition: all 0.2s;
+}
+
+.gridNavBar img:hover{
+    background: #353535;
+}
+
+.buscaminasHomeTitle{
+    height: 100%;
+    display: grid;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.buscaminasHomeTitle:hover{
+    background: #353535;
+}
+
+.buscaminasHomeTitle h1{
+    font-size: 4vh;
+    font-weight: 650;
+    text-align: center;
+
+}

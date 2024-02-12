@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Modal from "./Modal";
+import './Navbar.css';
 
 function Navbar(props){
     const [modalConfiguracion, setModalConfiguracion] = useState(false);
@@ -14,10 +15,10 @@ function Navbar(props){
     return(
         <div className="navbar">
             <div className="gridNavBar">
-            <div>Buscaminas</div>
-            <div><img src="config.png" alt="" onClick={encenderModalConfiguracion}/></div>
+                <div className="buscaminasHomeTitle"> <h1>Buscaminas</h1></div>
+                <div></div>
+                <img className="" src="config.png" alt="" onClick={encenderModalConfiguracion}/>
             </div>
-            <div></div>
             {modalConfiguracion == true && (
                 <Modal tituloModal="Configuración" onClickX={apagarModalConfiguracion}/>
             )}
