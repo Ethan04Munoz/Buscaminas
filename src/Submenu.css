@@ -1,6 +1,13 @@
 .submenu{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    padding: 1rem;
+    background: #2b2b2b;
+    transition: all 0.3s ease;
+}
+
+.submenu:hover{
+    box-shadow: 0px 0px 2px 2px #2f3463b2;
 }
 
 .submenu .enlaceSubmenu{
