@@ -33,7 +33,7 @@ function Modal(props){
                         <div className='gridInterruptor'>No <InputRadio/> Si </div>
                         <div><img src="bocina-Dark.png" alt="" /></div>   
                         <div className='gridInterruptor'>No <InputRadio/> Si </div>
-                        <div className='github'><img src="github-Dark.svg" alt="" /></div>   
+                        <a className='github' href="https://github.com/Ethan04Munoz"><div className=''><img src="github-Dark.svg" alt="" /></div>   </a>
                     </div>
                 )}
                 {props.onClick && (
