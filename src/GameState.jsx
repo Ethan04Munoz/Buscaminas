@@ -31,6 +31,7 @@ function GameState(props){
             setClaseTablero("tablero tableroDificil");
             setTamañoCasillas('casilla casillaChica');
         }
+        reiniciarJuego();
     }, [props.difficulty])
 
     function obtenerNumeroAleatorioEntre(min, max) {
