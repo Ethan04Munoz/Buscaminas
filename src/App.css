@@ -14,6 +14,14 @@
   grid-template-columns: repeat(23, 1fr);
 }
 
+.contenerBuscaminas{
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  justify-content: center; /* Center children vertically if there's enough space */
+  font-size: 3vh;
+}
+
 .centrarHijos {
   display: flex;
   flex-direction: column; /* Stack children vertically */
@@ -48,6 +56,7 @@
   box-sizing: border-box;
   border: 1px solid rgb(90, 240, 80);
   user-select: none; /* Impedir el seleccionamiento del texto en las casillas*/
+  cursor: pointer;
 }
 .casilla:hover{
   border: 1px dashed #fff
@@ -94,6 +103,8 @@
 .centrar50{
   width: 50%;
   margin-left: 25%;
+  display: grid;
+  justify-items: center;
 }
 
 .centrar50 h1{
@@ -103,4 +114,10 @@
 .centrar50 p, .centrar50 li{
   text-align: justify;
   font-size: 2vh;
+}
+
+ul{
+  display: grid;
+  align-items: center;
+  justify-items: center;
 }

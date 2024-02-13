@@ -18,9 +18,11 @@ function ComoJugar(){
                     <li>
                         Click izquierdo: Al hacer clic en un cuadro, este se despejará. Si hay una mina debajo, pierdes el juego. Si no hay mina, aparecerá un número, que indica la cantidad de minas en los ocho cuadros circundantes.
                     </li>
+                    <img src="img ayuda (2).png" alt="" srcset="" />
                     <li>
                     Marcando minas: Si crees que hay una mina bajo un cuadro en particular, puedes marcarlo con un click derecho (o un click largo en dispositivos táctiles) para colocar una bandera. Esto te ayuda a llevar un registro de dónde crees que están las minas.
                     </li>
+                    <img src="img ayuda (1).png" alt="" srcset="" />
                 </ul>
                 <p>
                     Cuando despejas un cuadro y aparece un número, este te indica cuántas minas hay en los ocho cuadros que lo rodean. 
@@ -34,6 +36,7 @@ function ComoJugar(){
                     Para ganar, debes despejar todos los cuadros que no tienen minas. 
                     No es necesario colocar banderas en todas las minas para ganar; simplemente, debes evitar detonar cualquier mina. ¡Mucha suerte!
                 </p>
+                <img src="img ayuda (3).png" alt="" srcset="" />
             </div>
         </div>
     )
