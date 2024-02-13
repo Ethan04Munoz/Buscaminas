@@ -40,10 +40,17 @@
 
 11/02/2024: 
 - Crear una pagina de como jugar. (HECHO 12/02/2024)
-- Hacer que en el menú principal, el botón para visitar como jugar se destaque si es la primera vez que visitas el sitio. (Largo plazo)
-- Implementar lazy loading en las imagenes del tutorial.
-- Implementar lazy loading en las imagenes de la modal de configuracion
 - Crear una pagina principal. (HECHO 12/02/2024)
-- Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas 
-- Incluir una barra que permita cambiar el idioma usando redux (Largo plazo)
 - Incluir un menu que te permita navegar entre los diferentes buscaminas (HECHO 12/02/2024)
+
+12/02/2024:
+- Implementar lazy loading en las imagenes de la pagina de como jugar. 
+- Implementar lazy loading en las imagenes de la modal de configuracion
+- Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas 
+
+Modificaciones a largo plazo: 
+- Añadir música a los buscaminas
+- Añadir efectos de sonido
+- Crear un tutorial que sea una partida asistida: solo se puede ingresar la primera vez que entras al sitio. Te guia estilo angry birds, diciendote que debes hacer. (Largo plazo)
+- Hacer que en el menú principal, el botón para visitar como jugar se destaque si es la primera vez que visitas el sitio. (Largo plazo)
+- Incluir una barra que permita cambiar el idioma usando redux (Largo plazo)
