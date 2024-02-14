@@ -58,6 +58,7 @@ function GameState(props){
               nuevasUbicacionesMinas.push({ x, y });
           }
         }
+        console.log("Cantidad de minas: ", nuevasUbicacionesMinas.length)
         setMinasGeneradas(true);
         setUbicacionesMinas(nuevasUbicacionesMinas);
       }
