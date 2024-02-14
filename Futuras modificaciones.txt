@@ -45,7 +45,8 @@
 
 12/02/2024:
 - Implementar lazy loading en las imagenes de la pagina de como jugar. (HECHO 13/02/2024)
-- Implementar lazy loading en las imagenes de la modal de configuracion
+- Implementar lazy loading en las imagenes de la modal de configuracion (HECHO 13/02/2024)
+- Implementar lazy loading en las imagenes del menú principal
 - Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas 
 
 Modificaciones a largo plazo: 

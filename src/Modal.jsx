@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './Modal.css';
 import InputRadio from './componentes/InputRadio';
+import { Suspense, lazy } from 'react';
+const LazyImage = React.lazy(() => import('./LazyImagen.jsx')); // Asume que tienes un componente LazyImage
+const InputRadioLazy = React.lazy(() => import('./componentes/InputRadio'));
 
 function Modal(props){
     function manejarClaseBotonReiniciar(){
@@ -27,21 +30,46 @@ function Modal(props){
                 ) : null}
                 {(props.tituloModal=="Configuración" || props.tituloModal == "Settings") && (
                     <div className='gridConfiguracion'>
-                        {/* 
+                        
+                    {/*
                         <div>Idioma:</div>
-                        <div className='gridInterruptor'>Español <InputRadio tipoSlider="bandera"/> Inglés</div>
-                        <div><img src="musica-Dark.png" alt="" /></div>
-                        <div className='gridInterruptor'>No <InputRadio/> Si </div>
-                        <div><img src="bocina-Dark.png" alt="" /></div>   
-                        <div className='gridInterruptor'>No <InputRadio/> Si </div>
-                        */}
+                        <Suspense fallback={<div>Cargando...</div>}>
+                            <div className='gridInterruptor'>Español <InputRadioLazy tipoSlider="bandera"/> Inglés</div>
+                        </Suspense>
+
+                        <Suspense fallback={<div>Cargando...</div>}>
+                            <div>
+                                <LazyImage src="musica-Dark.png" alt="" />
+                            </div>
+                        </Suspense>
+                        <Suspense fallback={<div>Cargando...</div>}>
+                            <div className='gridInterruptor'>No <InputRadioLazy/> Si </div>
+                        </Suspense>
+
+                        <Suspense fallback={<div>Cargando...</div>}>
+                            <div>
+                                <LazyImage src="bocina-Dark.png" alt="" />
+                            </div> 
+                        </Suspense>
+                        <Suspense fallback={<div>Cargando...</div>}>
+                            <div className='gridInterruptor'>No <InputRadioLazy/> Si </div>
+                        </Suspense>
+                    */}
+                        
                         <div></div>
                         <div></div>
                         <div></div>
                         <div></div>
                         <div></div>
-                        <div></div>
-                        <a className='github' href="https://github.com/Ethan04Munoz"><div className=''><img src="github-Dark.svg" alt="" /></div>   </a>
+                    <div></div>
+                            <a className='github' href="https://github.com/Ethan04Munoz">
+                                <div className=''>
+                                    <Suspense fallback={<div>Cargando...</div>}>
+                                        <LazyImage src="github-Dark.svg" alt="" />
+                                    </Suspense>
+                                </div>   
+                            </a>
+
                     </div>
                 )}
                 {props.onClick && (
