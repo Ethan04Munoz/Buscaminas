@@ -19,7 +19,7 @@ function Home(){
                 <div className="contenedorNivel" id="parteIzq">
                     <p> Facil </p>
                     <Suspense fallback={<div>Cargando...</div>}>
-                        <LazyImage src="buscaminas(3).png" alt="" />
+                        <LazyImage src="buscaminasFlor (3).png" alt="" />
                     </Suspense>
                 </div>
                 </Link>
@@ -27,7 +27,7 @@ function Home(){
                 <div className="contenedorNivel" >
                     <p> Medio </p> 
                     <Suspense fallback={<div>Cargando...</div>}>
-                        <LazyImage src="buscaminas(2).png" alt="" />
+                        <LazyImage src="buscaminasFlor (2).png" alt="" />
                     </Suspense>
                 </div>  
                 </Link>
@@ -35,7 +35,7 @@ function Home(){
                 <div className="contenedorNivel" id="parteDer">
                     <p> Dificil </p>
                     <Suspense fallback={<div>Cargando...</div>}>
-                        <LazyImage src="buscaminas(1).png" alt="" />
+                        <LazyImage src="buscaminasFlor (1).png" alt="" />
                     </Suspense>
                 </div>
                 </Link>

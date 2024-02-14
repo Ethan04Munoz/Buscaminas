@@ -11,7 +11,7 @@
 }
 
 .tableroDificil{
-  grid-template-columns: repeat(23, 1fr);
+  grid-template-columns: repeat(25, 1fr);
 }
 
 .contenerBuscaminas{
@@ -27,7 +27,8 @@
   flex-direction: column; /* Stack children vertically */
   align-items: center; /* Center children horizontally */
   justify-content: center; /* Center children vertically if there's enough space */
-  width: 100vw; /* Ensure it takes at least the full height of the viewport */
+  width: 98vw;
+  margin-left: 1vw; /* Ensure it takes at least the full height of the viewport */
   user-select: none;
 }
 
@@ -45,8 +46,8 @@
 
 .casillaChica{
   font-size: 2vh;
-  width: 3vh;
-  height: 3vh;
+  width: 2.5vh;
+  height: 2.5vh;
 }
 
 .casilla {

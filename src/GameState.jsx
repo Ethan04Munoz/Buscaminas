@@ -26,8 +26,8 @@ function GameState(props){
             setTamañoCasillas('casilla casillaMediana');
         }
         if(difficulty == "dificil"){
-            setTableroSize(23);
-            setCantidadMinas(99);
+            setTableroSize(25);
+            setCantidadMinas(90);
             setClaseTablero("tablero tableroDificil");
             setTamañoCasillas('casilla casillaChica');
         }
