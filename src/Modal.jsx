@@ -27,12 +27,20 @@ function Modal(props){
                 ) : null}
                 {(props.tituloModal=="Configuración" || props.tituloModal == "Settings") && (
                     <div className='gridConfiguracion'>
+                        {/* 
                         <div>Idioma:</div>
                         <div className='gridInterruptor'>Español <InputRadio tipoSlider="bandera"/> Inglés</div>
                         <div><img src="musica-Dark.png" alt="" /></div>
                         <div className='gridInterruptor'>No <InputRadio/> Si </div>
                         <div><img src="bocina-Dark.png" alt="" /></div>   
                         <div className='gridInterruptor'>No <InputRadio/> Si </div>
+                        */}
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
                         <a className='github' href="https://github.com/Ethan04Munoz"><div className=''><img src="github-Dark.svg" alt="" /></div>   </a>
                     </div>
                 )}
