@@ -44,7 +44,7 @@
 - Incluir un menu que te permita navegar entre los diferentes buscaminas (HECHO 12/02/2024)
 
 12/02/2024:
-- Implementar lazy loading en las imagenes de la pagina de como jugar. 
+- Implementar lazy loading en las imagenes de la pagina de como jugar. (HECHO 13/02/2024)
 - Implementar lazy loading en las imagenes de la modal de configuracion
 - Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas 
 
