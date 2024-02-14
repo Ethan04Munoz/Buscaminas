@@ -1,0 +1,75 @@
+{/*<div className="contenerBuscaminas">
+                        <div className="tablero tableroFacil">
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorOscuro"><Flor/></div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">2</div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorOscuro"><Flor/></div>
+
+                            <div className="casilla casillaChica colorOscuro"><Flor/></div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">2</div>
+                            <div className="casilla casillaChica colorOscuro"><Flor/></div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">2</div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">2</div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
+
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">2</div>
+                            <div className="casilla casillaChica colorOscuro"><Flor/></div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
+
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
+
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
+
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">2</div>
+                            <div className="casilla casillaChica colorClaro"><Flor/></div>
+
+                            <div className="casilla casillaChica colorClaro"><Flor/></div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">2</div>
+                            <div className="casilla casillaChica colorClaro"><Flor/></div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">3</div>
+
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
+                            <div className="casilla casillaChica colorClaro"><Flor/></div>
+                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">3</div>
+                            <div className="casilla casillaChica colorClaro"><Flor/></div>
+                        </div> 
+                    </div>*/}

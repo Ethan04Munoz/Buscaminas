@@ -4,6 +4,9 @@ import Submenu from "./Submenu";
 import { Link } from 'react-router-dom';
 import './App.css'
 import Flor from "./Flor";
+import React from "react";
+import { Suspense, lazy } from 'react';
+const LazyImage = React.lazy(() => import('./LazyImagen.jsx')); // Asume que tienes un componente LazyImage
 
 function Home(){
   
@@ -15,94 +18,25 @@ function Home(){
                 <Link to="/easy">
                 <div className="contenedorNivel" id="parteIzq">
                     <p> Facil </p>
-                    <img src="buscaminas(3).png" alt="" />
-                    {/*<div className="contenerBuscaminas">
-                        <div className="tablero tableroFacil">
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorOscuro"><Flor/></div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">2</div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorOscuro"><Flor/></div>
-
-                            <div className="casilla casillaChica colorOscuro"><Flor/></div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">2</div>
-                            <div className="casilla casillaChica colorOscuro"><Flor/></div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">2</div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">2</div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
-
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">2</div>
-                            <div className="casilla casillaChica colorOscuro"><Flor/></div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
-
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
-
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
-
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">2</div>
-                            <div className="casilla casillaChica colorClaro"><Flor/></div>
-
-                            <div className="casilla casillaChica colorClaro"><Flor/></div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">2</div>
-                            <div className="casilla casillaChica colorClaro"><Flor/></div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">3</div>
-
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorClaroRevelada casillaRevelada"></div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">1</div>
-                            <div className="casilla casillaChica colorClaro"><Flor/></div>
-                            <div className="casilla casillaChica colorOscuroRevelada casillaRevelada">3</div>
-                            <div className="casilla casillaChica colorClaro"><Flor/></div>
-                        </div> 
-                    </div>*/}
+                    <Suspense fallback={<div>Cargando...</div>}>
+                        <LazyImage src="buscaminas(3).png" alt="" />
+                    </Suspense>
                 </div>
                 </Link>
                 <Link to="/medium">
                 <div className="contenedorNivel" >
                     <p> Medio </p> 
-                    <img src="buscaminas(2).png" alt="" />
+                    <Suspense fallback={<div>Cargando...</div>}>
+                        <LazyImage src="buscaminas(2).png" alt="" />
+                    </Suspense>
                 </div>  
                 </Link>
                 <Link to="/hard">
                 <div className="contenedorNivel" id="parteDer">
                     <p> Dificil </p>
-                    <img src="buscaminas(1).png" alt="" />
+                    <Suspense fallback={<div>Cargando...</div>}>
+                        <LazyImage src="buscaminas(1).png" alt="" />
+                    </Suspense>
                 </div>
                 </Link>
             </div>
