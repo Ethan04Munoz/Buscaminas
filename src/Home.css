@@ -41,3 +41,20 @@
 #parteDer{
     border-radius: 0 2rem 0 0;
 }
+
+@media (max-width: 968px) {
+    .gridDificultades{
+        grid-template-columns: none;
+        grid-template-rows: auto;
+        margin-bottom: 5rem;
+    }
+    .contenedorNivel:hover{
+        border-radius: none;
+    }
+    #parteIzq{
+        border-radius: 0 0 0 0 ;
+    }
+    #parteDer{
+        border-radius: 0 0 0 0;
+    }
+}
