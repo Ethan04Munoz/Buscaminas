@@ -38,3 +38,9 @@
         transform: scale(1.2);
     }
 }
+
+@media (orientation: portrait) {
+    .submenu {
+      grid-template-columns: repeat(3, 1fr);
+    }
+}
