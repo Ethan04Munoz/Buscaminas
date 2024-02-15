@@ -5,14 +5,26 @@ import './App.css'
 import Modal from './Modal'
 import Navbar from './Navbar'
 import Submenu from './Submenu'
+import { useNavigate } from 'react-router-dom'
 function GameState(props){
+    const navigate = useNavigate();
     const [tableroSize, setTableroSize] = useState(8);
     const [cantidadMinas, setCantidadMinas] = useState(10);
     const [claseTablero, setClaseTablero] = useState('tablero');
     const [tamañoCasillas, setTamañoCasillas] = useState('casilla');
+
+    const [esMovil, setEsMovil] = useState(false);
+    useEffect(() => {
+        console.log("Width heigth: ", window.innerHeight, window.innerWidth)
+        if(window.innerWidth < window.innerHeight){
+            setEsMovil(true);
+        }else{
+          setEsMovil(false);
+        }
+    }, [])
     useEffect(() => {
         const difficulty = props.difficulty;
-        console.log("Dificultad:", difficulty)
+        console.log("Dificultad y es movil:", difficulty, esMovil)
         if(difficulty == "facil" || difficulty == "principal"){
             setTableroSize(8);
             setCantidadMinas(10);
@@ -25,7 +37,7 @@ function GameState(props){
             setClaseTablero("tablero tableroMedio");
             setTamañoCasillas('casilla casillaMediana');
         }
-        if(difficulty == "dificil"){
+        if(difficulty == "dificil" && esMovil == false){
             setTableroSize(25);
             setCantidadMinas(90);
             setClaseTablero("tablero tableroDificil");
@@ -33,6 +45,13 @@ function GameState(props){
         }
         reiniciarJuego();
     }, [props.difficulty])
+
+    useEffect(() => {
+      const difficulty = props.difficulty;
+      if(difficulty == "dificil" && esMovil){
+        navigate("/medium");
+      }
+    }, [esMovil, props])
 
     function obtenerNumeroAleatorioEntre(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;

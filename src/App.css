@@ -122,3 +122,11 @@ ul{
   align-items: center;
   justify-items: center;
 }
+
+@media (max-width: 968px) {
+  .casillaMediana{
+    font-size: 2vh;
+    width: 2.5vh;
+    height: 2.5vh;
+  }
+}
