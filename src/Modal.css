@@ -164,4 +164,7 @@ Color morado cool:
         font-size: 3vh;
         user-select: none; /* Impedir el seleccionamiento del texto en las modales*/
     }
+    .gridConfiguracion img{
+        height: 5vh;
+    }
 }

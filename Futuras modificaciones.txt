@@ -49,7 +49,7 @@
 - Implementar lazy loading en las imagenes del menú principal (HECHO 13/02/2024)
 
 -13/02/2024:
-- Corregir el error que hace que haya una mina de más en el buscaminas dificil
+- Corregir el error que hace que haya una mina de más en el buscaminas dificil (HECHO 14/02/2024)
 - Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas 
 - Corregir los menús para el tema de que sean responsive
 
