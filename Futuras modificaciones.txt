@@ -48,10 +48,13 @@
 - Implementar lazy loading en las imagenes de la modal de configuracion (HECHO 13/02/2024)
 - Implementar lazy loading en las imagenes del menú principal (HECHO 13/02/2024)
 
--13/02/2024:
+13/02/2024:
 - Corregir el error que hace que haya una mina de más en el buscaminas dificil (HECHO 14/02/2024)
-- Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas 
-- Corregir los menús para el tema de que sean responsive
+- Corregir los menús para el tema de que sean responsive (HECHO 14/02/2024)
+
+14/02/2024:
+- Hacer test de Lighthouse y optimizar lo que haga falta
+- Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas  
 
 Modificaciones a largo plazo: 
 - Añadir música a los buscaminas (Largo plazo)
