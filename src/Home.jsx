@@ -23,7 +23,7 @@ function Home(){
             <Navbar/>
             <Submenu/>
             <div className="gridDificultades">
-                <Link to="/easy">
+                <Link to="/Buscaminas/easy">
                 <div className="contenedorNivel" id="parteIzq">
                     <p> Facil </p>
                     <Suspense fallback={<div>Cargando...</div>}>
@@ -31,7 +31,7 @@ function Home(){
                     </Suspense>
                 </div>
                 </Link>
-                <Link to="/medium">
+                <Link to="/Buscaminas/medium">
                 <div className="contenedorNivel" >
                     <p> Medio </p> 
                     <Suspense fallback={<div>Cargando...</div>}>
@@ -40,7 +40,7 @@ function Home(){
                 </div>  
                 </Link>
                 {esMovil==false && (
-                    <Link to="/hard">
+                    <Link to="/Buscaminas/hard">
                     <div className="contenedorNivel" id="parteDer">
                         <p> Dificil </p>
                         <Suspense fallback={<div>Cargando...</div>}>
