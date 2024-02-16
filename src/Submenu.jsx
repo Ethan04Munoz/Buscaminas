@@ -13,19 +13,19 @@ function Submenu(){
     return (
         <div className="submenu">
             <div className='contenedorEnlace'>
-                <Link className="enlaceSubmenu" to="/easy">Buscaminas facil</Link>
+                <Link className="enlaceSubmenu" to="/Buscaminas/easy">Buscaminas facil</Link>
             </div>
             <div className='contenedorEnlace'>
-                <Link className="enlaceSubmenu" to="/medium">Buscaminas medio</Link>
+                <Link className="enlaceSubmenu" to="/Buscaminas/medium">Buscaminas medio</Link>
             </div>
             {esMovil == false && (
             <div className='contenedorEnlace'>
-                <Link className="enlaceSubmenu" to="/hard">Buscaminas dificil</Link>
+                <Link className="enlaceSubmenu" to="/Buscaminas/hard">Buscaminas dificil</Link>
             </div>
             )}
 
             <div className='contenedorEnlace'>
-                <Link className="enlaceSubmenu" to="/help">Ayuda?</Link>
+                <Link className="enlaceSubmenu" to="/Buscaminas/help">Ayuda?</Link>
             </div>
         </div>
     )

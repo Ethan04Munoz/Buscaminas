@@ -16,7 +16,7 @@ function Navbar(props){
     return(
         <div className="navbar">
             <div className="gridNavBar">
-                <Link to="/"><div className="buscaminasHomeTitle"> <h1>Buscaminas</h1></div></Link>
+                <Link to="/Buscaminas/"><div className="buscaminasHomeTitle"> <h1>Buscaminas</h1></div></Link>
                 <div></div>
                 <img className="" src="config.png" alt="" onClick={encenderModalConfiguracion}/>
             </div>

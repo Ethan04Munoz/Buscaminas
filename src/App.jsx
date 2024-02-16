@@ -7,11 +7,11 @@ function App() {
   return(
     <BrowserRouter>
       <Routes>
-        <Route path="/easy" element={<GameState difficulty="facil"/>}/>
-        <Route path="/medium" element={<GameState difficulty="medio"/>}/>
-        <Route path="/hard" element={<GameState difficulty="dificil"/>}/>
-        <Route path="/help" element={<ComoJugar/>}/>
-        <Route path="/" element={<Home/>}/>
+        <Route path="/Buscaminas/easy" element={<GameState difficulty="facil"/>}/>
+        <Route path="/Buscaminas/medium" element={<GameState difficulty="medio"/>}/>
+        <Route path="/Buscaminas/hard" element={<GameState difficulty="dificil"/>}/>
+        <Route path="/Buscaminas/help" element={<ComoJugar/>}/>
+        <Route path="/Buscaminas" element={<Home/>}/>
       </Routes>
     </BrowserRouter>
   )
