@@ -3,10 +3,7 @@ import './Home.css';
 import Submenu from "./Submenu";
 import { Link } from 'react-router-dom';
 import './App.css'
-import Flor from "./Flor";
 import React, { useEffect, useState } from "react";
-import { Suspense, lazy } from 'react';
-const LazyImage = React.lazy(() => import('./LazyImagen.jsx')); // Asume que tienes un componente LazyImage
 
 function Home(){
     const [esMovil, setEsMovil] = useState(false);
@@ -26,26 +23,20 @@ function Home(){
                 <Link to="/Buscaminas/easy">
                 <div className="contenedorNivel" id="parteIzq">
                     <p> Facil </p>
-                    <Suspense fallback={<div>Cargando...</div>}>
-                        <LazyImage src="webp/buscaminasFlor (3).webp" alt="" />
-                    </Suspense>
+                    <img src="webp/buscaminasFlor (3).webp" alt="" />
                 </div>
                 </Link>
                 <Link to="/Buscaminas/medium">
                 <div className="contenedorNivel" >
                     <p> Medio </p> 
-                    <Suspense fallback={<div>Cargando...</div>}>
-                        <LazyImage src="webp/buscaminasFlor (2).webp" alt="" />
-                    </Suspense>
+                    <img src="webp/buscaminasFlor (2).webp" alt="" />
                 </div>  
                 </Link>
                 {esMovil==false && (
                     <Link to="/Buscaminas/hard">
                     <div className="contenedorNivel" id="parteDer">
                         <p> Dificil </p>
-                        <Suspense fallback={<div>Cargando...</div>}>
-                            <LazyImage src="webp/buscaminasFlor (1).webp" alt="" />
-                        </Suspense>
+                        <img src="webp/buscaminasFlor (1).webp" alt="" />
                     </div>
                     </Link>
                 )}
