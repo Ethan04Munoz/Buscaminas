@@ -18,7 +18,7 @@ function Navbar(props){
             <div className="gridNavBar">
                 <Link to="/Buscaminas/"><div className="buscaminasHomeTitle"> <h1>Buscaminas</h1></div></Link>
                 <div></div>
-                <img className="" src="config.png" alt="" onClick={encenderModalConfiguracion}/>
+                <img className="" src="webp/config.webp" alt="" onClick={encenderModalConfiguracion}/>
             </div>
             {modalConfiguracion == true && (
                 <Modal tituloModal="Configuración" onClickX={apagarModalConfiguracion}/>
