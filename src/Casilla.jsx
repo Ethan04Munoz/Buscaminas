@@ -8,7 +8,7 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
   let tonoClase = (x + y) % 2 === 0 ? "colorClaro" : "colorOscuro";
 
   const [toqueInicio, setToqueInicio] = useState(0);
-  const [toqueProlongado, setToqueProlongado] = useState(false); // Nuevo estado para identificar un toque prolongado
+  const [toqueProlongado, setToqueProlongado] = useState(false);
 
   const duracionToqueProlongado = 500;
 
@@ -34,28 +34,34 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
   const manejarInicioToque = (e) => {
     e.preventDefault();
     setToqueInicio(Date.now());
-    setToqueProlongado(false); // Reiniciar el estado de toque prolongado
   };
 
   const manejarFinToque = (e) => {
     e.preventDefault();
     const duracion = Date.now() - toqueInicio;
     if (duracion >= duracionToqueProlongado) {
-      setToqueProlongado(true); // Marcar el toque como prolongado
+      setToqueProlongado(true);
       manejarClicDerecho(e, x, y);
-    } else {
-      // Verificar si el toque no fue prolongado antes de manejar como clic normal
-      if (!toqueProlongado) {
-        manejarClicCasilla(x, y);
-      }
+      setTimeout(() => setToqueProlongado(false), 10); // Restablecer toqueProlongado a false después de manejar el toque prolongado
     }
+  };
+
+  const manejarClic = (e) => {
+    if (!toqueProlongado) {
+      manejarClicCasilla(x, y);
+    }
+    // Asegurarse de restablecer toqueProlongado aquí también podría ser útil si encuentras problemas
+    // Pero normalmente, debería ser manejado por manejarFinToque
   };
 
   return (
     <div
       className={clases}
-      onClick={() => !toqueProlongado && manejarClicCasilla(x, y)} // Solo manejar clic si no fue un toque prolongado
-      onContextMenu={(e) => manejarClicDerecho(e, x, y)}
+      onClick={manejarClic}
+      onContextMenu={(e) => {
+        e.preventDefault();
+        manejarClicDerecho(e, x, y);
+      }}
       onTouchStart={manejarInicioToque}
       onTouchEnd={manejarFinToque}
     >
