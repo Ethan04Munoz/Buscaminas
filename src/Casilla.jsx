@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Flor from './Flor';
 import Explosion from './Explosion';
 
 function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, manejarClicCasilla, manejarClicDerecho, estadoJuego }) {
   let clases = tamaño;
   let contenido = "";
-  let tonoClase = (x + y) % 2 === 0 ? "colorClaro" : "colorOscuro"; // Clase para el tono
+  let tonoClase = (x + y) % 2 === 0 ? "colorClaro" : "colorOscuro";
 
-  // Nuevo estado para manejar el inicio del toque
   const [toqueInicio, setToqueInicio] = useState(0);
+  const [toqueProlongado, setToqueProlongado] = useState(false); // Nuevo estado para identificar un toque prolongado
 
-  // Constante para la duración mínima del toque (en milisegundos) para considerarlo como toque prolongado
-  const duracionToqueProlongado = 500; // 0.5 segundos
+  const duracionToqueProlongado = 500;
 
   if (estadoJuego === "ganado" && !revelada) {
-    contenido = <Flor/>; // Mostrar el componente Flor
+    contenido = <Flor/>;
   } else if (marcada) {
     contenido = "🚩";
   } else if (revelada) {
@@ -27,36 +26,38 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
       contenido = numeroMinas > 0 ? numeroMinas : "";
     }
     clases += " casillaRevelada";
-    tonoClase += "Revelada"; // Modificar el tono para las reveladas
+    tonoClase += "Revelada";
   }
 
-  clases += ` ${tonoClase}`; // Agregar la clase de tono
+  clases += ` ${tonoClase}`;
 
-  // Manejadores para el toque prolongado
   const manejarInicioToque = (e) => {
-    e.preventDefault(); // Prevenir el comportamiento por defecto del toque
-    setToqueInicio(Date.now()); // Registrar el inicio del toque
+    e.preventDefault();
+    setToqueInicio(Date.now());
+    setToqueProlongado(false); // Reiniciar el estado de toque prolongado
   };
 
-  const manejarFinToque = (e, x, y) => {
-    e.preventDefault(); // Prevenir el comportamiento por defecto al finalizar el toque
-    const duracion = Date.now() - toqueInicio; // Calcular la duración del toque
+  const manejarFinToque = (e) => {
+    e.preventDefault();
+    const duracion = Date.now() - toqueInicio;
     if (duracion >= duracionToqueProlongado) {
-      // Si la duración supera el umbral, se considera toque prolongado
+      setToqueProlongado(true); // Marcar el toque como prolongado
       manejarClicDerecho(e, x, y);
     } else {
-      // Si no, se maneja como un toque normal
-      manejarClicCasilla(x, y);
+      // Verificar si el toque no fue prolongado antes de manejar como clic normal
+      if (!toqueProlongado) {
+        manejarClicCasilla(x, y);
+      }
     }
   };
 
   return (
     <div
       className={clases}
-      onClick={() => manejarClicCasilla(x, y)}
+      onClick={() => !toqueProlongado && manejarClicCasilla(x, y)} // Solo manejar clic si no fue un toque prolongado
       onContextMenu={(e) => manejarClicDerecho(e, x, y)}
       onTouchStart={manejarInicioToque}
-      onTouchEnd={(e) => manejarFinToque(e, x, y)}
+      onTouchEnd={manejarFinToque}
     >
       {contenido}
     </div>
