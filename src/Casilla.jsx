@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Flor from './Flor';
 import Explosion from './Explosion';
 
 function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, manejarClicCasilla, manejarClicDerecho, estadoJuego }) {
   let clases = tamaño;
   let contenido = "";
-  let tonoClase = (x + y) % 2 === 0 ? "colorClaro" : "colorOscuro";
-
-  const [toqueInicio, setToqueInicio] = useState(0);
-
+  let tonoClase = (x + y) % 2 === 0 ? "colorClaro" : "colorOscuro"; // Clase para el tono
   if (estadoJuego === "ganado" && !revelada) {
-    contenido = <Flor/>;
+    contenido = <Flor/>; // Mostrar el componente Flor
   } else if (marcada) {
     contenido = "🚩";
   } else if (revelada) {
@@ -19,44 +16,21 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
       if (estadoJuego === "perdido" && esMina) {
         contenido = <>{contenido}<Explosion/></>;
       }
+      
     } else {
       contenido = numeroMinas > 0 ? numeroMinas : "";
     }
     clases += " casillaRevelada";
-    tonoClase += "Revelada";
+    tonoClase += "Revelada"; // Modificar el tono para las reveladas
   }
 
-  clases += ` ${tonoClase}`;
-
-  const manejarInicioToque = (e) => {
-    setToqueInicio(Date.now());
-  };
-
-  const manejarFinToque = (e) => {
-    const duracion = Date.now() - toqueInicio;
-    if (duracion >= 500) {
-      e.preventDefault(); 
-      manejarClicDerecho(e, x, y);
-    }
-  };
-
-  const manejarClic = (e) => {
-    const duracion = Date.now() - toqueInicio;
-    if (duracion < 500) { 
-      manejarClicCasilla(x, y);
-    }
-  };
+  clases += ` ${tonoClase}`; // Agregar la clase de tono
 
   return (
     <div
       className={clases}
-      onClick={manejarClic}
-      onContextMenu={(e) => {
-        e.preventDefault(); // Prevenir el menú contextual del navegador
-        manejarClicDerecho(e, x, y);
-      }}
-      onTouchStart={manejarInicioToque}
-      onTouchEnd={manejarFinToque}
+      onClick={() => manejarClicCasilla(x, y)}
+      onContextMenu={(e) => manejarClicDerecho(e, x, y)}
     >
       {contenido}
     </div>
