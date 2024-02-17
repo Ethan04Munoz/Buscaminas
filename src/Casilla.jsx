@@ -8,9 +8,6 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
   let tonoClase = (x + y) % 2 === 0 ? "colorClaro" : "colorOscuro";
 
   const [toqueInicio, setToqueInicio] = useState(0);
-  const [toqueProlongado, setToqueProlongado] = useState(false);
-
-  const duracionToqueProlongado = 500;
 
   if (estadoJuego === "ganado" && !revelada) {
     contenido = <Flor/>;
@@ -32,26 +29,22 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
   clases += ` ${tonoClase}`;
 
   const manejarInicioToque = (e) => {
-    e.preventDefault();
     setToqueInicio(Date.now());
   };
 
   const manejarFinToque = (e) => {
-    e.preventDefault();
     const duracion = Date.now() - toqueInicio;
-    if (duracion >= duracionToqueProlongado) {
-      setToqueProlongado(true);
+    if (duracion >= 500) {
+      e.preventDefault(); 
       manejarClicDerecho(e, x, y);
-      setTimeout(() => setToqueProlongado(false), 10); // Restablecer toqueProlongado a false después de manejar el toque prolongado
     }
   };
 
   const manejarClic = (e) => {
-    if (!toqueProlongado) {
+    const duracion = Date.now() - toqueInicio;
+    if (duracion < 500) { 
       manejarClicCasilla(x, y);
     }
-    // Asegurarse de restablecer toqueProlongado aquí también podría ser útil si encuentras problemas
-    // Pero normalmente, debería ser manejado por manejarFinToque
   };
 
   return (
@@ -59,7 +52,7 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
       className={clases}
       onClick={manejarClic}
       onContextMenu={(e) => {
-        e.preventDefault();
+        e.preventDefault(); // Prevenir el menú contextual del navegador
         manejarClicDerecho(e, x, y);
       }}
       onTouchStart={manejarInicioToque}
