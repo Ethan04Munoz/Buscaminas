@@ -53,7 +53,7 @@
 - Corregir los menús para el tema de que sean responsive (HECHO 14/02/2024)
 
 14/02/2024:
-- Hacer test de Lighthouse y optimizar lo que haga falta
+- Hacer test de Lighthouse y optimizar lo que haga falta (HECHO 17/02/2024)
 - Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas (HECHO 17/02/2024)
 
 Modificaciones a largo plazo: 
@@ -62,3 +62,4 @@ Modificaciones a largo plazo:
 - Crear un tutorial que sea una partida asistida: solo se puede ingresar la primera vez que entras al sitio. Te guia estilo angry birds, diciendote que debes hacer. (Largo plazo)
 - Hacer que en el menú principal, el botón para visitar como jugar se destaque si es la primera vez que visitas el sitio. (Largo plazo)
 - Incluir una barra que permita cambiar el idioma usando redux (Largo plazo)
+- Hacer que cuando pierdes exploten todas las bombas y no solo,la que le hiciste clic. (Largo plazo)
