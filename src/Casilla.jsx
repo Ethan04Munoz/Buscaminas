@@ -9,6 +9,16 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
   const [presionado, setPresionado] = useState(false);
   const [presionadoTiempo, setPresionadoTiempo] = useState(0);
 
+  const [esMovil, setEsMovil] = useState(false);
+  useEffect(() => {
+      console.log("Width heigth: ", window.innerHeight, window.innerWidth)
+      if(window.innerWidth < window.innerHeight){
+          setEsMovil(true);
+      }else{
+        setEsMovil(false);
+      }
+  }, [])
+
   // Determina si es un toque prolongado
   const esToqueProlongado = () => Date.now() - presionadoTiempo > 500; // 500 ms para toque prolongado
 
@@ -38,7 +48,7 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
       window.removeEventListener('mouseup', manejarToqueFin);
       window.removeEventListener('touchend', manejarToqueFin);
     };
-  }, [presionado]);
+  }, [presionado, esMovil]);
 
   if (estadoJuego === "ganado" && !revelada) {
     contenido = <Flor/>;
@@ -64,8 +74,11 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
       className={clases}
       onMouseDown={manejarToqueInicio}
       onTouchStart={manejarToqueInicio}
-      onClick={() => manejarClicCasilla(x, y)}
-      onContextMenu={(e) => e.preventDefault()} // Prevenir el menú contextual predeterminado
+      onClick={() => !esMovil && manejarClicCasilla(x, y)} // Manejar clic solo si no es móvil
+      onContextMenu={(e) => {
+        e.preventDefault(); // Prevenir el menú contextual predeterminado
+        esMovil || manejarClicDerecho(e, x, y); // Manejar clic derecho solo si no es móvil
+      }}
     >
       {contenido}
     </div>
