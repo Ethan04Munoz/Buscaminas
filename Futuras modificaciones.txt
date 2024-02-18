@@ -54,7 +54,7 @@
 
 14/02/2024:
 - Hacer test de Lighthouse y optimizar lo que haga falta
-- Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas  
+- Hacer que si se accede desde un movil funcione tambien al sostener el dedo para marcar las minas (HECHO 17/02/2024)
 
 Modificaciones a largo plazo: 
 - Añadir música a los buscaminas (Largo plazo)
