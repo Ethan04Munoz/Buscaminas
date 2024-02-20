@@ -28,8 +28,20 @@ const translations = {
             the mines are randomly hidden beneath the squares.`,
         comojugarParrafo2: `How to uncover the grass squares`,
         comojugarElementoLista1: `Left-clicking: When you click on a square, it will be uncovered. 
-        If there is a mine underneath, you lose the game. 
-        If there is no mine, a number will be revealed, indicating the number of mines in the eight surrounding squares.`,
-
+            If there is a mine underneath, you lose the game. 
+            If there is no mine, a number will be revealed, indicating the number of mines in the eight surrounding squares.`,
+        comojugarElementoLista2: `Marking mines: If you think there's a mine under a particular square, 
+            you can mark it with a right-click (or a long press on touch devices) to place a flag. 
+            This helps you keep track of where you think the mines are.`,
+        comojugarParrafo3: `When you clear a square and a number appears, it tells you how many mines are in the eight squares surrounding it. 
+            Using this information, you can deduce where it's safe to click next and where there might be hidden mines.`,
+        comojugarParrafo4: `The basic strategy involves using the numbers to deduce the locations of the mines. 
+            For example, if a square says "1", you know that of the surrounding squares, only one is a mine. 
+            With practice, you'll learn to recognize patterns that will help you clear larger areas of the board safely.`,
+        comojugarParrafo5: `To win, you must clear all the squares that do not contain mines. 
+            It's not necessary to place flags on all the mines to win; 
+            simply, you must avoid detonating any mine. Good luck!`,
     },
 }
+
+export default translations;

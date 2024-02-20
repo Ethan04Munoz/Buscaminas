@@ -4,8 +4,12 @@ import InputRadio from './componentes/InputRadio';
 import { Suspense, lazy } from 'react';
 const LazyImage = React.lazy(() => import('./LazyImagen.jsx')); // Asume que tienes un componente LazyImage
 const InputRadioLazy = React.lazy(() => import('./componentes/InputRadio'));
+import { useSelector, useDispatch } from 'react-redux';
 
 function Modal(props){
+    const language = useSelector(state => state.language.language);
+    const dispatch = useDispatch();
+
     function manejarClaseBotonReiniciar(){
         if (props.motivoModal == "g") {
             return 'btnReiniciarJuegoGoodEnding';
@@ -13,6 +17,10 @@ function Modal(props){
             return 'btnReiniciarJuegoBadEnding';
         }
     }
+
+    const cambiarIdioma = () => {
+        dispatch({ type: 'CHANGE_LANGUAGE' });
+    };
     return(
         <div className="modal">
             <div className='modalAdv'>
@@ -31,12 +39,12 @@ function Modal(props){
                 {(props.tituloModal=="Configuración" || props.tituloModal == "Settings") && (
                     <div className='gridConfiguracion'>
                         
-                    {/*
+                    
                         <div>Idioma:</div>
                         <Suspense fallback={<div>Cargando...</div>}>
-                            <div className='gridInterruptor'>Español <InputRadioLazy tipoSlider="bandera"/> Inglés</div>
+                            <div className='gridInterruptor'>Español <InputRadioLazy tipoSlider="bandera" onChangeProp={cambiarIdioma}/> Inglés</div>
                         </Suspense>
-
+{/*
                         <Suspense fallback={<div>Cargando...</div>}>
                             <div>
                                 <LazyImage src="musica-Dark.png" alt="" />
