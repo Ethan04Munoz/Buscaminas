@@ -75,4 +75,4 @@ const translations = {
     },
 }
 
-export default translations;
+export default translations; 
