@@ -5,9 +5,15 @@ import './App.css'
 import Modal from './Modal'
 import Navbar from './Navbar'
 import Submenu from './Submenu'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import translations from './translations.js'; 
+
 function GameState(props){
     const navigate = useNavigate();
+
+    const language = useSelector(state => state.language.language); // Accede al idioma actual desde el store de Redux
+
     const [tableroSize, setTableroSize] = useState(8);
     const [cantidadMinas, setCantidadMinas] = useState(10);
     const [claseTablero, setClaseTablero] = useState('tablero');
@@ -377,13 +383,13 @@ function GameState(props){
             <div className='btnReiniciarJuegos' onClick={funcionEncenderModalReiniciarJuego}>☹️</div>
           </div>
           {mostrarModalPerdido && (
-            <Modal tituloModal="Perdiste!" tiempoActual={"---"} tiempoRecord={getRecord()} onClick={reiniciarJuego} motivoModal="b"/>
+            <Modal tituloModal={translations[language].modalPerdiste} tiempoActual={"---"} tiempoRecord={getRecord()} onClick={reiniciarJuego} motivoModal="b"/>
           )}
           {mostrarModalGanado&& (
-            <Modal tituloModal="Ganaste!" tiempoActual={duracionPartidaActual} tiempoRecord={getRecord()} onClick={reiniciarJuego} motivoModal="g"/>
+            <Modal tituloModal={translations[language].modalGanaste} tiempoActual={duracionPartidaActual} tiempoRecord={getRecord()} onClick={reiniciarJuego} motivoModal="g"/>
           )}
           {encenderModalReiniciarJuego && (
-            <Modal tituloModal="Sin salida?" onClick={reiniciarJuego} onClickX={funcionApagarModalReiniciarJuego} motivoModal="b"/>
+            <Modal tituloModal={translations[language].modalReiniciarJuego} onClick={reiniciarJuego} onClickX={funcionApagarModalReiniciarJuego} motivoModal="b"/>
           )}
         </>
       );

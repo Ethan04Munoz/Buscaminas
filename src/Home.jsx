@@ -4,8 +4,12 @@ import Submenu from "./Submenu";
 import { Link } from 'react-router-dom';
 import './App.css'
 import React, { useEffect, useState } from "react";
+import { useSelector } from 'react-redux';
+import translations from './translations.js'; 
 
 function Home(){
+    const language = useSelector(state => state.language.language); // Accede al idioma actual desde el store de Redux
+
     const [esMovil, setEsMovil] = useState(false);
     useEffect(() => {
         console.log("Width heigth: ", window.innerHeight, window.innerWidth)
@@ -22,20 +26,20 @@ function Home(){
             <div className="gridDificultades">
                 <Link to="/Buscaminas/easy">
                 <div className="contenedorNivel" id="parteIzq">
-                    <p> Facil </p>
+                    <p> {translations[language].dificultadFacilHome} </p>
                     <img src="webp/buscaminasFlor (3).webp" alt="" />
                 </div>
                 </Link>
                 <Link to="/Buscaminas/medium">
                 <div className="contenedorNivel" >
-                    <p> Medio </p> 
+                    <p> {translations[language].dificultadMediaHome} </p> 
                     <img src="webp/buscaminasFlor (2).webp" alt="" />
                 </div>  
                 </Link>
                 {esMovil==false && (
                     <Link to="/Buscaminas/hard">
                     <div className="contenedorNivel" id="parteDer">
-                        <p> Dificil </p>
+                        <p> {translations[language].dificultadDificilHome} </p>
                         <img src="webp/buscaminasFlor (1).webp" alt="" />
                     </div>
                     </Link>
