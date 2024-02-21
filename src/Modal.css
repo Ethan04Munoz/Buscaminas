@@ -119,6 +119,7 @@ Color morado cool:
     display: grid; 
     grid-template-columns: 40% 60%;
     justify-items: center;
+    align-items: center;
 }
 
 .gridConfiguracion img{

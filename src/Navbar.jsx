@@ -26,7 +26,7 @@ function Navbar(props){
                 <img className="" src="webp/config.webp" alt="" onClick={encenderModalConfiguracion}/>
             </div>
             {modalConfiguracion == true && (
-                <Modal tituloModal="Configuración" onClickX={apagarModalConfiguracion}/>
+                <Modal tituloModal={translations[language].configuracion} onClickX={apagarModalConfiguracion}/>
             )}
         </div>
     )

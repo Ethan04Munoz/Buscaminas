@@ -5,6 +5,8 @@ import { Suspense, lazy } from 'react';
 const LazyImage = React.lazy(() => import('./LazyImagen.jsx')); // Asume que tienes un componente LazyImage
 const InputRadioLazy = React.lazy(() => import('./componentes/InputRadio'));
 import { useSelector, useDispatch } from 'react-redux';
+import translations from './translations.js'; 
+
 
 function Modal(props){
     const language = useSelector(state => state.language.language);
@@ -40,9 +42,13 @@ function Modal(props){
                     <div className='gridConfiguracion'>
                         
                     
-                        <div>Idioma:</div>
+                        <div>{translations[language].idioma}</div>
                         <Suspense fallback={<div>Cargando...</div>}>
-                            <div className='gridInterruptor'>Español <InputRadioLazy tipoSlider="bandera" onChangeProp={cambiarIdioma}/> Inglés</div>
+                            <div className='gridInterruptor'>
+                                {translations[language].espanol}
+                                <InputRadioLazy tipoSlider="bandera" onChangeProp={cambiarIdioma}/> 
+                                {translations[language].ingles}
+                            </div>
                         </Suspense>
 {/*
                         <Suspense fallback={<div>Cargando...</div>}>
@@ -81,7 +87,9 @@ function Modal(props){
                     </div>
                 )}
                 {props.onClick && (
-                    <button className={manejarClaseBotonReiniciar()} onClick={props.onClick}>Reiniciar juego</button>
+                    <button className={manejarClaseBotonReiniciar()} onClick={props.onClick}>
+                        {translations[language].botonReiniciarJuego}
+                    </button>
                 )}
             </div>
         </div>

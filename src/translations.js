@@ -31,6 +31,10 @@ const translations = {
         dificultadFacilHome: `Fácil`,
         dificultadMediaHome: `Medio`,
         dificultadDificilHome: `Dificil`,
+        configuracion: `Configuración`,
+        idioma: `Idioma: `,
+        espanol: `Español`,
+        ingles: `Inglés`,
     },
     en: {
         comojugarH1: `How to play Minesweeper?`,
@@ -63,7 +67,11 @@ const translations = {
         ayudaSubmenu: `Need help?`,
         dificultadFacilHome: `Easy`,
         dificultadMediaHome: `Medium`,
-        dificultadDificilHome: `Hard`,
+        dificultadDificilHome: `Hard`,        
+        configuracion: `Settings`,
+        idioma: `Language:`,
+        espanol: `Spanish`,
+        ingles: `English`,
     },
 }
 
