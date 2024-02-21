@@ -19,7 +19,18 @@ const translations = {
         comojugarParrafo5: `Para ganar, debes despejar todos los cuadros que no tienen minas. 
             No es necesario colocar banderas en todas las minas para ganar; 
             simplemente, debes evitar detonar cualquier mina. ¡Mucha suerte!`,
-
+        modalPerdiste: `¡Perdiste!`,
+        modalGanaste: `¡Ganaste!`,
+        modalReiniciarJuego: `Sin salida?`,
+        botonReiniciarJuego: `Reiniciar juego`,
+        tituloPrincipalNavbar: `Buscaminas`,
+        dificultadFacilSubmenu: `Buscaminas fácil`,
+        dificultadMediaSubmenu: `Buscaminas medio`,
+        dificultadDificilSubmenu: `Buscaminas dificil`,
+        ayudaSubmenu: `Ayuda`,
+        dificultadFacilHome: `Fácil`,
+        dificultadMediaHome: `Medio`,
+        dificultadDificilHome: `Dificil`,
     },
     en: {
         comojugarH1: `How to play Minesweeper?`,
@@ -41,6 +52,18 @@ const translations = {
         comojugarParrafo5: `To win, you must clear all the squares that do not contain mines. 
             It's not necessary to place flags on all the mines to win; 
             simply, you must avoid detonating any mine. Good luck!`,
+        modalPerdiste: `GAME OVER`,
+        modalGanaste: `You WON!`,
+        modalReiniciarJuego: `Can't figure it out?`,
+        botonReiniciarJuego: `Restart match`,
+        tituloPrincipalNavbar: `Minesweeper`,
+        dificultadFacilSubmenu: `Easy Minesweeper`,
+        dificultadMediaSubmenu: `Medium Minesweeper`,
+        dificultadDificilSubmenu: `Hard Minesweeper`,
+        ayudaSubmenu: `Need help?`,
+        dificultadFacilHome: `Easy`,
+        dificultadMediaHome: `Medium`,
+        dificultadDificilHome: `Hard`,
     },
 }
 
