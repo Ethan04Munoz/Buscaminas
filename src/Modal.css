@@ -118,8 +118,12 @@ Color morado cool:
 .gridConfiguracion{
     display: grid; 
     grid-template-columns: 40% 60%;
+    row-gap: 0.5rem;
     justify-items: center;
     align-items: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .gridConfiguracion img{

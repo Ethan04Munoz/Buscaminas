@@ -46,7 +46,7 @@ function Modal(props){
                         <Suspense fallback={<div>Cargando...</div>}>
                             <div className='gridInterruptor'>
                                 {translations[language].espanol}
-                                <InputRadioLazy tipoSlider="bandera" onChangeProp={cambiarIdioma}/> 
+                                <InputRadioLazy tipoSlider="sliderColores" onChangeProp={cambiarIdioma}/> 
                                 {translations[language].ingles}
                             </div>
                         </Suspense>
