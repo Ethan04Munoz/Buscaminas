@@ -1,7 +1,7 @@
 import React from 'react';
 import Casilla from './Casilla';
 
-function Tablero({ tamañoCasillas, claseTablero, tableroSize, ubicacionesMinas, casillasReveladas, casillasMarcadas, manejarClicCasilla, manejarClicDerecho, contadorMinas, estadoJuego }) {
+function Tablero({ tamañoCasillas, claseTablero, ubicacionesMinas, casillasReveladas, casillasMarcadas, manejarClicCasilla, manejarClicDerecho, contadorMinas, estadoJuego }) {
   return (
     <div className={claseTablero}>
       {contadorMinas.map((fila, x) =>

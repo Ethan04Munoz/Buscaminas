@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Modal.css';
 import InputRadio from './componentes/InputRadio';
-import { Suspense, lazy } from 'react';
+import { Suspense } from 'react';
 const LazyImage = React.lazy(() => import('./LazyImagen.jsx')); // Asume que tienes un componente LazyImage
-const InputRadioLazy = React.lazy(() => import('./componentes/InputRadio'));
 import { useSelector, useDispatch } from 'react-redux';
 import translations from './translations.js'; 
 
@@ -43,13 +42,11 @@ function Modal(props){
                         
                     
                         <div>{translations[language].idioma}</div>
-                        <Suspense fallback={<div>Cargando...</div>}>
                             <div className='gridInterruptor'>
                                 {translations[language].espanol}
-                                <InputRadioLazy tipoSlider="sliderColores" onChangeProp={cambiarIdioma}/> 
+                                <InputRadio tipoSlider="sliderColores" onChangeProp={cambiarIdioma}/> 
                                 {translations[language].ingles}
                             </div>
-                        </Suspense>
 {/*
                         <Suspense fallback={<div>Cargando...</div>}>
                             <div>

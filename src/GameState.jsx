@@ -201,8 +201,7 @@ function GameState(props){
             setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`));
           } else {
             if(bombaRevelada == false){
-              //setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`)); Elimina solo la linea actual
-              revelarCasillas(x, y); //Llama a la función que elimina espacios vacíos
+              revelarCasillas(x, y); 
             }
           }
         }
@@ -216,7 +215,6 @@ function GameState(props){
           if (ubicacionesMinas.some(mina => mina.x === x && mina.y === y)) {
             setTimeout(() => {
               setEstadoJuego("perdido");
-              //alert("Perdiste!");
               setBombaRevelada(true);
             }, 0);
           }

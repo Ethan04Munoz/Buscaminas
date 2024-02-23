@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import translations from './translations.js'; 
 
-function Navbar(props){
+function Navbar(){
     const language = useSelector(state => state.language.language); // Accede al idioma actual desde el store de Redux
 
 

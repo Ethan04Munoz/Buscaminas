@@ -29,8 +29,6 @@ function Flor() {
     const tipoPetalo = getTipoPetaloAleatorio();
 
     const getClaseCentro = (colorPetalo) => {
-        // Suponiendo que tienes clases adicionales definidas en tu CSS
-        // que son versiones más oscuras de tus colores de pétalos
         const centroColorMap = {
             'petalo-rosa': 'centro-rosa',
             'petalo-azul': 'centro-azul',
@@ -50,7 +48,6 @@ function Flor() {
 
     return (
         <div className="flower">
-            {/* Generar una cantidad aleatoria de petalos entre 2 y 10 */}
             <div className={`petal ${tipoPetalo} ${colorFlor}`}></div>
             <div className={`petal ${tipoPetalo} ${colorFlor}`}></div>
             <div className={`petal ${tipoPetalo} ${colorFlor}`}></div>

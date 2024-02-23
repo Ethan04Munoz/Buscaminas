@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from "./Navbar";
 import './App.css';
 import Submenu from "./Submenu";
-import { Suspense, lazy } from 'react';
+import { Suspense } from 'react';
 const LazyImage = React.lazy(() => import('./LazyImagen.jsx')); // Asume que tienes un componente LazyImage
 import { useSelector } from 'react-redux';
 import translations from './translations.js'; 
