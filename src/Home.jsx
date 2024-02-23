@@ -27,20 +27,20 @@ function Home(){
                 <Link to="/Buscaminas/easy">
                 <div className="contenedorNivel" id="parteIzq">
                     <p> {translations[language].dificultadFacilHome} </p>
-                    <img src="webp/buscaminasFlor (3).webp" alt="" />
+                    <img src="webp/buscamina flor (2).webp" alt="" />
                 </div>
                 </Link>
                 <Link to="/Buscaminas/medium">
                 <div className="contenedorNivel" >
                     <p> {translations[language].dificultadMediaHome} </p> 
-                    <img src="webp/buscaminasFlor (2).webp" alt="" />
+                    <img src="webp/buscamina flor (1).webp" alt="" />
                 </div>  
                 </Link>
                 {esMovil==false && (
                     <Link to="/Buscaminas/hard">
                     <div className="contenedorNivel" id="parteDer">
                         <p> {translations[language].dificultadDificilHome} </p>
-                        <img src="webp/buscaminasFlor (1).webp" alt="" />
+                        <img src="webp/buscamina flor (3).webp" alt="" />
                     </div>
                     </Link>
                 )}
