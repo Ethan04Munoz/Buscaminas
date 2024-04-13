@@ -8,6 +8,7 @@ import Submenu from './Submenu'
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import translations from './translations.js'; 
+import GameMusic from './componentes/GameMusic.jsx'
 
 function GameState(props){
     const navigate = useNavigate();
@@ -361,6 +362,7 @@ function GameState(props){
         <>
           <Navbar/>
           <Submenu/>
+          <GameMusic gameState={estadoJuego}/>
           <div className='centrarHijos'>
             <div className='divirSeccionesRecord'>
               <p>🚩 {cantidadMinas-casillasMarcadas.size}</p>
