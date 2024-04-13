@@ -1,27 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import ReactHowler from 'react-howler';
+import React, { useEffect, useRef } from 'react';
+import { Howl } from 'howler';
 
-const GameMusic = () => {
-  const [gameState, setGameState] = useState('playing'); // 'playing', 'won', 'lost'
+const GameMusic = ({ gameState }) => {
+    const howlers = useRef({
+        jugando: new Howl({ src: ["musica/com/epica.mp3"], preload: true, loop: true, volume: 0.5 }),
+        ganado: new Howl({ src: ["musica/com/feliz.mp3"], preload: true, loop: true, volume: 0.5 }),
+        perdido: new Howl({ src: ["musica/com/triste.mp3"], preload: true, loop: true, volume: 0.5 })
+    });
 
-  // Función para simular el cambio de estado del juego
-  const changeGameState = (newState) => {
-    setGameState(newState);
-  };
+  useEffect(() => {
+        const stopAllSounds = () => {
+            Object.values(howlers.current).forEach(howl => howl.stop());
+        };
 
+        if (gameState === "no jugando") {
+            stopAllSounds();
+        } else {
+            stopAllSounds();
+            if (howlers.current[gameState]) {
+                howlers.current[gameState].play();
+            }
+        }
 
-  return (
-    <div>
-      {gameState === 'playing' && <ReactHowler src="musica/com/epica.mp3" loop={true} preload={true} />}
-      {gameState === 'won' && <ReactHowler src="musica/com/feliz.mp3"  loop={true} preload={true} />}
-      {gameState === 'lost' && <ReactHowler src="musica/com/triste.mp3"  loop={true} preload={true} />}
+        // Cleanup function que se ejecuta cuando el componente se desmonta
+        return () => {
+            stopAllSounds();
+        };
+    }, [gameState]); 
 
-      {/* Botones para simular cambios de estado del juego */}
-      <button onClick={() => changeGameState('playing')}>Start Game</button>
-      <button onClick={() => changeGameState('won')}>Win Game</button>
-      <button onClick={() => changeGameState('lost')}>Lose Game</button>
-    </div>
-  );
+    return null; 
 };
 
 export default GameMusic;
