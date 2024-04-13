@@ -31,6 +31,9 @@ function Submenu(){
             <div className='contenedorEnlace'>
                 <Link className="enlaceSubmenu" to="/Buscaminas/help">{translations[language].ayudaSubmenu}</Link>
             </div>
+            <div className="contenedorEnlace">
+                <Link className="enlaceSubmenu" to="/Buscaminas/about">{translations[language].aboutSubmenu}</Link>
+            </div>
         </div>
     )
 }

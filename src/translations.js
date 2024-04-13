@@ -28,6 +28,7 @@ const translations = {
         dificultadMediaSubmenu: `Buscaminas medio`,
         dificultadDificilSubmenu: `Buscaminas dificil`,
         ayudaSubmenu: `Ayuda`,
+        aboutSubmenu: `Acerca de`,
         dificultadFacilHome: `Fácil`,
         dificultadMediaHome: `Medio`,
         dificultadDificilHome: `Dificil`,
@@ -35,6 +36,17 @@ const translations = {
         idioma: `Idioma: `,
         espanol: `Español`,
         ingles: `Inglés`,
+        aboutTitulo: `Acerca del Proyecto Buscaminas`,
+        aboutP1: `Este sitio web del buscaminas ha sido desarrollado por Ethan Muñoz Lopez.
+            Su función es ser un proyecto personal para probarse a sí mismo con uno de sus juegos favoritos,
+            que considera poco valorados por el público en general.`,
+        aboutP2: `Según Wikipedia, el Buscaminas es un videojuego para un jugador creado por Curt Johnson y Robert Donner en 1989.
+            Ethan no se considera a sí mismo dueño del buscaminas, simplemente realizó una versión para programar un juego y 
+            mantener un proyecto personal.`,
+        aboutTituloCreditos: `Créditos por Assets de Terceros`,
+        aboutCreditosMusica: `Música`,
+        aboutCreditosMusicaPor: `Música por`,
+        aboutCreditosMusicaDe: `desde`,
     },
     en: {
         comojugarH1: `How to play Minesweeper?`,
@@ -65,6 +77,7 @@ const translations = {
         dificultadMediaSubmenu: `Medium Minesweeper`,
         dificultadDificilSubmenu: `Hard Minesweeper`,
         ayudaSubmenu: `Need help?`,
+        aboutSubmenu: `About`,
         dificultadFacilHome: `Easy`,
         dificultadMediaHome: `Medium`,
         dificultadDificilHome: `Hard`,        
@@ -72,6 +85,17 @@ const translations = {
         idioma: `Language:`,
         espanol: `Spanish`,
         ingles: `English`,
+        aboutTitulo: `About the Minesweeper Project`,
+        aboutP1: `This Minesweeper website has been developed by Ethan Muñoz Lopez.
+            Its purpose is to be a personal project to test himself with one of his favorite games,
+            which he considers to be underrated by the general public.`,
+        aboutP2: `According to Wikipedia, Minesweeper is a single-player video game created by Curt Johnson and Robert Donner in 1989.
+            Ethan does not consider himself the owner of Minesweeper; he simply made a version to program a game and 
+            maintain a personal project.`,
+        aboutTituloCreditos: `Credits for Third-Party Assets`,
+        aboutCreditosMusica: `Music`,
+        aboutCreditosMusicaPor: `Music by`,
+        aboutCreditosMusicaDe: `from`,
     },
 }
 

@@ -1,6 +1,6 @@
 .submenu{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     padding: 1rem;
     background: #2b2b2b;
     transition: all 0.3s ease;
@@ -41,6 +41,6 @@
 
 @media (orientation: portrait) {
     .submenu {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
 }
