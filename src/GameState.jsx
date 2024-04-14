@@ -196,13 +196,17 @@ function GameState(props){
           setEstadoXY({x:x, y:y});
           generarMinasAleatorias(x,y);
           setPrimerClic(false);
-          setEstadoJuego("jugando")
+          setEstadoJuego("jugando");
+          const audio = new Audio('efectosSonido/desentierro.mp3');
+          audio.play().catch(error => console.error('Error al reproducir el audio:', error));
         }else {
           if(ubicacionesMinas.some(mina => mina.x === x && mina.y === y)){
             setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`));
           } else {
             if(bombaRevelada == false){
               revelarCasillas(x, y); 
+              const audio = new Audio('efectosSonido/primer clic.mp3');
+              audio.play().catch(error => console.error('Error al reproducir el audio:', error));
             }
           }
         }
@@ -236,25 +240,27 @@ function GameState(props){
     
       const manejarClicDerecho = (e, x, y) => {
         e.preventDefault();
+        
         if (casillasReveladas.has(`${x}-${y}`)) {
           return;
         }
-        if(bombaRevelada == false){
-          if(casillasMarcadas.has(`${x}-${y}`)){
-            const nuevaMarcacion = new Set(casillasMarcadas);
-            const clave = `${x}-${y}`;
-        
-            if (nuevaMarcacion.has(clave)) {
-              nuevaMarcacion.delete(clave);
-            } else {
-              nuevaMarcacion.add(clave);
-            }
-            setCasillasMarcadas(nuevaMarcacion);
-          }else{
-            setCasillasMarcadas(new Set(casillasMarcadas).add(`${x}-${y}`));
+        if (!bombaRevelada) {
+          const clave = `${x}-${y}`;
+          const marcacionActual = new Set(casillasMarcadas);
+    
+          // Cargar y reproducir el audio cuando se agrega una nueva marca
+          const audio = new Audio('efectosSonido/bandera.mp3');
+          audio.play().catch(error => console.error('Error al reproducir el audio:', error));
+
+          if (marcacionActual.has(clave)) {
+            marcacionActual.delete(clave);
+          } else {
+            marcacionActual.add(clave);
           }
+          setCasillasMarcadas(marcacionActual);
         }
-      }
+    }
+    
     
       function reiniciarJuego() {
         setUbicacionesMinas([]);

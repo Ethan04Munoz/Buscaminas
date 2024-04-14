@@ -15,7 +15,7 @@ function App() {
         <Route path="/Buscaminas/help" element={<ComoJugar/>}/>
         <Route path="/Buscaminas/about" element={<AboutPage/>}/>
         <Route path="/Buscaminas" element={<Home/>}/>
-        <Route path="/Buscaminas/pruebas" element={<GameMusic/>}/>
+        {/*<Route path="/Buscaminas/pruebas" element={<GameMusic/>}/>*/}
       </Routes>
     </BrowserRouter>
   )
