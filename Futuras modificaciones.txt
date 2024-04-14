@@ -59,9 +59,13 @@
 22/02/2024:
 - Incluir una barra que permita cambiar el idioma usando redux (HECHO 22/02/2024)
 
+13/04/2024:
+- Añadir música a los buscaminas (HECHO 13/04/2024)
+- Añadir efectos de sonido (HECHO 13/04/2024)
+
 Modificaciones a largo plazo: 
-- Añadir música a los buscaminas (Largo plazo)
-- Añadir efectos de sonido (Largo plazo)
+- Optimizar el uso de efectos de sonido
+- Mejorar la calidad de los efectos de sonido
 - Crear un tutorial que sea una partida asistida: solo se puede ingresar la primera vez que entras al sitio. Te guia estilo angry birds, diciendote que debes hacer. (Largo plazo)
 - Hacer que en el menú principal, el botón para visitar como jugar se destaque si es la primera vez que visitas el sitio. (Largo plazo)
 - Hacer que cuando pierdes exploten todas las bombas y no solo,la que le hiciste clic. (Largo plazo)
