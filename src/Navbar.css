@@ -1,3 +1,7 @@
+.navbar{
+    width: 100vw;
+}
+
 .gridNavBar{
     width: 100%;
     display: grid;
