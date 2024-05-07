@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import translations from './translations.js'; 
 import GameMusic from './componentes/GameMusic.jsx'
+import { useRef } from 'react'
 
 function GameState(props){
     const navigate = useNavigate();
@@ -19,6 +20,12 @@ function GameState(props){
     const [cantidadMinas, setCantidadMinas] = useState(10);
     const [claseTablero, setClaseTablero] = useState('tablero');
     const [tamañoCasillas, setTamañoCasillas] = useState('casilla');
+
+    const soundEffects = useRef({
+      desentierro: new Howl({ src: ['efectosSonido/desentierro.mp3'], preload: true }),
+      primerClic: new Howl({ src: ['efectosSonido/primer clic.mp3'], preload: true }),
+      bandera: new Howl({ src: ['efectosSonido/bandera.mp3'], preload: true})
+  });
 
     const [esMovil, setEsMovil] = useState(false);
     useEffect(() => {
@@ -197,16 +204,14 @@ function GameState(props){
           generarMinasAleatorias(x,y);
           setPrimerClic(false);
           setEstadoJuego("jugando");
-          const audio = new Audio('efectosSonido/desentierro.mp3');
-          audio.play().catch(error => console.error('Error al reproducir el audio:', error));
+          soundEffects.current.desentierro.play();
         }else {
           if(ubicacionesMinas.some(mina => mina.x === x && mina.y === y)){
             setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`));
           } else {
             if(bombaRevelada == false){
               revelarCasillas(x, y); 
-              const audio = new Audio('efectosSonido/primer clic.mp3');
-              audio.play().catch(error => console.error('Error al reproducir el audio:', error));
+              soundEffects.current.primerClic.play();
             }
           }
         }
@@ -249,8 +254,7 @@ function GameState(props){
           const marcacionActual = new Set(casillasMarcadas);
     
           // Cargar y reproducir el audio cuando se agrega una nueva marca
-          const audio = new Audio('efectosSonido/bandera.mp3');
-          audio.play().catch(error => console.error('Error al reproducir el audio:', error));
+          soundEffects.current.bandera.play();
 
           if (marcacionActual.has(clave)) {
             marcacionActual.delete(clave);
