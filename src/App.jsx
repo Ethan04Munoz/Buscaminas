@@ -1,8 +1,8 @@
 import {Route, Routes, BrowserRouter} from "react-router-dom";
-import GameState from "./GameState";
-import Home from "./Home";
-import ComoJugar from "./ComoJugar";
-import AboutPage from "./About";
+import GameState from "./Paginas/GameState";
+import Home from "./Paginas/Home";
+import ComoJugar from "./Paginas/ComoJugar";
+import AboutPage from "./Paginas/About";
 import GameMusic from "./componentes/GameMusic";
 
 function App() {

@@ -1,10 +1,10 @@
 import React from 'react';
 import './Modal.css';
-import InputRadio from './componentes/InputRadio';
+import InputRadio from './InputRadio.jsx';
 import { Suspense } from 'react';
 const LazyImage = React.lazy(() => import('./LazyImagen.jsx')); // Asume que tienes un componente LazyImage
 import { useSelector, useDispatch } from 'react-redux';
-import translations from './translations.js'; 
+import translations from '../redux/translations.js'; 
 
 
 function Modal(props){

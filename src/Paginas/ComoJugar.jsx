@@ -1,11 +1,11 @@
 import React from 'react';
-import Navbar from "./Navbar";
-import './App.css';
-import Submenu from "./Submenu";
+import Navbar from "../componentes/Navbar.jsx";
+import '../App.css';
+import Submenu from "../componentes/Submenu.jsx";
 import { Suspense } from 'react';
-const LazyImage = React.lazy(() => import('./LazyImagen.jsx')); // Asume que tienes un componente LazyImage
+const LazyImage = React.lazy(() => import('../componentes/LazyImagen.jsx')); // Asume que tienes un componente LazyImage
 import { useSelector } from 'react-redux';
-import translations from './translations.js'; 
+import translations from '../redux/translations.js'; 
 
 function ComoJugar(){
     const language = useSelector(state => state.language.language); // Accede al idioma actual desde el store de Redux

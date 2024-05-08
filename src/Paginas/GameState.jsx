@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
-import Tablero from './Tablero'
-import './App.css'
-import Modal from './Modal'
-import Navbar from './Navbar'
-import Submenu from './Submenu'
+import Tablero from '../componentes/Tablero.jsx'
+import '../App.css'
+import Modal from '../componentes/Modal.jsx'
+import Navbar from '../componentes/Navbar.jsx'
+import Submenu from '../componentes/Submenu.jsx'
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import translations from './translations.js'; 
-import GameMusic from './componentes/GameMusic.jsx'
+import translations from '../redux/translations.js'; 
+import GameMusic from '../componentes/GameMusic.jsx'
 import { useRef } from 'react'
 
 function GameState(props){

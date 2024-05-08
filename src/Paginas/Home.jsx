@@ -1,11 +1,11 @@
-import Navbar from "./Navbar";
+import Navbar from "../componentes/Navbar.jsx";
 import './Home.css';
-import Submenu from "./Submenu";
+import Submenu from "../componentes/Submenu.jsx";
 import { Link } from 'react-router-dom';
-import './App.css'
+import '../App.css'
 import React, { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
-import translations from './translations.js'; 
+import translations from '../redux/translations.js'; 
 
 function Home(){
     const language = useSelector(state => state.language.language); // Accede al idioma actual desde el store de Redux

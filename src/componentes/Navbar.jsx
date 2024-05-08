@@ -3,7 +3,7 @@ import Modal from "./Modal";
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import translations from './translations.js'; 
+import translations from '../redux/translations.js'; 
 
 function Navbar(){
     const language = useSelector(state => state.language.language); // Accede al idioma actual desde el store de Redux
