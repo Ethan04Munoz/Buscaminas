@@ -22,9 +22,18 @@ function Modal(props){
         }
     }
 
-    const cambiarIdioma = () => {
+    function cambiarIdioma() {
         dispatch({ type: 'CHANGE_LANGUAGE' });
-    };
+    }
+
+    function activarMusica() {
+        dispatch({ type: 'CHANGE_CONFIG_MUSIC'})
+    }
+
+    function activarEfectosSonido() {
+        dispatch({ type: 'CHANGE_CONFIG_SOUNDEFFECTS'})
+    }
+
     return(
         <div className="modal">
             <div className='modalAdv'>
@@ -57,7 +66,11 @@ function Modal(props){
                             </div>
                         </Suspense>
                         <Suspense fallback={<div>Cargando...</div>}>
-                            <div className='gridInterruptor'>No <InputRadio/> Si </div>
+                            <div className='gridInterruptor'>
+                                No 
+                                <InputRadio onChangeProp={{activarMusica}}/> 
+                                Si 
+                            </div>
                         </Suspense>
 
                         <Suspense fallback={<div>Cargando...</div>}>
@@ -66,7 +79,11 @@ function Modal(props){
                             </div> 
                         </Suspense>
                         <Suspense fallback={<div>Cargando...</div>}>
-                            <div className='gridInterruptor'>No <InputRadio/> Si </div>
+                            <div className='gridInterruptor'>
+                                No 
+                                <InputRadio onChangeProp={activarEfectosSonido}/> 
+                                Si 
+                            </div>
                         </Suspense>
                         
                         {/*

@@ -4,7 +4,7 @@ const initialState = {
   
 function musicReducer(state = initialState, action) {
     switch (action.type) {
-        case 'CHANGE_LANGUAGE':
+        case 'CHANGE_CONFIG_MUSIC':
             const music = state.music === '0' ? '1' : '0';
             localStorage.setItem('musicConfig', music);
             return {
