@@ -2,13 +2,16 @@ import React from 'react';
 import './Modal.css';
 import InputRadio from './InputRadio.jsx';
 import { Suspense } from 'react';
-const LazyImage = React.lazy(() => import('./LazyImagen.jsx')); // Asume que tienes un componente LazyImage
+const LazyImage = React.lazy(() => import('../componentes/LazyImagen.jsx')); // Asume que tienes un componente LazyImage
 import { useSelector, useDispatch } from 'react-redux';
 import translations from '../redux/translations.js'; 
 
 
 function Modal(props){
     const language = useSelector(state => state.language.language);
+    const music = useSelector(state => state.music.music);
+    const soundEffect = useSelector(state => state.soundEffect.soundEffect);
+
     const dispatch = useDispatch();
 
     function manejarClaseBotonReiniciar(){
@@ -47,14 +50,14 @@ function Modal(props){
                                 <InputRadio tipoSlider="sliderColores" onChangeProp={cambiarIdioma}/> 
                                 {translations[language].ingles}
                             </div>
-{/*
+
                         <Suspense fallback={<div>Cargando...</div>}>
                             <div>
                                 <LazyImage src="musica-Dark.png" alt="" />
                             </div>
                         </Suspense>
                         <Suspense fallback={<div>Cargando...</div>}>
-                            <div className='gridInterruptor'>No <InputRadioLazy/> Si </div>
+                            <div className='gridInterruptor'>No <InputRadio/> Si </div>
                         </Suspense>
 
                         <Suspense fallback={<div>Cargando...</div>}>
@@ -63,14 +66,15 @@ function Modal(props){
                             </div> 
                         </Suspense>
                         <Suspense fallback={<div>Cargando...</div>}>
-                            <div className='gridInterruptor'>No <InputRadioLazy/> Si </div>
+                            <div className='gridInterruptor'>No <InputRadio/> Si </div>
                         </Suspense>
-                    */}
                         
+                        {/*
                         <div></div>
                         <div></div>
                         <div></div>
                         <div></div>
+                        */}
                         <div></div>
                     <div></div>
                             <a className='github' href="https://github.com/Ethan04Munoz">

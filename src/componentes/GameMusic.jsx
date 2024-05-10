@@ -8,7 +8,7 @@ const GameMusic = ({ gameState }) => {
         perdido: new Howl({ src: ["musica/com/triste.mp3"], preload: true, loop: true, volume: 0.5 })
     });
 
-  useEffect(() => {
+    useEffect(() => {
         const stopAllSounds = () => {
             Object.values(howlers.current).forEach(howl => howl.stop());
         };
