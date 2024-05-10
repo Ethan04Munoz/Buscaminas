@@ -14,7 +14,9 @@ import { useRef } from 'react'
 function GameState(props){
     const navigate = useNavigate();
 
-    const language = useSelector(state => state.language.language); // Accede al idioma actual desde el store de Redux
+    const language = useSelector(state => state.language.language);
+    const soundEffect = useSelector(state => state.soundEffect.soundEffect);
+
 
     const [tableroSize, setTableroSize] = useState(8);
     const [cantidadMinas, setCantidadMinas] = useState(10);
@@ -204,14 +206,16 @@ function GameState(props){
           generarMinasAleatorias(x,y);
           setPrimerClic(false);
           setEstadoJuego("jugando");
-          soundEffects.current.desentierro.play();
+          if(soundEffect=="1")
+            soundEffects.current.desentierro.play();
         }else {
           if(ubicacionesMinas.some(mina => mina.x === x && mina.y === y)){
             setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`));
           } else {
             if(bombaRevelada == false){
               revelarCasillas(x, y); 
-              soundEffects.current.primerClic.play();
+              if(soundEffect=="1")
+                soundEffects.current.primerClic.play();
             }
           }
         }
@@ -228,7 +232,8 @@ function GameState(props){
           const marcacionActual = new Set(casillasMarcadas);
     
           // Cargar y reproducir el audio cuando se agrega una nueva marca
-          soundEffects.current.bandera.play();
+          if(soundEffect=="1")
+            soundEffects.current.bandera.play();
 
           if (marcacionActual.has(clave)) {
             marcacionActual.delete(clave);
