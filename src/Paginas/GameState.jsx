@@ -217,6 +217,28 @@ function GameState(props){
         }
       }
     
+      const manejarClicDerecho = (e, x, y) => {
+        e.preventDefault();
+        
+        if (casillasReveladas.has(`${x}-${y}`)) {
+          return;
+        }
+        if (!bombaRevelada) {
+          const clave = `${x}-${y}`;
+          const marcacionActual = new Set(casillasMarcadas);
+    
+          // Cargar y reproducir el audio cuando se agrega una nueva marca
+          soundEffects.current.bandera.play();
+
+          if (marcacionActual.has(clave)) {
+            marcacionActual.delete(clave);
+          } else {
+            marcacionActual.add(clave);
+          }
+          setCasillasMarcadas(marcacionActual);
+        }
+      }
+
       const [bombaRevelada, setBombaRevelada] = useState(false);
     
       useEffect(() => {
@@ -241,30 +263,6 @@ function GameState(props){
           }, 0);
         }
       }, [ubicacionesMinas, casillasReveladas])
-      
-    
-      const manejarClicDerecho = (e, x, y) => {
-        e.preventDefault();
-        
-        if (casillasReveladas.has(`${x}-${y}`)) {
-          return;
-        }
-        if (!bombaRevelada) {
-          const clave = `${x}-${y}`;
-          const marcacionActual = new Set(casillasMarcadas);
-    
-          // Cargar y reproducir el audio cuando se agrega una nueva marca
-          soundEffects.current.bandera.play();
-
-          if (marcacionActual.has(clave)) {
-            marcacionActual.delete(clave);
-          } else {
-            marcacionActual.add(clave);
-          }
-          setCasillasMarcadas(marcacionActual);
-        }
-    }
-    
     
       function reiniciarJuego() {
         setUbicacionesMinas([]);

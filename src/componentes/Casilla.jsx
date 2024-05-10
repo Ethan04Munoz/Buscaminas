@@ -8,16 +8,15 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
   let tonoClase = (x + y) % 2 === 0 ? "colorClaro" : "colorOscuro"; // Clase para el tono
   const [presionado, setPresionado] = useState(false);
   const [presionadoTiempo, setPresionadoTiempo] = useState(0);
-
   const [esMovil, setEsMovil] = useState(false);
+
   useEffect(() => {
-      console.log("Width heigth: ", window.innerHeight, window.innerWidth)
-      if(window.innerWidth < window.innerHeight){
-          setEsMovil(true);
-      }else{
-        setEsMovil(false);
-      }
-  }, [])
+    if(window.innerWidth < window.innerHeight){
+        setEsMovil(true);
+    }else{
+      setEsMovil(false);
+    }
+  }, []);
 
   // Determina si es un toque prolongado
   const esToqueProlongado = () => Date.now() - presionadoTiempo > 500; // 500 ms para toque prolongado
@@ -28,9 +27,11 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
   };
 
   const manejarToqueFin = (e) => {
-    e.preventDefault(); // Prevenir el evento de clic
-    if (presionado && esToqueProlongado()) {
+    if (esToqueProlongado()) {
+      e.preventDefault(); // Prevenir el evento de clic solo si es un toque prolongado
       manejarClicDerecho(e, x, y);
+    } else if (esMovil) {
+      manejarClicCasilla(x, y); // Manejar toque instantáneo como un clic izquierdo
     }
     setPresionado(false);
   };
@@ -74,7 +75,7 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
       className={clases}
       onMouseDown={manejarToqueInicio}
       onTouchStart={manejarToqueInicio}
-      onClick={() => !esMovil && manejarClicCasilla(x, y)} // Manejar clic solo si no es móvil
+      onTouchEnd={manejarToqueFin} // Usar onTouchEnd para manejar clics y toques prolongados en móviles
       onContextMenu={(e) => {
         e.preventDefault(); // Prevenir el menú contextual predeterminado
         esMovil || manejarClicDerecho(e, x, y); // Manejar clic derecho solo si no es móvil
