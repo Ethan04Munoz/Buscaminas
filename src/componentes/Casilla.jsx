@@ -8,15 +8,16 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
   let tonoClase = (x + y) % 2 === 0 ? "colorClaro" : "colorOscuro"; // Clase para el tono
   const [presionado, setPresionado] = useState(false);
   const [presionadoTiempo, setPresionadoTiempo] = useState(0);
-  const [esMovil, setEsMovil] = useState(false);
 
+  const [esMovil, setEsMovil] = useState(false);
   useEffect(() => {
-    if(window.innerWidth < window.innerHeight){
-        setEsMovil(true);
-    }else{
-      setEsMovil(false);
-    }
-  }, []);
+      console.log("Width heigth: ", window.innerHeight, window.innerWidth)
+      if(window.innerWidth < window.innerHeight){
+          setEsMovil(true);
+      }else{
+        setEsMovil(false);
+      }
+  }, [])
 
   // Determina si es un toque prolongado
   const esToqueProlongado = () => Date.now() - presionadoTiempo > 500; // 500 ms para toque prolongado
@@ -27,11 +28,13 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
   };
 
   const manejarToqueFin = (e) => {
-    if (esToqueProlongado()) {
-      e.preventDefault(); // Prevenir el evento de clic solo si es un toque prolongado
+    e.preventDefault(); // Prevenir el evento de clic
+    const toqueProlongadoBool = esToqueProlongado();
+    console.log("Valores fin toque: ", presionado, toqueProlongadoBool)
+    if (presionado && toqueProlongadoBool == true) {
       manejarClicDerecho(e, x, y);
-    } else if (esMovil) {
-      manejarClicCasilla(x, y); // Manejar toque instantáneo como un clic izquierdo
+    } else if (presionado && toqueProlongadoBool == false){
+      manejarClicCasilla(e, x, y);
     }
     setPresionado(false);
   };
@@ -73,9 +76,9 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
   return (
     <div
       className={clases}
-      onMouseDown={manejarToqueInicio}
-      onTouchStart={manejarToqueInicio}
-      onTouchEnd={manejarToqueFin} // Usar onTouchEnd para manejar clics y toques prolongados en móviles
+      onMouseDown={() => esMovil && manejarToqueInicio()}
+      onTouchStart={() => esMovil && manejarToqueInicio()}
+      onClick={() => !esMovil && manejarClicCasilla(x, y)} // Manejar clic solo si no es móvil
       onContextMenu={(e) => {
         e.preventDefault(); // Prevenir el menú contextual predeterminado
         esMovil || manejarClicDerecho(e, x, y); // Manejar clic derecho solo si no es móvil
