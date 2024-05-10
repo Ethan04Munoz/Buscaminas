@@ -56,7 +56,7 @@ function Modal(props){
                         <div>{translations[language].idioma}</div>
                             <div className='gridInterruptor'>
                                 {translations[language].espanol}
-                                <InputRadio tipoSlider="sliderColores" onChangeProp={cambiarIdioma}/> 
+                                <InputRadio instantSalesParametro={language == 'es' ? false : true} tipoSlider="sliderColores" onChangeProp={cambiarIdioma}/> 
                                 {translations[language].ingles}
                             </div>
 
@@ -68,7 +68,7 @@ function Modal(props){
                         <Suspense fallback={<div>Cargando...</div>}>
                             <div className='gridInterruptor'>
                                 No 
-                                <InputRadio onChangeProp={activarMusica}/> 
+                                <InputRadio instantSalesParametro={parseInt(music)} onChangeProp={activarMusica}/> 
                                 Si 
                             </div>
                         </Suspense>
@@ -81,7 +81,7 @@ function Modal(props){
                         <Suspense fallback={<div>Cargando...</div>}>
                             <div className='gridInterruptor'>
                                 No 
-                                <InputRadio onChangeProp={activarEfectosSonido}/> 
+                                <InputRadio instantSalesParametro={parseInt(soundEffect)} onChangeProp={activarEfectosSonido}/> 
                                 Si 
                             </div>
                         </Suspense>
