@@ -68,7 +68,7 @@ function Modal(props){
                         <Suspense fallback={<div>Cargando...</div>}>
                             <div className='gridInterruptor'>
                                 No 
-                                <InputRadio onChangeProp={{activarMusica}}/> 
+                                <InputRadio onChangeProp={activarMusica}/> 
                                 Si 
                             </div>
                         </Suspense>

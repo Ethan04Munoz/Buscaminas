@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Howl } from 'howler';
+import { useSelector } from 'react-redux';
 
 const GameMusic = ({ gameState }) => {
     const howlers = useRef({
@@ -7,6 +8,8 @@ const GameMusic = ({ gameState }) => {
         ganado: new Howl({ src: ["musica/com/feliz.mp3"], preload: true, loop: true, volume: 0.5 }),
         perdido: new Howl({ src: ["musica/com/triste.mp3"], preload: true, loop: true, volume: 0.5 })
     });
+
+    const music = useSelector(state => state.music.music);
 
     useEffect(() => {
         const stopAllSounds = () => {
@@ -17,7 +20,7 @@ const GameMusic = ({ gameState }) => {
             stopAllSounds();
         } else {
             stopAllSounds();
-            if (howlers.current[gameState]) {
+            if (howlers.current[gameState] && music=='1') {
                 howlers.current[gameState].play();
             }
         }
