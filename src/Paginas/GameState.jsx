@@ -17,11 +17,24 @@ function GameState(props){
     const language = useSelector(state => state.language.language);
     const soundEffect = useSelector(state => state.soundEffect.soundEffect);
 
-
     const [tableroSize, setTableroSize] = useState(8);
     const [cantidadMinas, setCantidadMinas] = useState(10);
     const [claseTablero, setClaseTablero] = useState('tablero');
     const [tamañoCasillas, setTamañoCasillas] = useState('casilla');
+    const [esMovil, setEsMovil] = useState(false);
+    const [estadoJuego, setEstadoJuego] = useState("no iniciado");
+    const [duracionPartidaActual, setDuracionPartidaActual] = useState(0);
+    const [ubicacionesMinas, setUbicacionesMinas] = useState([]);
+    const [minasGeneradas, setMinasGeneradas] = useState(false);
+    const [estadoXY, setEstadoXY] = useState(null);
+    const [primerClic, setPrimerClic] = useState(true);
+    const [casillasReveladas, setCasillasReveladas] = useState(new Set());
+    const [casillasMarcadas, setCasillasMarcadas] = useState(new Set());
+    const [encenderModalReiniciarJuego, setEncenderModalReiniciarJuego] = useState(false);
+    const [bombaRevelada, setBombaRevelada] = useState(false);
+    const [cronometro, setCronometro] = useState(0);
+    const [mostrarModalPerdido, setMostrarModalPerdido] = useState(false);
+    const [mostrarModalGanado, setMostrarModalGanado] = useState(false);
 
     const soundEffects = useRef({
       desentierro: new Howl({ src: ['efectosSonido/desentierro.mp3'], preload: true }),
@@ -29,7 +42,7 @@ function GameState(props){
       bandera: new Howl({ src: ['efectosSonido/bandera.mp3'], preload: true})
   });
 
-    const [esMovil, setEsMovil] = useState(false);
+
     useEffect(() => {
         console.log("Width heigth: ", window.innerHeight, window.innerWidth)
         if(window.innerWidth < window.innerHeight){
@@ -67,47 +80,41 @@ function GameState(props){
       if(difficulty == "dificil" && esMovil){
         navigate("/medium");
       }
-    }, [esMovil, props])
+    }, [props])
 
     function obtenerNumeroAleatorioEntre(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
+
+
+    function estaEnAreaProhibida(x, y, eX, eY) {
+      return x >= eX - 1 && x <= eX + 1 && y >= eY - 1 && y <= eY + 1;
+    }
     
-    
-      const [estadoJuego, setEstadoJuego] = useState("no iniciado");
-      const [duracionPartidaActual, setDuracionPartidaActual] = useState(0);
-      const [ubicacionesMinas, setUbicacionesMinas] = useState([]);
-      const [minasGeneradas, setMinasGeneradas] = useState(false);
-      const [estadoXY, setEstadoXY] = useState(null);
-    
-      function estaEnAreaProhibida(x, y, eX, eY) {
-        return x >= eX - 1 && x <= eX + 1 && y >= eY - 1 && y <= eY + 1;
-      }
-    
-      const generarMinasAleatorias = async (eX, eY) => {
-        let nuevasUbicacionesMinas = [];
-        while (nuevasUbicacionesMinas.length < cantidadMinas) {
-          let x = obtenerNumeroAleatorioEntre(0, tableroSize-1);
-          let y = obtenerNumeroAleatorioEntre(0, tableroSize-1);
-          if (!estaEnAreaProhibida(x, y, eX, eY) && !nuevasUbicacionesMinas.some(mina => mina.x === x && mina.y === y)) {
-            nuevasUbicacionesMinas.push({ x, y });
-          }
+    const generarMinasAleatorias = async (eX, eY) => {
+      let nuevasUbicacionesMinas = [];
+      while (nuevasUbicacionesMinas.length < cantidadMinas) {
+        let x = obtenerNumeroAleatorioEntre(0, tableroSize-1);
+        let y = obtenerNumeroAleatorioEntre(0, tableroSize-1);
+        if (!estaEnAreaProhibida(x, y, eX, eY) && !nuevasUbicacionesMinas.some(mina => mina.x === x && mina.y === y)) {
+          nuevasUbicacionesMinas.push({ x, y });
         }
-        await new Promise(resolve => setTimeout(resolve, 0));
-        setUbicacionesMinas(nuevasUbicacionesMinas);
-        setMinasGeneradas(true);
-      };
+      }
+      await new Promise(resolve => setTimeout(resolve, 0));
+      setUbicacionesMinas(nuevasUbicacionesMinas);
+      setMinasGeneradas(true);
+    };
       
     
-      useEffect(() => {
-        if(estadoXY!= null){
-          let x = estadoXY.x;
-          let y = estadoXY.y;
-          if(minasGeneradas==true){
-            revelarCasillas(x, y);
-          }
+    useEffect(() => {
+      if(estadoXY!= null){
+        let x = estadoXY.x;
+        let y = estadoXY.y;
+        if(minasGeneradas==true){
+          revelarCasillas(x, y);
         }
-      }, [minasGeneradas])
+      }
+    }, [minasGeneradas])
     
       function contarMinasAlrededor(tableroSize, ubicacionesMinas) {
         let contadorMinas = Array.from({ length: tableroSize }, () => 
@@ -141,10 +148,7 @@ function GameState(props){
         return contadorMinas;
       }
       
-      const [primerClic, setPrimerClic] = useState(true);
-      const [casillasReveladas, setCasillasReveladas] = useState(new Set());
-      const [casillasMarcadas, setCasillasMarcadas] = useState(new Set());
-      const [encenderModalReiniciarJuego, setEncenderModalReiniciarJuego] = useState(false);
+
     
       const calcularMinasVecinas = (x, y) => {
         let contadorMinas = 0;
@@ -245,7 +249,7 @@ function GameState(props){
         }
       }
 
-      const [bombaRevelada, setBombaRevelada] = useState(false);
+
     
       useEffect(() => {
         casillasReveladas.forEach(casilla => {
@@ -284,7 +288,7 @@ function GameState(props){
         setEncenderModalReiniciarJuego(false);
         console.log("Ubicaciones minas: ", ubicacionesMinas)
       }
-      const [cronometro, setCronometro] = useState(0);
+
     
       useEffect(() => {
         let intervalo;
@@ -312,9 +316,7 @@ function GameState(props){
       }, [primerClic, estadoJuego]);
     
       const contadorMinas = contarMinasAlrededor(tableroSize, ubicacionesMinas);
-    
-      const [mostrarModalPerdido, setMostrarModalPerdido] = useState(false);
-      const [mostrarModalGanado, setMostrarModalGanado] = useState(false);
+
       // Efecto para manejar el estado "perdido"
       useEffect(() => {
         if (estadoJuego == "perdido") {
@@ -359,10 +361,10 @@ function GameState(props){
     
       function manejarRecord(){
         const recordAnteriorSinParse = localStorage.getItem(`record${tableroSize}`);
-        console.log("Record sin parsear: ", recordAnteriorSinParse)
+        //console.log("Record sin parsear: ", recordAnteriorSinParse)
         const recordAnterior = parseInt(localStorage.getItem(`record${tableroSize}`));
         
-        console.log("Record: ", recordAnterior, duracionPartidaActual);
+        //console.log("Record: ", recordAnterior, duracionPartidaActual);
         if((duracionPartidaActual < recordAnterior && estadoJuego=="ganado") ||( recordAnterior == 0 && estadoJuego == "ganado" || (recordAnteriorSinParse == null && estadoJuego == "ganado" ))){
           localStorage.setItem(`record${tableroSize}`, duracionPartidaActual);
         }
