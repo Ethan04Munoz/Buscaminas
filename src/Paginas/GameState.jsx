@@ -359,14 +359,12 @@ function GameState(props){
         }
       }
     
-      function manejarRecord(){
-        const recordAnteriorSinParse = localStorage.getItem(`record${tableroSize}`);
-        //console.log("Record sin parsear: ", recordAnteriorSinParse)
-        const recordAnterior = parseInt(localStorage.getItem(`record${tableroSize}`));
-        
-        //console.log("Record: ", recordAnterior, duracionPartidaActual);
-        if((duracionPartidaActual < recordAnterior && estadoJuego=="ganado") ||( recordAnterior == 0 && estadoJuego == "ganado" || (recordAnteriorSinParse == null && estadoJuego == "ganado" ))){
-          localStorage.setItem(`record${tableroSize}`, duracionPartidaActual);
+      function manejarRecord() {
+        const recordAnteriorSinParse = getRecord();
+        const recordAnterior = parseInt(recordAnteriorSinParse);
+        const esNuevoRecord = duracionPartidaActual < recordAnterior || recordAnterior === 0 || recordAnteriorSinParse === null;
+        if (esNuevoRecord && estadoJuego === "ganado") {
+            localStorage.setItem(`record${tableroSize}`, duracionPartidaActual);
         }
       }
     
