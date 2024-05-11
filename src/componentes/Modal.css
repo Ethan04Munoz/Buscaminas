@@ -25,7 +25,7 @@
     color: #f3f8fc;
     text-align: center;
     font-weight: 650;
-    font-size: 1em;
+    font-size: 3em;
     user-select: none; 
 }
 
@@ -157,7 +157,7 @@ Color morado cool:
     .modal-content, .modalAdv {
         background-color: #1e252e;
         width: 70vw;
-        padding: 2rem;
+        padding: 1.5rem;
         border-radius: 1rem;
         transition: 0.2s all ease;
     }
@@ -173,7 +173,7 @@ Color morado cool:
 
     .gridConfiguracion{
         font-size: 1rem;
-        row-gap: 2rem;
+        row-gap: 1rem;
     }
 
     .gridConfiguracion img{
@@ -183,5 +183,12 @@ Color morado cool:
     .gridInterruptor{
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(3, auto);
+    }
+
+    .aLaDerechaConGrid{
+        font-size: 1vh;
+    }
+    .aLaDerechaConGrid .btnCerrarModal{
+        font-size: 3vh;
     }
 }
