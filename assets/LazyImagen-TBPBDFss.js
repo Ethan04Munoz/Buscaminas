@@ -1,0 +1,1 @@
+import{r as t,j as a}from"./index-KYknvf2g.js";function c({src:e,alt:n}){const[r,o]=t.useState(null);return t.useEffect(()=>{const s=new Image;s.src=e,s.onload=()=>o(e)},[e]),a.jsx(a.Fragment,{children:r?a.jsx("img",{src:r,alt:n}):a.jsx("div",{className:"divCargando",children:"Cargando..."})})}export{c as default};
