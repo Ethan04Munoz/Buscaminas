@@ -84,19 +84,20 @@ function GameState(props){
         return x >= eX - 1 && x <= eX + 1 && y >= eY - 1 && y <= eY + 1;
       }
     
-      function generarMinasAleatorias(eX, eY) {
+      const generarMinasAleatorias = async (eX, eY) => {
         let nuevasUbicacionesMinas = [];
         while (nuevasUbicacionesMinas.length < cantidadMinas) {
-            let x = obtenerNumeroAleatorioEntre(0, tableroSize-1);
-            let y = obtenerNumeroAleatorioEntre(0, tableroSize-1);
-            if (!estaEnAreaProhibida(x, y, eX, eY) && !nuevasUbicacionesMinas.some(mina => mina.x === x && mina.y === y)) {
-              nuevasUbicacionesMinas.push({ x, y });
+          let x = obtenerNumeroAleatorioEntre(0, tableroSize-1);
+          let y = obtenerNumeroAleatorioEntre(0, tableroSize-1);
+          if (!estaEnAreaProhibida(x, y, eX, eY) && !nuevasUbicacionesMinas.some(mina => mina.x === x && mina.y === y)) {
+            nuevasUbicacionesMinas.push({ x, y });
           }
         }
-        console.log("Cantidad de minas: ", nuevasUbicacionesMinas.length)
-        setMinasGeneradas(true);
+        await new Promise(resolve => setTimeout(resolve, 0));
         setUbicacionesMinas(nuevasUbicacionesMinas);
-      }
+        setMinasGeneradas(true);
+      };
+      
     
       useEffect(() => {
         if(estadoXY!= null){
@@ -200,7 +201,7 @@ function GameState(props){
         setCasillasReveladas(new Set(casillasReveladas));
       };
     
-      const manejarClicCasilla = async (x, y) => {
+      const manejarClicCasilla = async (e, x, y) => {
         if (primerClic) {
           setEstadoXY({x:x, y:y});
           generarMinasAleatorias(x,y);

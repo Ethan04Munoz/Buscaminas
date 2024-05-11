@@ -30,7 +30,7 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
   const manejarToqueFin = (e) => {
     e.preventDefault(); // Prevenir el evento de clic
     const toqueProlongadoBool = esToqueProlongado();
-    console.log("Valores fin toque: ", presionado, toqueProlongadoBool)
+    //console.log("Valores fin toque: ", presionado, toqueProlongadoBool)
     if (presionado && toqueProlongadoBool == true) {
       manejarClicDerecho(e, x, y);
     } else if (presionado && toqueProlongadoBool == false){
@@ -78,10 +78,13 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
       className={clases}
       onMouseDown={() => esMovil && manejarToqueInicio()}
       onTouchStart={() => esMovil && manejarToqueInicio()}
-      onClick={() => !esMovil && manejarClicCasilla(x, y)} // Manejar clic solo si no es móvil
+      onClick={(e) => {
+        e.preventDefault();
+        !esMovil && manejarClicCasilla(e, x, y)} 
+      }
       onContextMenu={(e) => {
-        e.preventDefault(); // Prevenir el menú contextual predeterminado
-        esMovil || manejarClicDerecho(e, x, y); // Manejar clic derecho solo si no es móvil
+        e.preventDefault(); 
+        esMovil || manejarClicDerecho(e, x, y); 
       }}
     >
       {contenido}
