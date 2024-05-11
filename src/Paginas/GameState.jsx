@@ -325,20 +325,15 @@ function GameState(props){
             setMostrarModalPerdido(true);
           }, 2000); // Espera 2 segundos
           return () => clearTimeout(timer); // Limpieza al desmontar
-        } else {
+        } else if (estadoJuego == "ganado") {
           setMostrarModalPerdido(false);
-        }
-      }, [estadoJuego]);
-    
-      // Efecto para manejar el estado "ganado"
-      useEffect(() => {
-        if (estadoJuego == "ganado") {
           const timer = setTimeout(() => {
             manejarRecord();
             setMostrarModalGanado(true);
           }, 4000); // Espera 2 segundos
           return () => clearTimeout(timer);
-        } else {
+        }else{
+          setMostrarModalPerdido(false);
           setMostrarModalGanado(false);
         }
       }, [estadoJuego]);
