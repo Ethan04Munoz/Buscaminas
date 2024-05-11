@@ -252,6 +252,7 @@ function GameState(props){
 
     
       useEffect(() => {
+        // Verificar si alguna de las casillas reveladas es una mina
         casillasReveladas.forEach(casilla => {
           const [x, y] = casilla.split('-').map(Number);
           if (ubicacionesMinas.some(mina => mina.x === x && mina.y === y)) {
@@ -261,18 +262,15 @@ function GameState(props){
             }, 0);
           }
         });
-      }, [casillasReveladas, ubicacionesMinas]);
-    
-      useEffect(() => {
-        let casillasReveladasArray = Array.from(casillasReveladas);
-        console.log("Array casillas reveladas lol: ", casillasReveladasArray)
-        if(casillasReveladasArray.length == (tableroSize*tableroSize-cantidadMinas)){
+      
+        // Verificar si se han revelado todas las casillas que no son minas
+        if (casillasReveladas.size === (tableroSize * tableroSize - cantidadMinas)) {
           setTimeout(() => {
             setDuracionPartidaActual(cronometro);
             setEstadoJuego("ganado");
           }, 0);
         }
-      }, [ubicacionesMinas, casillasReveladas])
+      }, [casillasReveladas, ubicacionesMinas]);
     
       function reiniciarJuego() {
         setUbicacionesMinas([]);
@@ -317,25 +315,24 @@ function GameState(props){
     
       const contadorMinas = contarMinasAlrededor(tableroSize, ubicacionesMinas);
 
-      // Efecto para manejar el estado "perdido"
       useEffect(() => {
-        if (estadoJuego == "perdido") {
-          const timer = setTimeout(() => {
-            manejarRecord();
-            setMostrarModalPerdido(true);
-          }, 2000); // Espera 2 segundos
-          return () => clearTimeout(timer); // Limpieza al desmontar
-        } else if (estadoJuego == "ganado") {
-          setMostrarModalPerdido(false);
-          const timer = setTimeout(() => {
-            manejarRecord();
-            setMostrarModalGanado(true);
-          }, 4000); // Espera 2 segundos
-          return () => clearTimeout(timer);
-        }else{
-          setMostrarModalPerdido(false);
-          setMostrarModalGanado(false);
-        }
+          if (estadoJuego == "perdido") {
+              const timer = setTimeout(() => {
+                  manejarRecord();
+                  setMostrarModalPerdido(true);
+              }, 2000); 
+              return () => clearTimeout(timer); 
+          } else if (estadoJuego == "ganado") {
+              setMostrarModalPerdido(false);
+              const timer = setTimeout(() => {
+                  manejarRecord();
+                  setMostrarModalGanado(true);
+              }, 4000); 
+              return () => clearTimeout(timer);
+          } else{
+              setMostrarModalPerdido(false);
+              setMostrarModalGanado(false);
+          }
       }, [estadoJuego]);
     
       function funcionEncenderModalReiniciarJuego(){
