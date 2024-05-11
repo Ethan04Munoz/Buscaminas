@@ -15,7 +15,7 @@ function GameState(props){
     const navigate = useNavigate();
 
     const language = useSelector(state => state.language.language);
-    const soundEffect = useSelector(state => state.soundEffect.soundEffect);
+    const soundEffectValueConfig = useSelector(state => state.soundEffect.soundEffect);
 
     const [tableroSize, setTableroSize] = useState(8);
     const [cantidadMinas, setCantidadMinas] = useState(10);
@@ -148,8 +148,6 @@ function GameState(props){
         return contadorMinas;
       }
       
-
-    
       const calcularMinasVecinas = (x, y) => {
         let contadorMinas = 0;
         console.log("Ubicaciones minas: ", ubicacionesMinas)
@@ -211,7 +209,7 @@ function GameState(props){
           generarMinasAleatorias(x,y);
           setPrimerClic(false);
           setEstadoJuego("jugando");
-          if(soundEffect=="1")
+          if(soundEffectValueConfig=="1")
             soundEffects.current.desentierro.play();
         }else {
           if(ubicacionesMinas.some(mina => mina.x === x && mina.y === y)){
@@ -219,7 +217,7 @@ function GameState(props){
           } else {
             if(bombaRevelada == false){
               revelarCasillas(x, y); 
-              if(soundEffect=="1")
+              if(soundEffectValueConfig=="1")
                 soundEffects.current.primerClic.play();
             }
           }
@@ -229,15 +227,14 @@ function GameState(props){
       const manejarClicDerecho = (e, x, y) => {
         e.preventDefault();
         
-        if (casillasReveladas.has(`${x}-${y}`)) {
+        if (casillasReveladas.has(`${x}-${y}`))
           return;
-        }
+        
         if (!bombaRevelada) {
           const clave = `${x}-${y}`;
           const marcacionActual = new Set(casillasMarcadas);
     
-          // Cargar y reproducir el audio cuando se agrega una nueva marca
-          if(soundEffect=="1")
+          if(soundEffectValueConfig=="1") 
             soundEffects.current.bandera.play();
 
           if (marcacionActual.has(clave)) {
@@ -249,8 +246,6 @@ function GameState(props){
         }
       }
 
-
-    
       useEffect(() => {
         // Verificar si alguna de las casillas reveladas es una mina
         casillasReveladas.forEach(casilla => {
