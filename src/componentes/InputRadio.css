@@ -79,10 +79,8 @@
 
 @media (max-width: 968px) {
   .switch {
-    position: relative;
-    display: inline-block;
-    width: 3rem;
-    height: 1.8rem;
+    width: 2rem;
+    height: 1.2rem;
   }
 
 }

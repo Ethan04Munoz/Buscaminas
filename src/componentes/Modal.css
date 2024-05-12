@@ -157,7 +157,8 @@ Color morado cool:
     .modal-content, .modalAdv {
         background-color: #1e252e;
         width: 70vw;
-        padding: 1.5rem;
+        /*height: 70vh;*/
+        padding: 1rem;
         border-radius: 1rem;
         transition: 0.2s all ease;
     }
@@ -167,13 +168,13 @@ Color morado cool:
         color: #f3f8fc;
         text-align: center;
         font-weight: 650;
-        font-size: 3vh;
+        font-size: 4vh;
         user-select: none; /* Impedir el seleccionamiento del texto en las modales*/
     }
 
     .gridConfiguracion{
         font-size: 1rem;
-        row-gap: 1rem;
+        row-gap: 0.5rem;
     }
 
     .gridConfiguracion img{
