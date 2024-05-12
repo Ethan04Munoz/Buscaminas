@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Modal.css';
 import InputRadio from './InputRadio.jsx';
 import { Suspense } from 'react';
@@ -13,6 +13,8 @@ function Modal(props){
     const soundEffect = useSelector(state => state.soundEffect.soundEffect);
 
     const dispatch = useDispatch();
+
+    const [esMovil, setEsMovil] = useState(false);
 
     function manejarClaseBotonReiniciar(){
         if (props.motivoModal == "g") {
@@ -34,6 +36,15 @@ function Modal(props){
         dispatch({ type: 'CHANGE_CONFIG_SOUNDEFFECTS'})
     }
 
+    useEffect(() => {
+        console.log("Width heigth: ", window.innerHeight, window.innerWidth)
+        if(window.innerWidth < window.innerHeight){
+            setEsMovil(true);
+        }else{
+          setEsMovil(false);
+        }
+    }, [])
+
     return(
         <div className="modal">
             <div className='modalAdv'>
@@ -51,27 +62,33 @@ function Modal(props){
                 ) : null}
                 {(props.tituloModal=="Configuración" || props.tituloModal == "Settings") && (
                     <div className='gridConfiguracion'>
-                        
-                    
                         <div>{translations[language].idioma}</div>
-                            <div className='gridInterruptor'>
-                                {translations[language].espanol}
-                                <InputRadio instantSalesParametro={language == 'es' ? false : true} tipoSlider="sliderColores" onChangeProp={cambiarIdioma}/> 
-                                {translations[language].ingles}
-                            </div>
-
-                        <Suspense fallback={<div>Cargando...</div>}>
-                            <div>
-                                <LazyImage src="musica-Dark.png" alt="" />
-                            </div>
-                        </Suspense>
-                        <Suspense fallback={<div>Cargando...</div>}>
-                            <div className='gridInterruptor'>
-                                No 
-                                <InputRadio instantSalesParametro={parseInt(music)} onChangeProp={activarMusica}/> 
-                                Si 
-                            </div>
-                        </Suspense>
+                        <div className='gridInterruptor'>
+                            {translations[language].espanol}
+                            <InputRadio instantSalesParametro={language == 'es' ? false : true} tipoSlider="sliderColores" onChangeProp={cambiarIdioma}/> 
+                            {translations[language].ingles}
+                        </div>
+                        {esMovil == false ? (
+                            <>
+                                <Suspense fallback={<div>Cargando...</div>}>
+                                    <div>
+                                        <LazyImage src="musica-Dark.png" alt="" />
+                                    </div>
+                                </Suspense>
+                                <Suspense fallback={<div>Cargando...</div>}>
+                                    <div className='gridInterruptor'>
+                                        No 
+                                        <InputRadio instantSalesParametro={parseInt(music)} onChangeProp={activarMusica}/> 
+                                        Si 
+                                    </div>
+                                </Suspense>                            
+                            </>
+                        ) : (
+                            <>
+                                <div></div>
+                                <div></div>
+                            </>
+                        )}
 
                         <Suspense fallback={<div>Cargando...</div>}>
                             <div>
