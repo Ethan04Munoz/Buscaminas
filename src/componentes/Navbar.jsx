@@ -21,7 +21,7 @@ function Navbar(){
     return(
         <div className="navbar">
             <div className="gridNavBar">
-                <Link to="/Buscaminas/"><div className="buscaminasHomeTitle"> <h1>{translations[language].tituloPrincipalNavbar}</h1></div></Link>
+                <Link to="/"><div className="buscaminasHomeTitle"> <h1>{translations[language].tituloPrincipalNavbar}</h1></div></Link>
                 <div></div>
                 <img className="" src="webp/config.webp" alt="" onClick={encenderModalConfiguracion}/>
             </div>

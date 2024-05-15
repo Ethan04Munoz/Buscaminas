@@ -17,22 +17,22 @@ function Submenu(){
     return (
         <div className="submenu">
             <div className='contenedorEnlace'>
-                <Link className="enlaceSubmenu" to="/Buscaminas/easy">{translations[language].dificultadFacilSubmenu}</Link>
+                <Link className="enlaceSubmenu" to="/easy">{translations[language].dificultadFacilSubmenu}</Link>
             </div>
             <div className='contenedorEnlace'>
-                <Link className="enlaceSubmenu" to="/Buscaminas/medium">{translations[language].dificultadMediaSubmenu}</Link>
+                <Link className="enlaceSubmenu" to="/medium">{translations[language].dificultadMediaSubmenu}</Link>
             </div>
             {esMovil == false && (
             <div className='contenedorEnlace'>
-                <Link className="enlaceSubmenu" to="/Buscaminas/hard">{translations[language].dificultadDificilSubmenu}</Link>
+                <Link className="enlaceSubmenu" to="/hard">{translations[language].dificultadDificilSubmenu}</Link>
             </div>
             )}
 
             <div className='contenedorEnlace'>
-                <Link className="enlaceSubmenu" to="/Buscaminas/help">{translations[language].ayudaSubmenu}</Link>
+                <Link className="enlaceSubmenu" to="/help">{translations[language].ayudaSubmenu}</Link>
             </div>
             <div className="contenedorEnlace">
-                <Link className="enlaceSubmenu" to="/Buscaminas/about">{translations[language].aboutSubmenu}</Link>
+                <Link className="enlaceSubmenu" to="/about">{translations[language].aboutSubmenu}</Link>
             </div>
         </div>
     )

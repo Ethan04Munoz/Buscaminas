@@ -24,20 +24,20 @@ function Home(){
             <Navbar/>
             <Submenu/>
             <div className="gridDificultades">
-                <Link to="/Buscaminas/easy">
+                <Link to="/easy">
                 <div className="contenedorNivel" id="parteIzq">
                     <p> {translations[language].dificultadFacilHome} </p>
                     <img src="webp/buscamina flor (2).webp" alt="" />
                 </div>
                 </Link>
-                <Link to="/Buscaminas/medium">
+                <Link to="/medium">
                 <div className="contenedorNivel" >
                     <p> {translations[language].dificultadMediaHome} </p> 
                     <img src="webp/buscamina flor (1).webp" alt="" />
                 </div>  
                 </Link>
                 {esMovil==false && (
-                    <Link to="/Buscaminas/hard">
+                    <Link to="/hard">
                     <div className="contenedorNivel" id="parteDer">
                         <p> {translations[language].dificultadDificilHome} </p>
                         <img src="webp/buscamina flor (3).webp" alt="" />
