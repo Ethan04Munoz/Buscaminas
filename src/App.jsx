@@ -1,25 +1,24 @@
-import {Route, Routes, BrowserRouter, useNavigate} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
+import * as React from "react";
+import { HashRouter } from "react-router-dom";
 import GameState from "./Paginas/GameState";
 import Home from "./Paginas/Home";
 import ComoJugar from "./Paginas/ComoJugar";
 import AboutPage from "./Paginas/About";
-import GameMusic from "./componentes/GameMusic";
-import RedirectHandler from "./componentes/RedirectHandler";
 
 function App() {
   return(
-    <BrowserRouter>
-      <RedirectHandler/>
+    <HashRouter>
       <Routes>
-        <Route path="/Buscaminas/easy" element={<GameState difficulty="facil"/>}/>
-        <Route path="/Buscaminas/medium" element={<GameState difficulty="medio"/>}/>
-        <Route path="/Buscaminas/hard" element={<GameState difficulty="dificil"/>}/>
-        <Route path="/Buscaminas/help" element={<ComoJugar/>}/>
-        <Route path="/Buscaminas/about" element={<AboutPage/>}/>
-        <Route path="/Buscaminas" element={<Home/>}/>
+        <Route exact path="/easy" element={<GameState difficulty="facil"/>}/>
+        <Route exact path="/medium" element={<GameState difficulty="medio"/>}/>
+        <Route exact path="/hard" element={<GameState difficulty="dificil"/>}/>
+        <Route exact path="/help" element={<ComoJugar/>}/>
+        <Route exact path="/about" element={<AboutPage/>}/>
+        <Route exact path="/" element={<Home/>}/>
         {/*<Route path="/Buscaminas/pruebas" element={<GameMusic/>}/>*/}
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
