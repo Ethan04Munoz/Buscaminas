@@ -92,16 +92,23 @@ function GameState(props){
     }
     
     const generarMinasAleatorias = async (eX, eY) => {
-      let nuevasUbicacionesMinas = [];
-      while (nuevasUbicacionesMinas.length < cantidadMinas) {
-        let x = obtenerNumeroAleatorioEntre(0, tableroSize-1);
-        let y = obtenerNumeroAleatorioEntre(0, tableroSize-1);
-        if (!estaEnAreaProhibida(x, y, eX, eY) && !nuevasUbicacionesMinas.some(mina => mina.x === x && mina.y === y)) {
-          nuevasUbicacionesMinas.push({ x, y });
+      const ubicacionesMinas = new Set();
+    
+      while (ubicacionesMinas.size < cantidadMinas) {
+        const x = obtenerNumeroAleatorioEntre(0, tableroSize - 1);
+        const y = obtenerNumeroAleatorioEntre(0, tableroSize - 1);
+    
+        if (!estaEnAreaProhibida(x, y, eX, eY)) {
+          ubicacionesMinas.add(`${x},${y}`);
         }
       }
+    
       await new Promise(resolve => setTimeout(resolve, 0));
-      setUbicacionesMinas(nuevasUbicacionesMinas);
+    
+      setUbicacionesMinas(Array.from(ubicacionesMinas).map(coordenada => {
+        const [x, y] = coordenada.split(',').map(Number);
+        return { x, y };
+      }));
       setMinasGeneradas(true);
     };
       
