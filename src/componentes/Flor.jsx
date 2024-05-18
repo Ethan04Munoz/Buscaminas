@@ -2,7 +2,6 @@ import './Flor.css';
 import React from 'react';
 
 function Flor() {
-    // Lista de clases para los colores de los pétalos
     const coloresPetalo = [
         'petalo-rosa', 
         'petalo-azul', 
@@ -15,16 +14,10 @@ function Flor() {
         'petalo-azul2'
     ];
     const tiposPetalo = ['petalo-redondo', 'petalo-ovalo10', 'petalo-pentagono'];
-    // Función para obtener un color aleatorio de la lista
-    const getColorAleatorio = () => {
-        const indiceAleatorio = Math.floor(Math.random() * coloresPetalo.length);
-        return coloresPetalo[indiceAleatorio];
-    };
 
-    const getTipoPetaloAleatorio = () => {
-        const indiceAleatorio = Math.floor(Math.random() * tiposPetalo.length);
-        return tiposPetalo[indiceAleatorio];
-    }
+    const getColorAleatorio = () => coloresPetalo[Math.floor(Math.random() * coloresPetalo.length)];
+    const getTipoPetaloAleatorio = () => tiposPetalo[Math.floor(Math.random() * tiposPetalo.length)];
+
     const colorFlor = getColorAleatorio();
     const tipoPetalo = getTipoPetaloAleatorio();
 
@@ -40,7 +33,6 @@ function Flor() {
             'petalo-azulCielo': 'centro-azulCielo',
             'petalo-azul2': 'centro-azul2'
         };
-
         return centroColorMap[colorPetalo] || 'centro-default';
     };
 
@@ -48,14 +40,12 @@ function Flor() {
 
     return (
         <div className="flower">
-            <div className={`petal ${tipoPetalo} ${colorFlor}`}></div>
-            <div className={`petal ${tipoPetalo} ${colorFlor}`}></div>
-            <div className={`petal ${tipoPetalo} ${colorFlor}`}></div>
-            <div className={`petal ${tipoPetalo} ${colorFlor}`}></div>
-            <div className={`petal ${tipoPetalo} ${colorFlor}`}></div>
+            {[...Array(5)].map((_, i) => (
+                <div key={i} className={`petal ${tipoPetalo} ${colorFlor}`} style={{ transform: `rotate(${i * 72}deg)` }}></div>
+            ))}
             <div className={`center ${claseCentro}`}></div>
         </div>
-    )
+    );
 }
 
 export default Flor;

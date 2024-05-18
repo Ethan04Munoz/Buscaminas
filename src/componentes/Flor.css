@@ -1,11 +1,10 @@
+/* Flor.css */
 @keyframes crecerYMostrar {
   from {
-    /* Iniciamos con un componente pequeño y transparente */
     transform: scale(0.2) rotate(0deg);
     opacity: 0;
   }
   to {
-    /* Finalizamos con un componente de tamaño normal y opaco */
     transform: scale(1.3) rotate(360deg);
     opacity: 1;
   }
@@ -15,110 +14,48 @@
     position: relative;
     width: 20px;
     height: 20px;
-    animation-name: crecerYMostrar;
-    animation-duration: 3s;
-    /* La animación inicia tan pronto como se carga el componente */
-    animation-fill-mode: forwards;
-  }
-  
-  .petal {
+    will-change: transform, opacity;
+    animation: crecerYMostrar 3s forwards;
+}
+
+.petal {
     width: 1rem;
     height: 2rem;
     position: absolute;
     top: -15%;
     left: 25%;
-  }
+    will-change: transform, opacity;
+}
 
-  .petalo-redondo{
-    border-radius: 50%;
-  }
+.petalo-redondo { border-radius: 50%; }
+.petalo-ovalo10 { clip-path: ellipse(30% 50% at 50% 50%); }
+.petalo-pentagono { clip-path: ellipse(200% 50% at 10% 30%); }
 
-  .petalo-ovalo10{
-    clip-path: ellipse(30% 50% at 50% 50%);
-  }
+.petalo-rosa { background: #ffc0cb; }
+.petalo-fuschia { background: #fa3757; }
+.petalo-azul { background: #0000ff; }
+.petalo-azulCielo { background: #76bdff; }
+.petalo-azul2 { background: #3284ff; }
+.petalo-violeta { background: #8a2be2; }
+.petalo-rojo { background: #ff0000; }
+.petalo-tinto { background: #b90009; }
+.petalo-naranja { background: #ff8a00; }
 
-  .petalo-pentagono{
-    clip-path: ellipse(200% 50% at 10% 30%);
-  }
+.centro-rosa { background: #ffadbb; }
+.centro-fuschia { background: #be2841; }
+.centro-azul { background: #0000d1; }
+.centro-azulCielo { background: #619cd3; }
+.centro-azul2 { background: #276bd1; }
+.centro-violeta { background: #5f1d9c; }
+.centro-rojo { background: #bd0000; }
+.centro-tinto { background: #750006; }
+.centro-naranja { background: #ff7e00; }
 
-  .petalo-rosa{
-    background: #ffc0cb;
-  }
-  .petalo-fuschia{
-    background: #fa3757;
-  }
-  .petalo-azul{
-    background: #0000ff;
-  }
-  .petalo-azulCielo{
-    background: #76bdff;
-  }
-  .petalo-azul2{
-    background: #3284ff;
-  }
-  .petalo-violeta{
-    background: #8a2be2;
-  }
-  .petalo-rojo{
-    background: #ff0000;
-  }
-  .petalo-tinto{
-    background: #b90009;
-  }
-  .petalo-naranja{
-    background: #ff8a00;
-  }
-
-  .centro-rosa{
-    background: #ffadbb;
-  }
-  .centro-fuschia{
-    background: #be2841;
-  }
-  .centro-azul{
-    background: #0000d1;
-  }
-  .centro-azulCielo{
-    background: #619cd3;
-  }
-  .centro-azul2{
-    background: #276bd1;
-  }
-  .centro-violeta{
-    background: #5f1d9c;
-  }
-  .centro-rojo{
-    background: #bd0000;
-  }
-  .centro-tinto{
-    background: #750006;
-  }
-  .centro-naranja{
-    background: #ff7e00;
-  }
-  
-  .petal:nth-child(1) {
-    transform: rotate(0deg);
-  }
-  .petal:nth-child(2) {
-    transform: rotate(72deg);
-  }
-  .petal:nth-child(3) {
-    transform: rotate(144deg);
-  }
-  .petal:nth-child(4) {
-    transform: rotate(216deg);
-  }
-  .petal:nth-child(5) {
-    transform: rotate(288deg);
-  }
-  
-  .center {
+.center {
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
     position: absolute;
     top: 25%;
     left: 25%;
-  }
-  
+}
