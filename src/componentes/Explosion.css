@@ -11,8 +11,8 @@
   width: 20px;
   height: 20px;
   background-color: #ffc400d0; 
-  border-radius: 30%;/* Cambia los colores según lo desees */
-  opacity: 0; /* Empieza invisible */
+  border-radius: 30%;
+  opacity: 0; 
 }
 
 @keyframes explosion {
@@ -39,7 +39,6 @@
   animation: explosion 1s ease-out forwards ;
 }
 
-/* Ejemplo para variar la animación entre las partes */
 .parte:nth-child(1) {
   animation-delay: 0.1s;
 }
@@ -82,7 +81,6 @@
   
   transform-origin: top left;
 }
-/* Añade variaciones según lo desees */
 
 .ember {
   width: 10px;
@@ -91,8 +89,8 @@
   position: absolute;
   background-color: rgb(255, 123, 0, 0.5);
   animation: moveFromCenter 0.5s forwards, glow 5s linear infinite, float 5s linear infinite;
-  --x-offset: 0px; /* Ejemplo de desplazamiento en X */
-  --y-offset: 20px; /* Ejemplo de desplazamiento en Y */
+  --x-offset: 0px; 
+  --y-offset: 20px;
 }
 
 @keyframes float {
@@ -173,4 +171,3 @@
   left: 0px;
   bottom: -36px;
 }
-/* Añade más estilos de posición según sea necesario */
