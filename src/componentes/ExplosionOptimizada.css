@@ -1,0 +1,90 @@
+.explosion {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 60px;
+  }
+  
+  .parte {
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #ffc400d0;
+    border-radius: 30%;
+    opacity: 0;
+    animation: explosion 1s ease-out forwards;
+    will-change: transform, opacity;
+  }
+  
+  @keyframes explosion {
+    0% {
+      transform: scale(0.5) translateX(-20px);
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+      background-color: #ff7b00b0;
+    }
+    75% {
+      background-color: #c20000a9;
+      opacity: 0.5;
+    }
+    100% {
+      background-color: #53000081;
+      transform: scale(4) translateY(-50px) translateX(0px) rotate(45deg);
+      opacity: 0;
+    }
+  }
+  
+  .ember {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: rgba(255, 123, 0, 0.5);
+    animation: moveFromCenter 0.5s forwards, glow 5s linear infinite, float 5s linear infinite;
+    will-change: transform, opacity;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(30px);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 0.7;
+    }
+  }
+  
+  @keyframes moveFromCenter {
+    0% {
+      transform: scale(0) translateX(0px) translateY(0px);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1) translateX(var(--x-offset)) translateY(var(--y-offset));
+      opacity: 1;
+    }
+  }
+  
+  @keyframes glow {
+    0% {
+      background-color: rgba(202, 98, 0, 0.5);
+    }
+    50% {
+      background-color: rgba(133, 0, 0, 0.5);
+    }
+    75% {
+      background-color: rgba(12, 12, 12, 0.8);
+    }
+    100% {
+      background-color: rgba(118, 66, 17, 0.5);
+    }
+  }
+  

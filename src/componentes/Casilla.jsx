@@ -1,8 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import Flor from './Flor';
-import Explosion from './Explosion';
+import React, { useState, useEffect } from "react";
+import Flor from "./Flor";
+import Explosion from "./Explosion";
+import ExplosionOptimizada from "./ExplosionOptimizada";
 
-function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, manejarClicCasilla, manejarClicDerecho, estadoJuego }) {
+function Casilla({
+  tamaño,
+  x,
+  y,
+  esMina,
+  numeroMinas,
+  revelada,
+  marcada,
+  manejarClicCasilla,
+  manejarClicDerecho,
+  estadoJuego,
+}) {
   let clases = tamaño;
   let contenido = "";
   let tonoClase = (x + y) % 2 === 0 ? "colorClaro" : "colorOscuro"; // Clase para el tono
@@ -11,13 +23,13 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
 
   const [esMovil, setEsMovil] = useState(false);
   useEffect(() => {
-      console.log("Width heigth: ", window.innerHeight, window.innerWidth)
-      if(window.innerWidth < window.innerHeight){
-          setEsMovil(true);
-      }else{
-        setEsMovil(false);
-      }
-  }, [])
+    console.log("Width heigth: ", window.innerHeight, window.innerWidth);
+    if (window.innerWidth < window.innerHeight) {
+      setEsMovil(true);
+    } else {
+      setEsMovil(false);
+    }
+  }, []);
 
   // Determina si es un toque prolongado
   const esToqueProlongado = () => Date.now() - presionadoTiempo > 500; // 500 ms para toque prolongado
@@ -33,7 +45,7 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
     //console.log("Valores fin toque: ", presionado, toqueProlongadoBool)
     if (presionado && toqueProlongadoBool == true) {
       manejarClicDerecho(e, x, y);
-    } else if (presionado && toqueProlongadoBool == false){
+    } else if (presionado && toqueProlongadoBool == false) {
       manejarClicCasilla(e, x, y);
     }
     setPresionado(false);
@@ -41,28 +53,33 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
 
   useEffect(() => {
     if (presionado) {
-      window.addEventListener('mouseup', manejarToqueFin);
-      window.addEventListener('touchend', manejarToqueFin);
+      window.addEventListener("mouseup", manejarToqueFin);
+      window.addEventListener("touchend", manejarToqueFin);
     } else {
-      window.removeEventListener('mouseup', manejarToqueFin);
-      window.removeEventListener('touchend', manejarToqueFin);
+      window.removeEventListener("mouseup", manejarToqueFin);
+      window.removeEventListener("touchend", manejarToqueFin);
     }
 
     return () => {
-      window.removeEventListener('mouseup', manejarToqueFin);
-      window.removeEventListener('touchend', manejarToqueFin);
+      window.removeEventListener("mouseup", manejarToqueFin);
+      window.removeEventListener("touchend", manejarToqueFin);
     };
   }, [presionado, esMovil]);
 
   if (estadoJuego === "ganado" && !revelada) {
-    contenido = <Flor/>;
+    contenido = <Flor />;
   } else if (marcada) {
     contenido = "🚩";
   } else if (revelada) {
     if (esMina) {
       contenido = "💣";
       if (estadoJuego === "perdido" && esMina) {
-        contenido = <>{contenido}<Explosion/></>;
+        contenido = (
+          <>
+            {contenido}
+            {esMovil ? <ExplosionOptimizada /> : <Explosion />}
+          </>
+        );
       }
     } else {
       contenido = numeroMinas > 0 ? numeroMinas : "";
@@ -80,11 +97,11 @@ function Casilla({ tamaño, x, y, esMina, numeroMinas, revelada, marcada, maneja
       onTouchStart={() => esMovil && manejarToqueInicio()}
       onClick={(e) => {
         e.preventDefault();
-        !esMovil && manejarClicCasilla(e, x, y)} 
-      }
+        !esMovil && manejarClicCasilla(e, x, y);
+      }}
       onContextMenu={(e) => {
-        e.preventDefault(); 
-        esMovil || manejarClicDerecho(e, x, y); 
+        e.preventDefault();
+        esMovil || manejarClicDerecho(e, x, y);
       }}
     >
       {contenido}
