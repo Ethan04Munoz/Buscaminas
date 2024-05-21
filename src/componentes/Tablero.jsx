@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Casilla from './Casilla';
 
 function Tablero({ tamañoCasillas, claseTablero, ubicacionesMinas, casillasReveladas, casillasMarcadas, manejarClicCasilla, manejarClicDerecho, contadorMinas, estadoJuego }) {
+  useEffect(() => {
+    console.log("ContadorMinas Tablero: ", contadorMinas)
+  }, [contadorMinas])
   return (
     <div className={claseTablero}>
       {contadorMinas.map((fila, x) =>

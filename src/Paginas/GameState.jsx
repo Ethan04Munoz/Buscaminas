@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import translations from '../redux/translations.js'; 
 import GameMusic from '../componentes/GameMusic.jsx'
 import { useRef } from 'react'
+const worker = new Worker(new URL('../worker.js', import.meta.url));
 
 function GameState(props){
     const navigate = useNavigate();
@@ -91,26 +92,22 @@ function GameState(props){
       return x >= eX - 1 && x <= eX + 1 && y >= eY - 1 && y <= eY + 1;
     }
     
-    const generarMinasAleatorias = async (eX, eY) => {
-      const ubicacionesMinas = new Set();
-    
-      while (ubicacionesMinas.size < cantidadMinas) {
-        const x = obtenerNumeroAleatorioEntre(0, tableroSize - 1);
-        const y = obtenerNumeroAleatorioEntre(0, tableroSize - 1);
-    
-        if (!estaEnAreaProhibida(x, y, eX, eY)) {
-          ubicacionesMinas.add(`${x},${y}`);
-        }
-      }
-    
-      await new Promise(resolve => setTimeout(resolve, 0));
-    
-      setUbicacionesMinas(Array.from(ubicacionesMinas).map(coordenada => {
-        const [x, y] = coordenada.split(',').map(Number);
-        return { x, y };
-      }));
-      setMinasGeneradas(true);
-    };
+    async function generarMinasAleatorias (eX, eY) {
+        worker.postMessage({
+            eX,
+            eY,
+            cantidadMinas,
+            tableroSize,
+            obtenerNumeroAleatorioEntreStr: obtenerNumeroAleatorioEntre.toString(),
+            estaEnAreaProhibidaStr: estaEnAreaProhibida.toString(),
+        });
+
+        worker.onmessage = function (e) {
+            const minasArray = e.data;
+            setUbicacionesMinas(minasArray);
+            setMinasGeneradas(true);
+        };
+    }
       
     
     useEffect(() => {
