@@ -94,18 +94,24 @@ function GameState(props){
     
     async function generarMinasAleatorias (eX, eY) {
         worker.postMessage({
-            eX,
-            eY,
-            cantidadMinas,
-            tableroSize,
-            obtenerNumeroAleatorioEntreStr: obtenerNumeroAleatorioEntre.toString(),
-            estaEnAreaProhibidaStr: estaEnAreaProhibida.toString(),
+            type: 'generateMines',
+            data: { 
+                eX, 
+                eY, 
+                cantidadMinas, 
+                tableroSize, 
+                obtenerNumeroAleatorioEntreStr: obtenerNumeroAleatorioEntre.toString(), 
+                estaEnAreaProhibidaStr: estaEnAreaProhibida.toString() 
+            }
         });
 
         worker.onmessage = function (e) {
-            const minasArray = e.data;
+          const { type, data } = e.data;
+          if( type == 'minesGenerated'){
+            const minasArray = data;
             setUbicacionesMinas(minasArray);
             setMinasGeneradas(true);
+          }
         };
     }
       
