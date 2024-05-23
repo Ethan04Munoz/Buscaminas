@@ -226,7 +226,7 @@ function GameState(props){
           setPrimerClic(false);
           setEstadoJuego("jugando");
           if(soundEffectValueConfig=="1")
-            soundEffects.current.desentierro.play();
+            soundEffects.current.primerClic.play();
         }else {
           if(ubicacionesMinas.some(mina => mina.x === x && mina.y === y)){
             setCasillasReveladas(new Set(casillasReveladas).add(`${x}-${y}`));
@@ -234,7 +234,7 @@ function GameState(props){
             if(bombaRevelada == false){
               revelarCasillas(x, y); 
               if(soundEffectValueConfig=="1")
-                soundEffects.current.primerClic.play();
+                soundEffects.current.desentierro.play();
             }
           }
         }
