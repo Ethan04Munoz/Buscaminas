@@ -56,5 +56,31 @@ self.onmessage = function (e) {
     
         const resultado = contarMinasAlrededor(tableroSize, ubicacionesMinas);
         self.postMessage({type: 'minesCounted', data: resultado});
+    } else if ( type === 'calculateNeighborMines' ) {
+        const { x, y, ubicacionesMinas, tableroSize } = data;
+
+        function calcularMinasVecinas(x, y, ubicacionesMinas, tableroSize) {
+            let contadorMinas = 0;
+            console.log("Ubicaciones minas: ", ubicacionesMinas);
+            
+            for (let dx = -1; dx <= 1; dx++) {
+                for (let dy = -1; dy <= 1; dy++) {
+                    if (dx === 0 && dy === 0) continue;
+                    const newX = x + dx;
+                    const newY = y + dy;
+    
+                    if (newX >= 0 && newX < tableroSize && newY >= 0 && newY < tableroSize) {
+                        if (ubicacionesMinas.some(mina => mina.x === newX && mina.y === newY)) {
+                            contadorMinas++;
+                        }
+                    }
+                }
+            }
+            console.log("Contador minas", contadorMinas);
+            return contadorMinas;
+        }
+    
+        const resultado = calcularMinasVecinas(x, y, ubicacionesMinas, tableroSize);
+        self.postMessage({type: 'neighborMinesCalculated', data: resultado});
     }
 };

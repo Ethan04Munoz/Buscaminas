@@ -138,8 +138,9 @@ function GameState(props){
     
         worker.onmessage = function (e) {
           const { type, data } = e.data;
-          console.log("Contarminasworker:", type, data)
           if (type === 'minesCounted') {
+            
+            console.log("Contarminasworker:", type, data)
             resolve(data);
           }
         };
@@ -152,28 +153,38 @@ function GameState(props){
   
 
       
-      const calcularMinasVecinas = (x, y) => {
-        let contadorMinas = 0;
-        console.log("Ubicaciones minas: ", ubicacionesMinas)
-        // Recorrer todas las casillas vecinas
-        for (let dx = -1; dx <= 1; dx++) {
-          for (let dy = -1; dy <= 1; dy++) {
-            if (dx === 0 && dy === 0) continue; // Saltar la casilla actual
-            const newX = x + dx;
-            const newY = y + dy;
-            // Verificar si las nuevas coordenadas están dentro del tablero
-            if (newX >= 0 && newX < tableroSize && newY >= 0 && newY < tableroSize) {
-              if (ubicacionesMinas.some(mina => mina.x === newX && mina.y === newY)) {
-                contadorMinas++;
-              }
-            }
+    const calcularMinasVecinas = (x, y) => {
+      return new Promise((resolve, reject) => {
+        const handleMessage = function (e) {
+          const { type, data } = e.data;
+          if (type === 'neighborMinesCalculated') {
+            console.log("Calcular minas worker:", type, data);
+            worker.removeEventListener('message', handleMessage); // Eliminar el manejador temporal
+            resolve(data); // Resolver la promesa con el valor de data
           }
-        }
-        console.log("Contador minas", contadorMinas)
-        return contadorMinas;
-      };
+        };
     
-      const revelarCasillas = (x, y) => {
+        worker.addEventListener('message', handleMessage);
+    
+        worker.postMessage({
+          type: 'calculateNeighborMines',
+          data: { 
+            x, 
+            y,
+            tableroSize,
+            ubicacionesMinas
+          }
+        });
+    
+        worker.onerror = function (e) {
+          worker.removeEventListener('message', handleMessage); // Eliminar el manejador temporal
+          reject(e);
+        };
+      });
+    };
+    
+    
+      const revelarCasillas = async (x, y) => {
         if (ubicacionesMinas.some(mina => mina.x === x && mina.y === y)) {
           return; // No hacer nada si es una mina
         }
@@ -186,8 +197,9 @@ function GameState(props){
     
         while (casillasARevisar.length > 0) {
           let [currentX, currentY] = casillasARevisar.pop();
-    
-          if (calcularMinasVecinas(currentX, currentY) === 0) {
+          const calculoMinasVecinas = await calcularMinasVecinas(currentX, currentY);
+          console.log("Minas en revelarcasillas: ", calculoMinasVecinas)
+          if (calculoMinasVecinas === 0) {
             for (let dx = -1; dx <= 1; dx++) {
               for (let dy = -1; dy <= 1; dy++) {
                 let newX = currentX + dx;
