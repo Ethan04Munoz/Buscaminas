@@ -23,5 +23,38 @@ self.onmessage = function (e) {
         });
 
         self.postMessage({ type: 'minesGenerated', data: minasArray });
+    } else if ( type === 'countMines' ) {
+        const { tableroSize, ubicacionesMinas } = data;
+        console.log("Trabajando en el worker")
+        function contarMinasAlrededor(tableroSize, ubicacionesMinas) {
+            let contadorMinas = Array.from({ length: tableroSize }, () => 
+              Array(tableroSize).fill(0));
+    
+            for (let x = 0; x < tableroSize; x++) {
+                for (let y = 0; y < tableroSize; y++) {
+                    for (let dx = -1; dx <= 1; dx++) {
+                        for (let dy = -1; dy <= 1; dy++) {
+                            if (dx === 0 && dy === 0) {
+                                continue;
+                            }
+    
+                            let newX = x + dx;
+                            let newY = y + dy;
+    
+                            if (newX >= 0 && newX < tableroSize && newY >= 0 && newY < tableroSize) {
+                                if (ubicacionesMinas.some(mina => mina.x === newX && mina.y === newY)) {
+                                    contadorMinas[x][y]++;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    
+            return contadorMinas;
+        }
+    
+        const resultado = contarMinasAlrededor(tableroSize, ubicacionesMinas);
+        self.postMessage({type: 'minesCounted', data: resultado});
     }
 };

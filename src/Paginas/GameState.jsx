@@ -126,37 +126,31 @@ function GameState(props){
       }
     }, [minasGeneradas])
     
-      function contarMinasAlrededor(tableroSize, ubicacionesMinas) {
-        let contadorMinas = Array.from({ length: tableroSize }, () => 
-          Array(tableroSize).fill(0));
-      
-        for (let x = 0; x < tableroSize; x++) {
-          for (let y = 0; y < tableroSize; y++) {
-            // Comprobar cada una de las 8 direcciones alrededor de la casilla
-            for (let dx = -1; dx <= 1; dx++) {
-              for (let dy = -1; dy <= 1; dy++) {
-                if (dx === 0 && dy === 0) {
-                  // Salta la casilla actual
-                  continue;
-                }
-      
-                let newX = x + dx;
-                let newY = y + dy;
-      
-                // Verifica si la casilla está dentro del tablero
-                if (newX >= 0 && newX < tableroSize && newY >= 0 && newY < tableroSize) {
-                  // Comprobar si hay una mina en la casilla adyacente
-                  if (ubicacionesMinas.some(mina => mina.x === newX && mina.y === newY)) {
-                    contadorMinas[x][y]++;
-                  }
-                }
-              }
-            }
+    function contarMinasAlrededor(tableroSize, ubicacionesMinas) {
+      return new Promise((resolve, reject) => {
+        worker.postMessage({
+          type: 'countMines',
+          data: { 
+            tableroSize,
+            ubicacionesMinas
           }
-        }
-      
-        return contadorMinas;
-      }
+        });
+    
+        worker.onmessage = function (e) {
+          const { type, data } = e.data;
+          console.log("Contarminasworker:", type, data)
+          if (type === 'minesCounted') {
+            resolve(data);
+          }
+        };
+    
+        worker.onerror = function (error) {
+          reject(error);
+        };
+      });
+    }
+  
+
       
       const calcularMinasVecinas = (x, y) => {
         let contadorMinas = 0;
@@ -318,7 +312,18 @@ function GameState(props){
         };
       }, [primerClic, estadoJuego]);
     
-      const contadorMinas = contarMinasAlrededor(tableroSize, ubicacionesMinas);
+      const [contadorMinasState, setContadorMinasState] = useState([]);
+
+      useEffect(() => {
+        const fetchData = async () => {
+          const contadorProv = await contarMinasAlrededor(tableroSize, ubicacionesMinas);
+          console.log("ContadorMinas: ", contadorProv);
+          setContadorMinasState(contadorProv);
+        };
+      
+        fetchData();
+      }, [tableroSize, ubicacionesMinas]);
+      
 
       useEffect(() => {
           if (estadoJuego == "perdido") {
@@ -388,7 +393,7 @@ function GameState(props){
                 casillasMarcadas={casillasMarcadas}
                 manejarClicCasilla={manejarClicCasilla}
                 manejarClicDerecho={manejarClicDerecho}
-                contadorMinas={contadorMinas}
+                contadorMinas={contadorMinasState}
                 estadoJuego={estadoJuego}
             />
             <div className='btnReiniciarJuegos' onClick={funcionEncenderModalReiniciarJuego}>☹️</div>
