@@ -5,7 +5,7 @@
 .gridDificultades{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background: #2b2b2b;
+    background: #2b2b2b7c;
     margin-top: 10vh;
     width: 80vw;
     margin-left: 10vw;
@@ -24,7 +24,7 @@
 }
 
 .contenedorNivel:hover{
-    background: #3a3a3a;
+    background: #2b2b2b33;
     font-size: 5vh;
     font-family: 700;
 }

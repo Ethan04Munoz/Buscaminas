@@ -406,30 +406,33 @@ function GameState(props) {
       <Navbar />
       <Submenu />
       <GameMusic gameState={estadoJuego} />
-      <div className="centrarHijos">
-        <div className="divirSeccionesRecord">
-          <p>🚩 {cantidadMinas - casillasMarcadas.size}</p>
-          <p>⏰ {renderizarCronometro()}</p>
-        </div>
-        <Tablero
-          tamañoCasillas={tamañoCasillas}
-          claseTablero={claseTablero}
-          tableroSize={tableroSize}
-          ubicacionesMinas={ubicacionesMinas}
-          casillasReveladas={casillasReveladas}
-          casillasMarcadas={casillasMarcadas}
-          manejarClicCasilla={manejarClicCasilla}
-          manejarClicDerecho={manejarClicDerecho}
-          contadorMinas={contadorMinasState}
-          estadoJuego={estadoJuego}
-        />
-        <div
-          className="btnReiniciarJuegos"
-          onClick={funcionEncenderModalReiniciarJuego}
-        >
-          ☹️
+      <div className="contenedorJuego">
+        <div className="centrarHijos">
+          <div className="divirSeccionesRecord">
+            <p>🚩 {cantidadMinas - casillasMarcadas.size}</p>
+            <p>⏰ {renderizarCronometro()}</p>
+          </div>
+          <Tablero
+            tamañoCasillas={tamañoCasillas}
+            claseTablero={claseTablero}
+            tableroSize={tableroSize}
+            ubicacionesMinas={ubicacionesMinas}
+            casillasReveladas={casillasReveladas}
+            casillasMarcadas={casillasMarcadas}
+            manejarClicCasilla={manejarClicCasilla}
+            manejarClicDerecho={manejarClicDerecho}
+            contadorMinas={contadorMinasState}
+            estadoJuego={estadoJuego}
+          />
+          <div
+            className="btnReiniciarJuegos"
+            onClick={funcionEncenderModalReiniciarJuego}
+          >
+            ☹️
+          </div>
         </div>
       </div>
+      <div className="espacio"></div>
       {mostrarModalPerdido && (
         <Modal
           tituloModal={translations[language].modalPerdiste}

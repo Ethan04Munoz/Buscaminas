@@ -47,6 +47,7 @@ function ComoJugar(){
                     <LazyImage src="img ayuda (3).png"/>
                 </Suspense>
             </div>
+            <div className="espacio"></div>
         </div>
     )
 }

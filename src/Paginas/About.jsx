@@ -38,6 +38,7 @@ function AboutPage(){
                     </li>
                 </ul>
             </div>
+            <div className="espacio"></div>
         </div>
     )
 }
