@@ -45,6 +45,21 @@ function Modal(props){
         }
     }, [])
 
+
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                props.onClickX && props.onClickX();
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [props.onClickX]); 
+
     return(
         <div className="modal">
             <div className='modalAdv'>

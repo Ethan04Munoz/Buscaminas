@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import translations from "../redux/translations.js";
 import GameMusic from "../componentes/GameMusic.jsx";
 import { useRef } from "react";
+import GestorAtajos from "../componentes/GestorAtajos.jsx";
 const worker = new Worker(new URL("../worker.js", import.meta.url));
 
 function GameState(props) {
@@ -405,6 +406,7 @@ function GameState(props) {
     <>
       <Navbar />
       <Submenu />
+      <GestorAtajos/>
       <GameMusic gameState={estadoJuego} />
       <div className="contenedorJuego">
         <div className="centrarHijos">

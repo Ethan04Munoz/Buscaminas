@@ -5,6 +5,7 @@ import '../App.css'
 import React, { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import translations from '../redux/translations.js'; 
+import GestorAtajos from "../componentes/GestorAtajos.jsx";
 
 function AboutPage(){
     const language = useSelector(state => state.language.language); 
@@ -13,6 +14,7 @@ function AboutPage(){
         <div className="aboutPage">
             <Navbar/>
             <Submenu/>
+            <GestorAtajos/>
             <div className="centrar50">
                 <h1>{translations[language].aboutTitulo}</h1>
                 <p>

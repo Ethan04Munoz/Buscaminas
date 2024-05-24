@@ -6,6 +6,7 @@ import { Suspense } from 'react';
 const LazyImage = React.lazy(() => import('../componentes/LazyImagen.jsx')); // Asume que tienes un componente LazyImage
 import { useSelector } from 'react-redux';
 import translations from '../redux/translations.js'; 
+import GestorAtajos from '../componentes/GestorAtajos.jsx';
 
 function ComoJugar(){
     const language = useSelector(state => state.language.language); // Accede al idioma actual desde el store de Redux
@@ -14,6 +15,7 @@ function ComoJugar(){
         <div className="ComoJugar">
             <Navbar/>
             <Submenu/>
+            <GestorAtajos/>
             <div className="centrar50">
                 <h1>{translations[language].comojugarH1}</h1>
                 <p>
