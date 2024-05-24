@@ -8,7 +8,7 @@
     grid-template-columns: 15% 80% 5%;
     justify-content: center;
     align-items: center;
-    background: #2b2b2b;
+    background: #2b2b2b7c;
 }
 
 .gridNavBar img{
@@ -18,7 +18,7 @@
 }
 
 .gridNavBar img:hover{
-    background: #353535;
+    background: #2b2b2b33;
 }
 
 .buscaminasHomeTitle{
@@ -30,7 +30,7 @@
 }
 
 .buscaminasHomeTitle:hover{
-    background: #353535;
+    background: #2b2b2b33;
     text-shadow: 0px 3px 5px #585858;
 }
 

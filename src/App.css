@@ -16,19 +16,20 @@
 
 .contenerBuscaminas{
   display: flex;
-  flex-direction: column; /* Stack children vertically */
-  align-items: center; /* Center children horizontally */
-  justify-content: center; /* Center children vertically if there's enough space */
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
   font-size: 3vh;
 }
 
 .centrarHijos {
+  margin-top: 5vh;
   display: flex;
-  flex-direction: column; /* Stack children vertically */
-  align-items: center; /* Center children horizontally */
-  justify-content: center; /* Center children vertically if there's enough space */
-  width: 98vw;
-  margin-left: 1vw; /* Ensure it takes at least the full height of the viewport */
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  width: 98%;
+  margin-left: 1vw; 
   user-select: none;
 }
 
@@ -56,7 +57,7 @@
   align-items: center;
   box-sizing: border-box;
   border: 1px solid rgb(90, 240, 80);
-  user-select: none; /* Impedir el seleccionamiento del texto en las casillas*/
+  user-select: none;
   cursor: pointer;
 }
 .casilla:hover{
@@ -69,22 +70,20 @@
   color: black
 }
 
-/* Estilos para las casillas no reveladas con colores alternados */
 .colorClaro {
-  background: rgb(90, 240, 80); /* Color más claro */
+  background: rgb(90, 240, 80); 
 }
 
 .colorOscuro {
-  background: rgb(80, 230, 70); /* Color más oscuro */
+  background: rgb(80, 230, 70); 
 }
 
-/* Estilos para las casillas reveladas con colores alternados */
 .colorClaroRevelada {
-  background: rgb(229, 194, 159); /* Color actual para reveladas */
+  background: rgb(229, 194, 159); 
 }
 
 .colorOscuroRevelada {
-  background: rgb(219, 184, 149); /* Color más oscuro para reveladas */
+  background: rgb(219, 184, 149); 
 }
 
 .btnReiniciarJuegos{
@@ -104,8 +103,13 @@
 .centrar50{
   width: 50%;
   margin-left: 25%;
+  margin-top: 5vh;
+  padding: 2rem;
   display: grid;
   justify-items: center;
+  background: #2b2b2ba2;
+  border-radius: 1rem;
+  box-shadow: #2b2b2b7c 2px 2px 2px;
 }
 
 .centrar50 h1{
@@ -117,10 +121,33 @@
   font-size: 2vh;
 }
 
+.espacio{
+  height: 5vh;
+}
+
 ul{
   display: grid;
   align-items: center;
   justify-items: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('webp/fondo_blur.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.contenedorJuego{
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 5vh;
+  background: #2b2b2b7c;
+  border-radius: 1rem;
+  box-shadow: #2b2b2b7c 2px 2px 2px;
 }
 
 @media (max-width: 968px) {
