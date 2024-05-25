@@ -114,11 +114,13 @@
 
 .centrar50 h1{
   text-align: center;
+  color: #ffffff;
 }
 
 .centrar50 p, .centrar50 li{
   text-align: justify;
   font-size: 2vh;
+  color: #ffffff;
 }
 
 .espacio{
