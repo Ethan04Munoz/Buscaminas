@@ -402,12 +402,16 @@ function GameState(props) {
     return localStorage.getItem(`record${tableroSize}`);
   }
 
+  const music = useSelector(state => state.music.music);
+
   return (
     <>
       <Navbar />
       <Submenu />
       <GestorAtajos/>
-      <GameMusic gameState={estadoJuego} />
+      {music == '1' && (
+        <GameMusic gameState={estadoJuego} />
+      )}
       <div className="contenedorJuego">
         <div className="centrarHijos">
           <div className="divirSeccionesRecord">
