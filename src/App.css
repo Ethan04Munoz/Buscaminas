@@ -136,7 +136,7 @@ ul{
 body {
   margin: 0;
   padding: 0;
-  background-image: url('webp/fondo_blur.webp');
+  background-image: url('/Buscaminas/webp/fondo_blur.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
