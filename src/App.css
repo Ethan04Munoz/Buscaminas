@@ -167,4 +167,8 @@ body {
   .centrar50 img {
     width: 70vw;
   }
+  .contenedorJuego{
+    width: 80%;
+    margin-left: 10%;
+  }
 }
