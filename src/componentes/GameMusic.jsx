@@ -4,9 +4,10 @@ import { useSelector } from 'react-redux';
 
 const GameMusic = ({ gameState }) => {
     const howlers = useRef({
-        jugando: new Howl({ src: ["musica/com/epica.mp3"], preload: true, loop: true, volume: 0.5 }),
+        jugando: new Howl({ src: ["musica/com/normal.mp3"], preload: true, loop: true, volume: 0.5 }),
         ganado: new Howl({ src: ["musica/com/feliz.mp3"], preload: true, loop: true, volume: 0.5 }),
-        perdido: new Howl({ src: ["musica/com/triste.mp3"], preload: true, loop: true, volume: 0.5 })
+        perdido: new Howl({ src: ["musica/com/triste2.mp3"], preload: true, loop: true, volume: 0.6 })
+        //perdido: new Howl({ src: ["musica/triste2.mp3"], preload: true, loop: true, volume: 0.5 })
     });
 
     useEffect(() => {
